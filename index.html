@@ -799,7 +799,7 @@ var median_inc_to_rent = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT * FROM tracttemp WHERE Totalpop > 250",
-                        cartocss: "#tracttemp{   polygon-fill: #EDF8FB;   polygon-opacity: 1;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ medrenttoh <= 50] {    polygon-fill: #005824; } #tracttemp [ medrenttoh <= 44.65] {    polygon-fill: #238B45; } #tracttemp [ medrenttoh <= 40.15] {    polygon-fill: #41AE76; } #tracttemp [ medrenttoh <= 35.65] {    polygon-fill: #66C2A4; } #tracttemp [ medrenttoh <= 31.15] {    polygon-fill: #CCECE6; } #tracttemp [ medrenttoh <= 26.65] {    polygon-fill: #D7FAF4; } #tracttemp [ medrenttoh <= 22.15] {    polygon-fill: #EDF8FB; }",
+                        cartocss: "#tracttemp{   polygon-fill: #EDF8FB;   polygon-opacity: 1;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ medrenttoh <= 50] {    polygon-fill: #d73027; } #tracttemp [ medrenttoh <= 44.65] {    polygon-fill: #fc8d59; } #tracttemp [ medrenttoh <= 40.15] {    polygon-fill: #fee08b; } #tracttemp [ medrenttoh <= 35.65] {    polygon-fill: #ffffbf; } #tracttemp [ medrenttoh <= 31.15] {    polygon-fill: #d9ef8b; } #tracttemp [ medrenttoh <= 26.65] {    polygon-fill: #91cf60; } #tracttemp [ medrenttoh <= 22.15] {    polygon-fill: #1a9850; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_median_inc_to_rent = new L.LayerGroup();
@@ -810,7 +810,7 @@ var median_inc_choro = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, medianhhin FROM tracttemp WHERE Totalpop > 250",
-                        cartocss: " #tracttemp{   polygon-fill: #1a9850;   polygon-opacity: 1;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ medianhhin <= 243622] {    polygon-fill: #d73027; } #tracttemp [ medianhhin <= 84240] {    polygon-fill: #f79272; } #tracttemp [ medianhhin <= 67394] {    polygon-fill: #fed6b0; } #tracttemp [ medianhhin <= 57176] {    polygon-fill: #fff2cc; } #tracttemp [ medianhhin <= 48159] {    polygon-fill: #d2ecb4; } #tracttemp [ medianhhin <= 39538] {    polygon-fill: #8cce8a; } #tracttemp [ medianhhin <= 30106] {    polygon-fill: #1a9850; }",
+                        cartocss: "#tracttemp{   polygon-fill: #d73027;   polygon-opacity: 1;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ medianhhin <= 243622] {    polygon-fill: #1a9850; } #tracttemp [ medianhhin <= 84240] {    polygon-fill: #8cce8a; } #tracttemp [ medianhhin <= 67394] {    polygon-fill: #d2ecb4; } #tracttemp [ medianhhin <= 57176] {    polygon-fill: #fff2cc; } #tracttemp [ medianhhin <= 48159] {    polygon-fill: #fed6b0; } #tracttemp [ medianhhin <= 39538] {    polygon-fill: #f79272; } #tracttemp [ medianhhin <= 30106] {    polygon-fill: #d73027; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_median_inc_choro  = new L.LayerGroup();
