@@ -59,7 +59,7 @@
       }
 
 .leaflet-control-layers-expanded {
-      background: none repeat scroll 0 0 rgba(246, 249, 254, 0.9);
+      background: none repeat scroll 0 0 rgba(246, 249, 254, 0.95);
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.95);
       font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -319,10 +319,10 @@ $('#hide_show_legend').click(function() {
                 // Instantiate new map object, place it in 'map' element
                 var map_object = new L.Map('map', {
                     center: [40.7033127,-73.979681], // New York, NY
-                    zoom: 10,
+                    zoom: 11,
                     maxZoom: 16,
-                    minZoom: 10,
-                    scrollWheelZoom: false   // to keep from zooming accidentally
+                    minZoom: 10
+                    //scrollWheelZoom: false   // to keep from zooming accidentally
 
                 });
 
@@ -365,27 +365,59 @@ var nycc = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nycc",
-                      cartocss: "#layer{ polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 3; line-opacity: 1; } #nycc::labels [zoom >12]{   text-name: [coundist];   text-face-name: 'Lato Bold';   text-size: 18;   text-label-position-tolerance: 10;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer{ polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1; } #nycc::labels [zoom >= 12]{   text-name: [coundist];   text-face-name: 'Lato Bold';   text-size: 18;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nycc = new L.LayerGroup();
       nycc.addTo(l_nycc);  
 
-var nycd = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/3f321284-29b0-11e5-a0f8-0e018d66dc29/viz.json');
+var nycd = cartodb.createLayer(map_object, {
+                    user_name: 'andrewmartini',
+                    type: 'cartodb',
+                    sublayers: [{
+                      sql: "SELECT * FROM nycd WHERE borocd <> 164",
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1; } #nycd::labels [zoom >= 12]{   text-name: [borocd];   text-face-name: 'Lato Bold';   text-size: 18;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      interactivity: "cartodb_id"}]
+                  });
       var l_nycd = new L.LayerGroup();
       nycd.addTo(l_nycd); 
 
-var nyss = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/394257cc-2a5e-11e5-9e3f-0e853d047bba/viz.json');
+
+var nyss = cartodb.createLayer(map_object, {
+                    user_name: 'andrewmartini',
+                    type: 'cartodb',
+                    sublayers: [{
+                      sql: "SELECT * FROM nyss WHERE stsendist is not null",
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #191970; line-width: 2; line-opacity: 1; } #nyss::labels [zoom >= 12]{   text-name: [stsendist];   text-face-name: 'Lato Bold';   text-size: 18;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #191970;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      interactivity: "cartodb_id"}]
+                  });
       var l_nyss = new L.LayerGroup();
       nyss.addTo(l_nyss); 
 
-var nyad = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/8aa5a57e-2a5e-11e5-9807-0e9d821ea90d/viz.json');
+
+var nyad = cartodb.createLayer(map_object, {
+                    user_name: 'andrewmartini',
+                    type: 'cartodb',
+                    sublayers: [{
+                      sql: "SELECT * FROM nyad WHERE assemdist is not null",
+                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #191970; line-width: 2; line-opacity: 1; } #nyad::labels [zoom >= 12]{   text-name: [assemdist];   text-face-name: 'Lato Bold';   text-size: 18;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #191970;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      interactivity: "cartodb_id"}]
+                  });
       var l_nyad = new L.LayerGroup();
       nyad.addTo(l_nyad); 
 
-var nycg = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/d0fb1b72-2a5d-11e5-a731-0e4fddd5de28/viz.json');
+
+var nycg = cartodb.createLayer(map_object, {
+                    user_name: 'andrewmartini',
+                    type: 'cartodb',
+                    sublayers: [{
+                      sql: "SELECT * FROM nycg WHERE congdist is not null",
+                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #B22222; line-width: 2; line-opacity: 1; } #nycg::labels [zoom >= 12]{   text-name: [congdist];   text-face-name: 'Lato Bold';   text-size: 18;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #B22222;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      interactivity: "cartodb_id"}]
+                  });
       var l_nycg = new L.LayerGroup();
       nycg.addTo(l_nycg); 
+
 
 var nybb = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -403,7 +435,7 @@ var nybb = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                         sql: "SELECT * FROM nyc_zipcode_2014_edit",
-                        cartocss: "#layer {   polygon-fill: #FFF;   polygon-opacity: 0;   line-color: #11002F;   line-width: 3;   line-opacity: 1; }  #nyc_zipcode_2014_edit::labels [zoom >12]{   text-name: [postal];   text-face-name: 'Lato Bold';   text-size: 14;   text-label-position-tolerance: 10;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple; } ",
+                        cartocss: "#layer {   polygon-fill: #FFF;   polygon-opacity: 0;   line-color: #11002F;   line-width: 2;   line-opacity: 1; }  #nyc_zipcode_2014_edit::labels [zoom >12]{   text-name: [postal];   text-face-name: 'Lato Bold';   text-size: 14;   text-label-position-tolerance: 10;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple; } ",
                         interactivity: "cartodb_id"}]
                         });
       var l_zipcode = new L.LayerGroup();
@@ -425,24 +457,7 @@ var uhf_health = cartodb.createLayer(map_object, {
       uhf_health.addTo(l_uhf_health); 
 
 
-   var nycha = cartodb.createLayer(map_object, {
-            user_name: 'andrewmartini',
-            type: 'cartodb',
-            sublayers: [{
-               sql: 'SELECT * FROM nycha_developments_july2011',
-               cartocss: "#layer{    polygon-fill: #0700ff;    polygon-opacity: 0.9;    line-color: #FFF;    line-width: 0;    line-opacity: 0;  }    #nycha_developments_july2011::labels [zoom >= 12] [tot_pop11 > 4000] {    text-name: [developmen];    text-face-name: 'Lato Bold';    text-size: 10;    text-label-position-tolerance: 10;    text-fill: #11002F;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 120;    text-wrap-before: true;    text-character-spacing: 1.5;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    }    #nycha_developments_july2011::labels [zoom >= 13] [tot_pop11 > 1000] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 10;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 150;    text-wrap-before: true;    text-character-spacing: 2;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    }    #nycha_developments_july2011::labels [zoom >= 14] [tot_pop11 > 500] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 11;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 160;    text-wrap-before: true;    text-character-spacing: 2;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    }    #nycha_developments_july2011::labels [zoom >= 15] [tot_pop11 > 100] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 12;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 200;    text-wrap-before: true;    text-character-spacing: 2;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    }    #nycha_developments_july2011::labels [zoom >= 15] [tot_pop11 > 100] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 12;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;      }    #nycha_developments_july2011::labels [zoom >= 16] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 12;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 200;    text-wrap-before: true;    text-character-spacing: 2;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    } ",
-               interactivity: 'cartodb_id'}]
-          });
-         var l_nycha = new L.LayerGroup();
-         nycha.addTo(l_nycha);
-
-  var subways = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/77a3e3a4-2aaf-11e5-8077-0e9d821ea90d/viz.json'); 
-          var l_subways = new L.LayerGroup();
-          subways.addTo(l_subways);
-
-  var dpr_parks = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/14265a74-4129-11e5-a71a-0e4fddd5de28/viz.json'); 
-          var l_dpr_parks = new L.LayerGroup();
-          dpr_parks.addTo(l_dpr_parks);     
+    
 
 // group list for layer selector -  ITEMS WILL APPEAR IN THE ORDER YOU PUT THEM IN BELOW:  
 var boundaries_group = { 
@@ -456,10 +471,7 @@ var boundaries_group = {
                       "<span class='my-layer-item-steelblue'>US Congressional</span>": l_nycg,
                       "<span class='my-layer-item-steelblue'>Police Precincts</span>": l_precincts,
                       "<span class='my-layer-item-steelblue'>Zip Codes</span>": l_zipcode,
-                      "<span class='my-layer-item-steelblue'>UHF Zones</span>": l_uhf_health,
-                      "NYCHA developments": l_nycha,
-                      "Subway Lines": l_subways,
-                      "Parks Properties": l_dpr_parks
+                      "<span class='my-layer-item-steelblue'>UHF Zones</span>": l_uhf_health
                     };
    
   L.control.layers(null, boundaries_group, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
@@ -652,11 +664,28 @@ var cau_events = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com
           var l_cau_events = new L.LayerGroup();
           cau_events.addTo(l_cau_events);
 
-var paid_sick = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/8bcbcfa4-354a-11e5-9b8e-0e4fddd5de28/viz.json'); 
+var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/b985e2b8-1911-11e5-bd0e-0e853d047bba/viz.json'); 
           var l_paid_sick = new L.LayerGroup();
           paid_sick.addTo(l_paid_sick);
 
-  
+var nycha = cartodb.createLayer(map_object, {
+            user_name: 'andrewmartini',
+            type: 'cartodb',
+            sublayers: [{
+               sql: 'SELECT * FROM nycha_developments_july2011',
+               cartocss: "#layer{    polygon-fill: #0700ff;    polygon-opacity: 0.9;    line-color: #FFF;    line-width: 0;    line-opacity: 0;  }    #nycha_developments_july2011::labels [zoom >= 12] [tot_pop11 > 4000] {    text-name: [developmen];    text-face-name: 'Lato Bold';    text-size: 10;    text-label-position-tolerance: 10;    text-fill: #11002F;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 120;    text-wrap-before: true;    text-character-spacing: 1.5;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    }    #nycha_developments_july2011::labels [zoom >= 13] [tot_pop11 > 1000] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 10;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 150;    text-wrap-before: true;    text-character-spacing: 2;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    }    #nycha_developments_july2011::labels [zoom >= 14] [tot_pop11 > 500] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 11;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 160;    text-wrap-before: true;    text-character-spacing: 2;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    }    #nycha_developments_july2011::labels [zoom >= 15] [tot_pop11 > 100] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 12;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 200;    text-wrap-before: true;    text-character-spacing: 2;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    }    #nycha_developments_july2011::labels [zoom >= 15] [tot_pop11 > 100] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 12;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;      }    #nycha_developments_july2011::labels [zoom >= 16] {    text-name: [developmen];    text-face-name: 'DejaVu Sans Book';    text-size: 12;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-wrap-width: 200;    text-wrap-before: true;    text-character-spacing: 2;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;    } ",
+               interactivity: 'cartodb_id'}]
+          });
+         var l_nycha = new L.LayerGroup();
+         nycha.addTo(l_nycha);
+
+  var subways = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/77a3e3a4-2aaf-11e5-8077-0e9d821ea90d/viz.json'); 
+          var l_subways = new L.LayerGroup();
+          subways.addTo(l_subways);
+
+  var dpr_parks = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/14265a74-4129-11e5-a71a-0e4fddd5de28/viz.json'); 
+          var l_dpr_parks = new L.LayerGroup();
+          dpr_parks.addTo(l_dpr_parks); 
 
 
     var cau_outreach_targets = {
@@ -666,7 +695,10 @@ var paid_sick = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/
         "ID NY Target Locations": l_id_ny,
         "Paid Sick Leave": l_paid_sick,
         "Nail Salon // Action": l_nails,
-        "Vision Zero": l_vision_zero
+        "Vision Zero": l_vision_zero,
+        "NYCHA developments": l_nycha,
+        "Subway Lines": l_subways,
+        "Parks Properties": l_dpr_parks
     };
 
      L.control.layers(null, cau_outreach_targets, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
@@ -674,18 +706,49 @@ var paid_sick = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/
 //******************************************************
 // GROUP 4 DEMOGRAPHICS & OTHER
 
+var lang_plurality = cartodb.createLayer(map_object, {
+            user_name: 'andrewmartini',
+            type: 'cartodb',
+            sublayers: [{
+               sql: 'select * from schlang_merge_05_04',
+               cartocss:  "#schlang_merge_05_04 {    polygon-opacity: 1;    line-color: #FFF;    line-width: 1;    line-opacity: 0.5; }  #schlang_merge_05_04[_plura_grp='French Creoles'] {    polygon-fill: #A53ED5; } #schlang_merge_05_04[_plura_grp='Indo-European: Balto-Slavic'] {    polygon-fill: #0000a0; } #schlang_merge_05_04[_plura_grp='Indo-European: Romance'] {    polygon-fill: #5CA2D1; } #schlang_merge_05_04[_plura_grp='Indo-European: Germanic'] {    polygon-fill: #cccccc; } #schlang_merge_05_04[_plura_grp='Indo-European: Other'] {    polygon-fill: #00ceff;   } #schlang_merge_05_04[_plura_grp='Uralic'] {    polygon-fill: #00ceff; }  #schlang_merge_05_04[_plura_grp='Sino-Tibetan: Chinese'] {    polygon-fill: #ff0000; } #schlang_merge_05_04[_plura_grp='South Asian'] {    polygon-fill: #ffa500; } #schlang_merge_05_04[_plura_grp='E & SE Asia: other'] {    polygon-fill: #fb9a99; } #schlang_merge_05_04[_plura_grp='Austronesian: Malayo-Polynesian'] {    polygon-fill: #fb9a99; }  #schlang_merge_05_04[_plura_grp='Afro-Asiatic: Semitic'] {    polygon-fill: #49db40; } #schlang_merge_05_04[_plura_grp='Niger-Congo: Atlantic-Congo'] {    polygon-fill: #136400; } #schlang_merge_05_04[_plura_grp='Niger-Congo: Mande'] {    polygon-fill: #229A00; }  #schlang_merge_05_04 {    polygon-fill: #DDDDDD; }     /** language labels for _plura */ #schlang_merge_05_04::labels [zoom >= 12] {   text-name: [_plura];   text-face-name: 'Lato Bold';   text-size: 10;   text-wrap-before: true;   text-wrap-width: 20;   text-label-position-tolerance: 10;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: false;   text-placement: point;   text-placement-type: simple; }  #schlang_merge_05_04::labels [zoom >= 13]  {   text-name: [_plura]+' '+[_plura_qt];   text-face-name: 'Lato Bold';   text-size: 11; }  #schlang_merge_05_04::labels [zoom >= 14] {   text-name: [_plura]+' '+[_plura_qt];   text-face-name: 'Lato Bold';   text-size: 13; }",
+               interactivity: 'cartodb_id'}]
+          });
+         var l_lang_plurality = new L.LayerGroup();
+         lang_plurality.addTo(l_lang_plurality);
+
+ var plur_non_eng = cartodb.createLayer(map_object, {
+            user_name: 'andrewmartini',
+            type: 'cartodb',
+            sublayers: [{
+               sql: 'select * from schlang_merge_05_04',
+               cartocss: "#layer {     polygon-opacity: 1;     line-color: #FFF;     line-width: 0.5;     line-opacity: 1;  }   #layer[_plurne_grp='French Creoles'] {     polygon-fill: #A53ED5;  }  #layer[_plurne_grp='Indo-European: Balto-Slavic']  {     polygon-fill: #0000a0;  }  #layer[_plurne_grp='Indo-European: Romance']  {     polygon-fill: #5CA2D1;  }  #layer[_plurne_grp='Indo-European: Germanic']  {     polygon-fill: #cccccc;  }  #layer[_plurne_grp='Indo-European: Other']  {      polygon-fill: #00ceff;    }  #layer[_plurne_grp='Uralic']  {     polygon-fill: #00ceff;  }   #layer[_plurne_grp='Sino-Tibetan: Chinese']  {     polygon-fill: #ff0000;  }  #layer[_plurne_grp='South Asian']  {     polygon-fill: #ffa500;  }  #layer[_plurne_grp='E & SE Asia: other'] {     polygon-fill: #fb9a99;  }  #layer[_plurne_grp='Austronesian: Malayo-Polynesian']  {     polygon-fill: #fb9a99;  }   #layer[_plurne_grp='Afro-Asiatic: Semitic']  {     polygon-fill: #49db40;  }  #layer[_plurne_grp='Niger-Congo: Atlantic-Congo'] {     polygon-fill: #136400;  }  #layer[_plurne_grp='Niger-Congo: Mande'] {     polygon-fill: #229A00;  }   #layer {     polygon-fill: #DDDDDD;  }      /** language labels for _plurne */  #layer::labels [zoom >= 12] {    text-name: [_plurne];    text-face-name: 'Lato Bold';    text-size: 10;    text-wrap-before: true;    text-wrap-width: 20;    text-label-position-tolerance: 10;    text-fill: #000;    text-halo-fill: #FFF;    text-halo-radius: 1;    text-dy: 0;    text-allow-overlap: false;    text-placement: point;    text-placement-type: simple;  }   #layer::labels [zoom >= 13] {    text-name: [_plurne]+' '+[_plurne_qty];    text-face-name: 'Lato Bold';    text-size: 11;  }   #layer::labels [zoom >= 14] {    text-name: [_plurne]+' '+[_plurne_qty];    text-face-name: 'Lato Bold';    text-size: 13;  }  #schlang_poly_v3_1::labels [_plurne_qty <= 9]{    text-name: [_plurne];    text-face-name: 'Lato Bold';    text-size: 0;    text-fill: #fff;    text-halo-radius: 0;  }  ",
+               interactivity: 'cartodb_id'}]
+          });
+         var l_plur_non_eng = new L.LayerGroup();
+         plur_non_eng.addTo(l_plur_non_eng);         
 
   var nonengspan = cartodb.createLayer(map_object, {
             user_name: 'andrewmartini',
             type: 'cartodb',
             sublayers: [{
                sql: 'select * from schlang_merge_05_04',
-               cartocss: "#layer {  polygon-opacity: 0.7;  line-color: #FFF;  line-width: 1;  line-opacity: 1;  }   /** language group polygon fill */  #schlang_merge_05_04[_plurnes_gr='Sino-Tibetan: Chinese'] {  polygon-fill: #ff0000;  }  #schlang_merge_05_04[_plurnes_gr='South Asian'] {  polygon-fill: #ffa500;  }  #schlang_merge_05_04[_plurnes_gr='E & SE Asia: other'] {  polygon-fill: #fb9a99;  }  #schlang_merge_05_04[_plurnes_gr='Austronesian: Malayo-Polynesian'] {  polygon-fill: #fb9a99;  } #schlang_merge_05_04[_plurnes_gr='Afro-Asiatic: Semitic'] {  polygon-fill: #49db40;  }  #schlang_merge_05_04[_plurnes_gr='Niger-Congo: Atlantic-Congo'] {  polygon-fill: #136400;  }  #schlang_merge_05_04[_plurnes_gr='Niger-Congo: Mande'] {  polygon-fill: #229A00;  }   #schlang_merge_05_04[_plurnes_gr='French Creoles'] {  polygon-fill: #A53ED5;  }  #schlang_merge_05_04[_plurnes_gr='Indo-European: Balto-Slavic'] {  polygon-fill: #0000a0;  }  #schlang_merge_05_04[_plurnes_gr='Indo-European: Romance'] {  polygon-fill: #5CA2D1;  }  #schlang_merge_05_04[_plurnes_gr='Indo-European: Germanic'] {  polygon-fill: #5CA2D1;  }  #schlang_merge_05_04[_plurnes_gr='Indo-European: Other'] {  polygon-fill: #00ceff;   }  #schlang_merge_05_04[_plurnes_gr='Uralic'] {  polygon-fill: #00ceff;  }   #schlang_merge_05_04 {  polygon-fill: #DDDDDD;  }   /** language labels for plurnes */  #schlang_merge_05_04::labels [zoom >= 12] { text-name: [_plurnes]; text-face-name: 'Lato Bold'; text-size: 10; text-wrap-before: true; text-wrap-width: 20;  text-transform: capitalize; text-label-position-tolerance: 10; text-fill: #000; text-halo-fill: #FFF; text-halo-radius: 1; text-dy: 0; text-allow-overlap: false; text-placement: point; text-placement-type: simple;  }   #schlang_merge_05_04::labels [zoom >= 13]      { text-name: [_plurnes]+' '+[_plurnes_qt]; text-face-name: 'Lato Bold'; text-size: 11;  }   #schlang_merge_05_04::labels [zoom >= 14]  { text-name: [_plurnes]+' '+[_plurnes_qt]; text-face-name: 'Lato Bold'; text-size: 13;  } #schlang_poly_v3_1::labels [_plurnes_qt < 9]{   text-name: [_plurnes_qt];   text-face-name: 'Lato Bold';   text-size: 0;   text-fill: #fff;   text-halo-radius: 0; }",
+               cartocss: "#layer {  polygon-opacity: 1;  line-color: #FFF;  line-width: 0.5;  line-opacity: 1;  }   /** language group polygon fill */  #schlang_merge_05_04[_plurnes_gr='Sino-Tibetan: Chinese'] {  polygon-fill: #ff0000;  }  #schlang_merge_05_04[_plurnes_gr='South Asian'] {  polygon-fill: #ffa500;  }  #schlang_merge_05_04[_plurnes_gr='E & SE Asia: other'] {  polygon-fill: #fb9a99;  }  #schlang_merge_05_04[_plurnes_gr='Austronesian: Malayo-Polynesian'] {  polygon-fill: #fb9a99;  } #schlang_merge_05_04[_plurnes_gr='Afro-Asiatic: Semitic'] {  polygon-fill: #49db40;  }  #schlang_merge_05_04[_plurnes_gr='Niger-Congo: Atlantic-Congo'] {  polygon-fill: #136400;  }  #schlang_merge_05_04[_plurnes_gr='Niger-Congo: Mande'] {  polygon-fill: #229A00;  }   #schlang_merge_05_04[_plurnes_gr='French Creoles'] {  polygon-fill: #A53ED5;  }  #schlang_merge_05_04[_plurnes_gr='Indo-European: Balto-Slavic'] {  polygon-fill: #0000a0;  }  #schlang_merge_05_04[_plurnes_gr='Indo-European: Romance'] {  polygon-fill: #5CA2D1;  }  #schlang_merge_05_04[_plurnes_gr='Indo-European: Germanic'] {  polygon-fill: #5CA2D1;  }  #schlang_merge_05_04[_plurnes_gr='Indo-European: Other'] {  polygon-fill: #00ceff;   }  #schlang_merge_05_04[_plurnes_gr='Uralic'] {  polygon-fill: #00ceff;  }   #schlang_merge_05_04 {  polygon-fill: #DDDDDD;  }   /** language labels for plurnes */  #schlang_merge_05_04::labels [zoom >= 12] { text-name: [_plurnes]; text-face-name: 'Lato Bold'; text-size: 10; text-wrap-before: true; text-wrap-width: 20;  text-transform: capitalize; text-label-position-tolerance: 10; text-fill: #000; text-halo-fill: #FFF; text-halo-radius: 1; text-dy: 0; text-allow-overlap: false; text-placement: point; text-placement-type: simple;  }   #schlang_merge_05_04::labels [zoom >= 13]      { text-name: [_plurnes]+' '+[_plurnes_qt]; text-face-name: 'Lato Bold'; text-size: 11;  }   #schlang_merge_05_04::labels [zoom >= 14]  { text-name: [_plurnes]+' '+[_plurnes_qt]; text-face-name: 'Lato Bold'; text-size: 13;  } #schlang_poly_v3_1::labels [_plurnes_qt < 9]{   text-name: [_plurnes_qt];   text-face-name: 'Lato Bold';   text-size: 0;   text-fill: #fff;   text-halo-radius: 0; }",
                interactivity: 'cartodb_id'}]
           });
          var l_nonengspan = new L.LayerGroup();
          nonengspan.addTo(l_nonengspan);
 
+var percent_nhblack_choro = cartodb.createLayer(map_object, {   
+                      user_name: 'andrewmartini',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT cartodb_id, the_geom_webmercator, (nhblack/totalpop)*100 as percent_black FROM tracttemp where totalpop > 100",
+                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 1;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_black <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_black <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_black <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_black <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_black <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_black <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_black <= 10] {    polygon-fill: #FFFFB2; }",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_percent_nhblack_choro = new L.LayerGroup();
+    percent_nhblack_choro.addTo(l_percent_nhblack_choro); 
 
 var percent_nhwhite_choro = cartodb.createLayer(map_object, {   
                       user_name: 'andrewmartini',
@@ -698,16 +761,16 @@ var percent_nhwhite_choro = cartodb.createLayer(map_object, {
     var l_percent_nhwhite_choro = new L.LayerGroup();
     percent_nhwhite_choro.addTo(l_percent_nhwhite_choro); 
 
-var percent_nhblack_choro = cartodb.createLayer(map_object, {   
+var percent_foreignborn_choro = cartodb.createLayer(map_object, {   
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT cartodb_id, the_geom_webmercator, (nhblack/totalpop)*100 as percent_black FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 1;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_black <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_black <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_black <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_black <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_black <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_black <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_black <= 10] {    polygon-fill: #FFFFB2; }",
+                        sql: "SELECT cartodb_id, the_geom_webmercator, (foreignbor/totalpop)*100 AS percent_fb FROM tracttemp where totalpop > 100",
+                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 1;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_fb <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_fb <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_fb <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_fb <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_fb <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_fb <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_fb <= 10] {    polygon-fill: #FFFFB2; }",
                       interactivity: "cartodb_id"}]
                     });
-    var l_percent_nhblack_choro = new L.LayerGroup();
-    percent_nhblack_choro.addTo(l_percent_nhblack_choro); 
+    var l_percent_foreignborn_choro = new L.LayerGroup();
+    percent_foreignborn_choro.addTo(l_percent_foreignborn_choro); 
 
 var percent_nhasian_choro = cartodb.createLayer(map_object, {   
                       user_name: 'andrewmartini',
@@ -758,7 +821,7 @@ var bangladesh_gradu = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, bangladesh FROM tracttemp WHERE bangladesh > 5",
-                        cartocss: " #tracttemp{   marker-fill-opacity: 0.8;   marker-line-color: #FFBE34;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #FFBE34;   marker-allow-overlap: true;   marker-clip: false; } #tracttemp [ bangladesh <= 1600] {    marker-width: 32.0; } #tracttemp [ bangladesh <= 1000] {    marker-width: 24.0; } #tracttemp [ bangladesh <= 500] {    marker-width: 18; } #tracttemp [ bangladesh <= 100] {    marker-width: 12; } #tracttemp [ bangladesh <= 50] {    marker-width: 8; } #tracttemp [ bangladesh <= 10] {    marker-width: 2.0; }",
+                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #FFBE34;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #FFBE34;   marker-allow-overlap: true;   marker-clip: false; } #layer [ bangladesh <= 1600] {    marker-width: 32.0; } #layer [ bangladesh <= 1000] {    marker-width: 24.0; } #layer [ bangladesh <= 500] {    marker-width: 18; } #layer [ bangladesh <= 100] {    marker-width: 12; } #layer [ bangladesh <= 50] {    marker-width: 8; } #layer [ bangladesh <= 10] {   marker-width: 2.0; } ",
                       interactivity: "cartodb_id"}]
                     });
     var l_bangladesh_gradu  = new L.LayerGroup();
@@ -789,15 +852,18 @@ var arab_gradu = cartodb.createLayer(map_object, {
 
 
 
-    var demographic = {
+ var demographic = {
 
         "Percent Hispanic": l_percent_hispanic_choro,
         "Percent NH White": l_percent_nhwhite_choro,
         "Percent NH Black": l_percent_nhblack_choro,       
         "Percent NH Asian": l_percent_nhasian_choro,
-        "DOE: Non-Engl/Span": l_nonengspan,
         "Median HH Income": l_median_inc_choro,
         "Median Inc to Rent": l_median_inc_to_rent,
+        "DOE: Lang Plurality": l_lang_plurality,
+        "DOE: Non-Engl Plur": l_plur_non_eng,
+        "DOE: Non-Engl/Span": l_nonengspan,        
+        "Prcnt Foreign Born": l_percent_foreignborn_choro,
         "Bangladeshi": l_bangladesh_gradu,
         "Pakistani": l_pakistani_gradu,
         "Arab": l_arab_gradu
