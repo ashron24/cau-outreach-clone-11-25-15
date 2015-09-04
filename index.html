@@ -628,7 +628,10 @@ var other_religion = cartodb.createLayer(map_object, {  // religion type
                       "<span class='my-layer-item-orange'>Buddhist Orgs</span>": l_buddhist,
                       "<span class='my-layer-item-yellow'>Sikh Orgs</span>": l_sikh,
                       "<span class='my-layer-item-purple'>Hare Krishna Orgs</span>": l_krishna, 
-                      "Other Religious Orgs": l_other_religion                   
+                      "Other Religious Orgs": l_other_religion,
+                      "NYCHA developments": l_nycha,
+                      "Subway Lines": l_subways,
+                      "Parks Properties": l_dpr_parks               
                 };
 
                 L.control.layers(null, clergy_cbo, {collapsed: false, position:'topright', autoZIndex:false}).addTo(map_object);
@@ -695,10 +698,7 @@ var nycha = cartodb.createLayer(map_object, {
         "ID NY Target Locations": l_id_ny,
         "Paid Sick Leave": l_paid_sick,
         "Nail Salon // Action": l_nails,
-        "Vision Zero": l_vision_zero,
-        "NYCHA developments": l_nycha,
-        "Subway Lines": l_subways,
-        "Parks Properties": l_dpr_parks
+        "Vision Zero": l_vision_zero
     };
 
      L.control.layers(null, cau_outreach_targets, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
@@ -870,10 +870,7 @@ var arab_gradu = cartodb.createLayer(map_object, {
     };
   L.control.layers(null, demographic, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
 
-
             }
-
-
 
         </script>
     </body>
