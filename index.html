@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            CAU Clergy Map | DRAFT | 
+            CAU Clergy Map | DRAFT |  v3 | 09_06_15
         </title>
  
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -73,8 +73,14 @@
  .my-layer-item-bold {      /* black layer item */
        font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
        color: #000000;
-       font-weight: 700;
+       font-weight: 800;
 }
+ .my-layer-item-basemap {      /* grey bold layer item */
+       font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+       color: #818181;
+       font-weight: 800;
+}
+
  .my-layer-item-italic {      /* italic */
        font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
        font-style: italic;
@@ -316,32 +322,44 @@ $('#hide_show_legend').click(function() {
         <script type="text/javascript">
             window.onload = function () {
 
+//load up basemaps
+var light_nolabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});
+
+var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {attribution: 'Tiles &copy; Esri &mdash; Source: Esri et. al.'});
+
+//create basemaps object 
+var baseMaps = {
+            "<span class='my-layer-item-basemap'>Gray Basemap</span>": light_nolabels,
+            "<span class='my-layer-item-basemap'>Satellite Basemap</span>": Esri_WorldImagery
+          };
+
                 // Instantiate new map object, place it in 'map' element
                 var map_object = new L.Map('map', {
                     center: [40.7033127,-73.979681], // New York, NY
                     zoom: 11,
                     maxZoom: 16,
-                    minZoom: 10
+                    minZoom: 10, 
+                    layers:[light_nolabels]    // starting basemap - remember - can't add elements that haven't beed declared yet
                     //scrollWheelZoom: false   // to keep from zooming accidentally
-
                 });
+            //    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+              //      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+             //   }).addTo(map_object);
 
-                L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(map_object);
-
-
-
+var labels_overlay = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});
+    var l_labels_overlay = new L.LayerGroup();
+    labels_overlay.addTo(l_labels_overlay).setZIndex(900);  // high Z - to keep on top of map layers
 
 // ***********************************************************************
 // Leaflet BOUNDARY overlays using cartodb.createLayer and .addTo() method
+
 
 var neighborhoods = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM neighborhoods",
-                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1;}",
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1;}", 
                       interactivity: "cartodb_id" }]
                     });
     var l_neighborhoods = new L.LayerGroup();
@@ -353,7 +371,7 @@ var neighborhoods = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM neighborhoods",
-                      cartocss: "#layer::labels [zoom >=11]{ polygon-fill: #fff; polygon-opacity: 0; line-width: 0; line-opacity: 0;  text-name: [ntaname3];  text-face-name: 'Lato Bold';  text-size: 9;  text-fill: #333333;  text-opacity: 0.8;  text-halo-fill: #FFF;  text-halo-radius: 0.7;  text-transform: uppercase;  text-wrap-width: 50;  text-wrap-before: true; text-character-spacing: 1.1;  text-allow-overlap:false;  text-placement-type: simple;  text-placements: 'W,E,N,12';  text-label-position-tolerance:5;  text-min-distance:10; }",
+                      cartocss: "Map {buffer-size:256; } #layer::labels [zoom >=11]{ polygon-fill: #fff; polygon-opacity: 0; line-width: 0; line-opacity: 0;  text-name: [ntaname3];  text-face-name: 'Lato Bold';  text-size: 9;  text-fill: #333333;  text-opacity: 0.8;  text-halo-fill: #FFF;  text-halo-radius: 0.7;  text-transform: uppercase;  text-wrap-width: 50;  text-wrap-before: true; text-character-spacing: 1.1;  text-allow-overlap:false;  text-placement-type: simple;  text-placements: 'W,E,N,S,8,6';  text-label-position-tolerance:5;  text-min-distance:10; } #layer::labels [zoom >=13]{ polygon-fill: #fff; polygon-opacity: 0; line-width: 0; line-opacity: 0;  text-name: [ntaname3];  text-face-name: 'Lato Bold';  text-size: 12;  text-fill: #333333;  text-opacity: 0.8;  text-halo-fill: #FFF;  text-halo-radius: 1;  text-transform: uppercase;  text-wrap-width: 80;  text-wrap-before: true; text-character-spacing: 1.3;  text-allow-overlap:false;  text-placement-type: simple;  text-placements: 'W,E,N,S,11,10';  text-label-position-tolerance:5;  text-min-distance:10; }",
                       interactivity: "cartodb_id" }]
                     });
     var l_neigh_labels = new L.LayerGroup();
@@ -461,6 +479,7 @@ var uhf_health = cartodb.createLayer(map_object, {
 
 // group list for layer selector -  ITEMS WILL APPEAR IN THE ORDER YOU PUT THEM IN BELOW:  
 var boundaries_group = { 
+                      "<span class='my-layer-item-basemap'>Basemap Labels</span>": l_labels_overlay,
                       "<span class='my-layer-item-steelblue'>Boroughs</span>": l_nybb,
                       "<span class='my-layer-item-steelblue'>Neighborhoods</span>": l_neighborhoods,
                       "<span class='my-layer-item-italic'>Neighborhood Labels</span>": l_neigh_labels, 
@@ -474,7 +493,7 @@ var boundaries_group = {
                       "<span class='my-layer-item-steelblue'>UHF Zones</span>": l_uhf_health
                     };
    
-  L.control.layers(null, boundaries_group, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
+  L.control.layers(baseMaps, boundaries_group, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
 
 
 // **********************************************************************************
