@@ -722,6 +722,10 @@ var nycha = cartodb.createLayer(map_object, {
 var scrie = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/765c7704-2bfe-11e5-99c0-0e018d66dc29/viz.json'); 
           var l_scrie = new L.LayerGroup();
           scrie.addTo(l_scrie);
+          
+var scrie_private = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/8b7a7706-566c-11e5-817e-0e4fddd5de28/viz.json');
+          var l_scrie_private = new L.LayerGroup();
+          scrie_private.addTo(l_scrie_private);
 
 var cau_events = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/8bcbcfa4-354a-11e5-9b8e-0e4fddd5de28/viz.json'); 
           var l_cau_events = new L.LayerGroup();
@@ -736,6 +740,7 @@ var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/ap
     var cau_outreach_targets = {
         "CAU events by Neigh": l_cau_events,
         "SCRIE Outreach": l_scrie,
+        "SCRIE private test": l_scrie_private,
         "Rent Regulated Target": l_rentreg,
         "ID NY Target Locations": l_id_ny,
         "Paid Sick Leave": l_paid_sick,
