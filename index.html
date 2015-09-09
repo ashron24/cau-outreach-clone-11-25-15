@@ -565,7 +565,9 @@ var fac = cartodb.createLayer(map_object, {  // facilities
                   });
     var l_fac = new L.LayerGroup();
     fac.addTo(l_fac);
-
+    
+var christian = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/77a3e3a4-2aaf-11e5-8077-0e9d821ea90d/viz.json'); 
+/*  //old code - replaced above w/ secure data link
 var christian = cartodb.createLayer(map_object, {  // religion type
                     user_name: 'ashron24',
                     type: 'cartodb',
@@ -573,7 +575,7 @@ var christian = cartodb.createLayer(map_object, {  // religion type
                       sql: "SELECT cartodb_id, the_geom_webmercator, religion FROM haroldclergy3_11_15_merge ",
                       cartocss: "#layer [religion='Christian'] [zoom >= 10] { marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/2015031200002750-px-red_cross.png);   marker-fill-opacity: 0.9;    marker-line-color: #FFF;  marker-line-width: 1;  marker-line-opacity: 1;    marker-placement: point;  marker-type: ellipse;  marker-width: 5;  marker-allow-overlap: true; }  #layer [religion='Christian'] [zoom >= 11] {    marker-width: 8; } #layer [religion='Christian'] [zoom >= 12] {    marker-width: 12; } #layer [religion='Christian'] [zoom >= 13] {    marker-width: 18; } #layer [religion='Christian'] [zoom >= 14] {marker-width: 24; } #layer [religion='Christian'] [zoom >= 15] { marker-width: 30; } ",
                       interactivity: "cartodb_id"}]
-                  });
+                  }); */
     var l_christian = new L.LayerGroup();
     christian.addTo(l_christian);
 
