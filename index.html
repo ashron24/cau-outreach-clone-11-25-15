@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            CAU Clergy Map | DRAFT | update:09/08/15
+            CAU Clergy Map | DRAFT | update:09/15/15
         </title>
  
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -298,7 +298,7 @@
       <div id="instructions-text-intro">
         <p class = "instructions">Layers are drawn as you select them, newest on top of oldest. To change the order, simply toggle a layer off and then on again to make it appear on top of others.</p>
         <hr> 
-        <p class = "credits">CAU Clergy Demo Map v3_02</p>
+        <p class = "credits">_</p>
       </div>
     </div>
 
@@ -524,14 +524,15 @@ map_object.addLayer(l_neigh_labels);
 // **********************************************************************************
 // Leaflet Religious and CBO's overlays using cartodb.createLayer and .addTo() method
 
-var cbo = cartodb.createLayer(map_object, {  // CBOs
-                    user_name: 'ashron24',
+var cbo = cartodb.createLayer(map_object, {' https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/68dd2cbe-5b14-11e5-8bb4-0ec6f7c8b2b9/viz.json'};
+    
+/*                    user_name: 'ashron24',
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT cartodb_id, the_geom_webmercator, label FROM scrieloc2_1 ",
                       cartocss: "#layer [label='CBO'][zoom >= 10] {marker-width: 6; marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150519173646protest.svg); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [label='CBO'] [zoom >= 11] { marker-width: 9; } #layer [label='CBO'][zoom >= 12]{marker-width: 12; } #layer  [label='CBO'] [zoom >= 13]{   marker-width: 18; } #layer  [label='CBO'] [zoom >= 15]{ marker-width: 24; }",
                       interactivity: "cartodb_id"}]
-                  });
+                  }); */
     var l_cbo = new L.LayerGroup();
     cbo.addTo(l_cbo);
 
@@ -592,14 +593,14 @@ var jewish = cartodb.createLayer(map_object, {  // religion type
     var l_jewish = new L.LayerGroup();
     jewish.addTo(l_jewish);
 
-var muslim = cartodb.createLayer(map_object, {  // religion type
-                    user_name: 'ashron24',
+var muslim = cartodb.createLayer(map_object, {
+                   user_name: 'ashron24',
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT cartodb_id, the_geom_webmercator, religion FROM haroldclergy3_11_15_merge",
                       cartocss: "#layer [zoom >= 10][religion='Muslim'] { marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/2015031200004950-px-muslim_crescent.png);   marker-fill-opacity: 0.9;    marker-line-color: #FFF;    marker-line-width: 5;    marker-line-opacity: 1;    marker-placement: point;    marker-type: ellipse;    marker-width: 5;    marker-allow-overlap: true; }   #haroldclergy3_11_15_merge [zoom >= 11][religion='Muslim'] {    marker-width: 8; } #haroldclergy3_11_15_merge [zoom >= 12][religion='Muslim'] {    marker-width: 12; } #haroldclergy3_11_15_merge [zoom >= 13][religion='Muslim'] {    marker-width: 18; } #haroldclergy3_11_15_merge [zoom >= 14][religion='Muslim'] {    marker-width: 24; } #haroldclergy3_11_15_merge [zoom >= 15][religion='Muslim'] {    marker-width: 30; } ",
                       interactivity: "cartodb_id"}]
-                  });
+                  }); 
     var l_muslim = new L.LayerGroup();
     muslim.addTo(l_muslim);
 
@@ -705,7 +706,10 @@ var nycha = cartodb.createLayer(map_object, {
 //******************************************************
 // GROUP 3 CAU OUTREACH TARGETS 
 
-
+var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/34963db0-5b0f-11e5-8fc5-0e0c41326911/viz.json);
+          var l_cau_muslim = new L.LayerGroup();
+          cau_muslim.addTo(l_cau_muslim);
+          
   var rentreg = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/7d9bcc4e-573d-11e5-be93-0e9d821ea90d/viz.json'); 
           var l_rentreg = new L.LayerGroup();
           rentreg.addTo(l_rentreg);
@@ -713,7 +717,6 @@ var nycha = cartodb.createLayer(map_object, {
   var nails = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/9cd21ef2-2bfe-11e5-9adf-0e4fddd5de28/viz.json'); 
           var l_nails = new L.LayerGroup();
           nails.addTo(l_nails);
-
 
   var vision_zero = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/5f2fe1a8-2f12-11e5-8b7e-0e0c41326911/viz.json'); 
           var l_vision_zero = new L.LayerGroup();
@@ -726,10 +729,6 @@ var nycha = cartodb.createLayer(map_object, {
 var scrie = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/765c7704-2bfe-11e5-99c0-0e018d66dc29/viz.json'); 
           var l_scrie = new L.LayerGroup();
           scrie.addTo(l_scrie);
-          
-var scrie_private = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/8b7a7706-566c-11e5-817e-0e4fddd5de28/viz.json');
-          var l_scrie_private = new L.LayerGroup();
-          scrie_private.addTo(l_scrie_private);
 
 var cau_events = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/8bcbcfa4-354a-11e5-9b8e-0e4fddd5de28/viz.json'); 
           var l_cau_events = new L.LayerGroup();
@@ -739,17 +738,27 @@ var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/ap
           var l_paid_sick = new L.LayerGroup();
           paid_sick.addTo(l_paid_sick);
 
+var mayoral_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5d22cf6e-5b1e-11e5-a5bd-0ec6f7c8b2b9/viz.json'); 
+          var l_mayoral_events = new L.LayerGroup();
+          mayoral_events.addTo(l_mayoral_events);
+          
 
+ https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/48b460c6-5b12-11e5-b6ba-0e8dde98a187/viz.json
+var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5d22cf6e-5b1e-11e5-a5bd-0ec6f7c8b2b9/viz.json'); 
+          var l_cau_vols_by_zip = new L.LayerGroup();
+          cau_vols_by_zip.addTo(l_cau_vols_by_zip);
 
     var cau_outreach_targets = {
         "CAU events by Neigh": l_cau_events,
         "SCRIE Outreach": l_scrie,
-        "SCRIE private test": l_scrie_private,
         "Rent Regulated Target": l_rentreg,
         "ID NY Target Locations": l_id_ny,
         "Paid Sick Leave": l_paid_sick,
-        "Nail Salon // Action": l_nails,
-        "Vision Zero": l_vision_zero
+        "Nail Salon Day of Action": l_nails,
+        "Vision Zero": l_vision_zero,
+        "Muslim Outreach": l_cau_muslim,
+        "Cau vols by zip": l_cau_vols_by_zip,
+        "Mayoral events" : l_mayoral_events
         
     };
 
