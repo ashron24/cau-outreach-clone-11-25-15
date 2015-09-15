@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
  
         <!-- <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7/leaflet.css"/> -->
-        <link rel="stylesheet" href="../nyc-map-app/src/leaflet.groupedlayercontrol.css" />
+        <link rel="stylesheet" href="../cau-clergy/src/leaflet.groupedlayercontrol.css" />
 
 
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" type="text/css" /> 
@@ -63,7 +63,7 @@
           font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
           font-weight: 500;
           padding: 10px 16px 6px 5px;   /* top, right, bottom, left */
-          height: 115px;
+          height: 500px;
           width: auto;
           overflow: auto;    /* allows scrolling in selector */
           overflow-y: auto;   /* scroll for touch screen devices? maybe */
@@ -303,7 +303,7 @@
 
         <!-- include cartodb.js library -->
         <script src="http://libs.cartocdn.com/cartodb.js/v3/3.13/cartodb.js" type="text/javascript"></script>
-        <script src="../nyc-map-app/src/leaflet.groupedlayercontrol.js"></script>
+        <script src="../cau-clergy/src/leaflet.groupedlayercontrol.js"></script>
  
         <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
@@ -800,6 +800,17 @@ var lang_plurality = cartodb.createLayer(map_object, {
           });
          var l_nonengspan = new L.LayerGroup();
          nonengspan.addTo(l_nonengspan);
+
+var none = cartodb.createLayer(map_object, {    // dummy placeholder for "none" value
+                      user_name: 'andrewmartini',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT cartodb_id, the_geom_webmercator FROM nybb",
+                        cartocss: "#layer{   polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; }",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_none = new L.LayerGroup();
+    none.addTo(l_none); 
 
 var percent_nhblack_choro = cartodb.createLayer(map_object, {   
                       user_name: 'andrewmartini',
