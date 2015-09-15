@@ -598,6 +598,8 @@ var christian = cartodb.createLayer(map_object, {  // religion type
     var l_christian = new L.LayerGroup();
     christian.addTo(l_christian);
 
+var jewish = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/072e1512-5bf2-11e5-b4eb-0e853d047bba/viz.json');
+/*
 var jewish = cartodb.createLayer(map_object, {  // religion type
                     user_name: 'ashron24',
                     type: 'cartodb',
@@ -605,10 +607,12 @@ var jewish = cartodb.createLayer(map_object, {  // religion type
                       sql: "SELECT cartodb_id, the_geom_webmercator, religion FROM haroldclergy3_11_15_merge",
                       cartocss: "#layer [religion='Jewish'] [zoom >= 10]  { marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/2015031200003950-px-Star_of_David.png);   marker-fill-opacity: 0.9;    marker-line-color: #FFF;    marker-line-width: 1;    marker-line-opacity: 1;    marker-placement: point;    marker-type: ellipse;    marker-width: 5;    marker-allow-overlap: true; }  #layer  [religion='Jewish'] [zoom >= 11] {    marker-width: 8; } #layer  [religion='Jewish'] [zoom >= 12] {    marker-width: 12; } #layer [zoom >= 13] [religion='Jewish'] {    marker-width: 18; } #layer [religion='Jewish'] [zoom >= 14]  {    marker-width: 24; } #layer  [religion='Jewish'] [zoom >= 15] {    marker-width: 30; } ",
                       interactivity: "cartodb_id"}]
-                  });
+                  }); */
     var l_jewish = new L.LayerGroup();
     jewish.addTo(l_jewish);
 
+var muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/6eab75fe-5bf2-11e5-b4eb-0e853d047bba/viz.json');
+/*
 var muslim = cartodb.createLayer(map_object, {
                    user_name: 'ashron24',
                     type: 'cartodb',
@@ -616,7 +620,7 @@ var muslim = cartodb.createLayer(map_object, {
                       sql: "SELECT cartodb_id, the_geom_webmercator, religion FROM haroldclergy3_11_15_merge",
                       cartocss: "#layer [zoom >= 10][religion='Muslim'] { marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/2015031200004950-px-muslim_crescent.png);   marker-fill-opacity: 0.9;    marker-line-color: #FFF;    marker-line-width: 5;    marker-line-opacity: 1;    marker-placement: point;    marker-type: ellipse;    marker-width: 5;    marker-allow-overlap: true; }   #haroldclergy3_11_15_merge [zoom >= 11][religion='Muslim'] {    marker-width: 8; } #haroldclergy3_11_15_merge [zoom >= 12][religion='Muslim'] {    marker-width: 12; } #haroldclergy3_11_15_merge [zoom >= 13][religion='Muslim'] {    marker-width: 18; } #haroldclergy3_11_15_merge [zoom >= 14][religion='Muslim'] {    marker-width: 24; } #haroldclergy3_11_15_merge [zoom >= 15][religion='Muslim'] {    marker-width: 30; } ",
                       interactivity: "cartodb_id"}]
-                  }); 
+                  }); */
     var l_muslim = new L.LayerGroup();
     muslim.addTo(l_muslim);
 
@@ -986,10 +990,10 @@ var baseLayers = {
                     "CAU's Neighborhood Labels": l_neigh_labels
       },
       "Facilities": {
-                      "<img src='images/protest.svg'  height='12px' width='12px'/> Community Based Orgs": l_cbo,
-                      "<img src='images/Hospital_Sign_32.png'  height='12px' width='12px'/> Hospitals & Clinics": l_health,
-                      "<img src='images/Open_book_32.png'  height='12px' width='12px'/> Libraries": l_library,
-                      "<img src='images/Swimming_silhouette_32.png'  height='12px' width='12px'/> Senior & Rec Centers": l_fac,
+                      "<img src='images/protest.svg'  height='14px' width='14px'/> Community Based Orgs": l_cbo,
+                      "<img src='images/Hospital_Sign_32.png'  height='14px' width='14px'/> Hospitals & Clinics": l_health,
+                      "<img src='images/Open_book_32.png'  height='14px' width='14px'/> Libraries": l_library,
+                      "<img src='images/Swimming_silhouette_32.png'  height='14px' width='14px'/> Senior & Rec Centers": l_fac,
                       "NYCHA developments": l_nycha,
                       "Subway Lines": l_subways,
                       "Parks Properties": l_dpr_parks 
