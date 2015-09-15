@@ -1,9 +1,11 @@
 .leaflet-control-layers-group-name {
   
      color:black;
-    font-family:courier;
+    font-family:"Work Sans", Arial, Helvetica, sans-serif;
     font-size:130%;
+    font-weight:900;
   margin-bottom: .2em;
+  text-transform: uppercase;
   text-decoration: underline;
 }
 

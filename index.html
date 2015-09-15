@@ -13,6 +13,8 @@
         <!-- <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7/leaflet.css"/> -->
         <link rel="stylesheet" href="../cau-clergy/src/leaflet.groupedlayercontrol.css" />
 
+        <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,900' rel='stylesheet' type='text/css'>
+
 
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" type="text/css" /> 
  
@@ -68,6 +70,16 @@
           overflow: auto;    /* allows scrolling in selector */
           overflow-y: auto;   /* scroll for touch screen devices? maybe */
         }
+
+  /*    For creating layer block spans - not working yet
+  .layer-selector-items-NYCHA {
+    display: block;
+    color: #0700ff;
+    float: left;
+    height: 15px;  
+    width: 15px;
+     }
+      */  
 
      .my-layer-item-bold {      /* black layer item */
            font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -1024,7 +1036,7 @@ var baseLayers = {
     };
 
     // Make the "Demographics" group exclusive (use radio inputs)
-    var options = { exclusiveGroups: ["Demographics"], groupCheckboxes: true, collapsed: false, autoZIndex: false };
+    var options = { exclusiveGroups: ["Demographics"], groupCheckboxes: false, collapsed: false, autoZIndex: false };
 
     // Use the custom grouped layer control, not "L.control.layers"
     var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, options);
