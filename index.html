@@ -11,8 +11,8 @@
         <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
  
         <!-- <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7/leaflet.css"/> -->
- 
-        <!-- <link rel="stylesheet" href="../src/leaflet-panel-layers.css" />    new -->
+        <link rel="stylesheet" href="../nyc-map-app/src/leaflet.groupedlayercontrol.css" />
+
 
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" type="text/css" /> 
  
@@ -20,7 +20,6 @@
     <!-- <script src="//cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script> -->
    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-    <!-- <script src="../src/leaflet-panel-layers.js"></script>  new -->
 
   <style type="text/css">
             html, body, #map {
@@ -303,7 +302,8 @@
     </div>
 
         <!-- include cartodb.js library -->
-        <script src="http://libs.cartocdn.com/cartodb.js/v3/3.13/cartodb.js" type="text/javascript"></script> 
+        <script src="http://libs.cartocdn.com/cartodb.js/v3/3.13/cartodb.js" type="text/javascript"></script>
+        <script src="../nyc-map-app/src/leaflet.groupedlayercontrol.js"></script>
  
         <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
@@ -349,13 +349,14 @@ var Stamen_TerrainBackground = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly
 var black_wallpaper = L.tileLayer('http://www.colourlovers.com/wallPaper/1200x800/n/2875/COLOURlovers.com-Gothic_Wallpaper.png', { attribution: '&copy; <a href="http://www.colourlovers.com/lover/candycrack/loveNote">CandyCrack</a> contributors'});
 
 //create basemaps object 
-var baseMaps = {
+/*var baseMaps = {
             "<span class='my-layer-item-basemap'>Gray Basemap</span>": light_nolabels,
             "<span class='my-layer-item-basemap'>Streets</span>": OpenStreetMap_Mapnik,
             "<span class='my-layer-item-basemap'>Satellite Basemap</span>": Esri_WorldImagery,
             "<span class='my-layer-item-basemap'>Shaded Relief</span>": Stamen_TerrainBackground,
             "<span class='my-layer-item-basemap'>Black Wallpaper</span>": black_wallpaper
           };
+          */
 
                 // Instantiate new map object, place it in 'map' element
                 var map_object = new L.Map('map', {
@@ -367,7 +368,7 @@ var baseMaps = {
                     //scrollWheelZoom: false   // to keep from zooming accidentally
                 });
 
-L.control.layers(baseMaps, null, {collapsed: true, position:'bottomright', autoZIndex: false}).addTo(map_object);
+// L.control.layers(baseMaps, null, {collapsed: true, position:'bottomright', autoZIndex: false}).addTo(map_object);
 
 // ***********************************************************************
 // Leaflet BOUNDARY overlays using cartodb.createLayer and .addTo() method
@@ -498,7 +499,7 @@ var uhf_health = cartodb.createLayer(map_object, {
 
 
     
-
+/*
 // group list for layer selector -  ITEMS WILL APPEAR IN THE ORDER YOU PUT THEM IN BELOW:  
 var boundaries_group = { 
                       "<span class='my-layer-item-basemap'>Basemap Labels</span>": l_labels_overlay,
@@ -518,6 +519,7 @@ var boundaries_group = {
 L.control.layers(null, boundaries_group, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
 //  L.control.layers(baseMaps, boundaries_group, {collapsed: false, position:'topright', autoZIndex: true}).addTo(map_object);
 
+*/
 // initial layer    
 map_object.addLayer(l_neigh_labels);
 
@@ -679,10 +681,7 @@ var nycha = cartodb.createLayer(map_object, {
           dpr_parks.addTo(l_dpr_parks); 
 
 
-// "https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/2015031200002750-px-red_cross.png"
-
-// template  <img src='images/filename'  height='12px' width='12px'/>
-
+/*
               var clergy_cbo = {
                       "<img src='images/protest.svg'  height='12px' width='12px'/> Community Based Orgs": l_cbo,
                       "<img src='images/Hospital_Sign_32.png'  height='12px' width='12px'/> Hospitals & Clinics": l_health,
@@ -702,7 +701,7 @@ var nycha = cartodb.createLayer(map_object, {
                 };
 
                 L.control.layers(null, clergy_cbo, {collapsed: false, position:'topright', autoZIndex:false}).addTo(map_object);
-
+*/
 
 
 //******************************************************
@@ -748,6 +747,7 @@ var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.
           var l_cau_vols_by_zip = new L.LayerGroup();
           cau_vols_by_zip.addTo(l_cau_vols_by_zip);
 
+/*
     var cau_outreach_targets = {
         "CAU events by Neigh": l_cau_events,
         "SCRIE Outreach": l_scrie,
@@ -762,6 +762,8 @@ var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.
     };
 
      L.control.layers(null, cau_outreach_targets, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
+
+*/
 
 //******************************************************
 // GROUP 4 DEMOGRAPHICS & OTHER
@@ -909,6 +911,7 @@ var arab_gradu = cartodb.createLayer(map_object, {
     var l_arab_gradu = new L.LayerGroup();
     arab_gradu.addTo(l_arab_gradu); 
 
+/*
  var demographic = {
 
         "Percent Hispanic": l_percent_hispanic_choro,
@@ -928,6 +931,97 @@ var arab_gradu = cartodb.createLayer(map_object, {
 
 
   L.control.layers(null, demographic, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
+*/
+
+var baseLayers = {
+            "<span class='my-layer-item-basemap'>Gray Basemap</span>": light_nolabels,
+            "<span class='my-layer-item-basemap'>Streets</span>": OpenStreetMap_Mapnik,
+            "<span class='my-layer-item-basemap'>Satellite Basemap</span>": Esri_WorldImagery,
+            "<span class='my-layer-item-basemap'>Shaded Relief</span>": Stamen_TerrainBackground,
+            "<span class='my-layer-item-basemap'>Black Wallpaper</span>": black_wallpaper
+          };
+
+
+    // Overlay layers are   *grouped*
+    var groupedOverlays = {
+      "Districts": {
+                      "<span class='my-layer-item-steelblue'>Boroughs</span>": l_nybb,
+                      "<span class='my-layer-item-steelblue'>Neighborhoods</span>": l_neighborhoods,
+                      "<span class='my-layer-item-steelblue'>Community Districts</span>": l_nycd,
+                      "<span class='my-layer-item-steelblue'>City Council</span>": l_nycc,
+                      "<span class='my-layer-item-steelblue'>NY State Senate</span>": l_nyss,
+                      "<span class='my-layer-item-steelblue'>NY State Assembly</span>": l_nyad,
+                      "<span class='my-layer-item-steelblue'>US Congressional</span>": l_nycg,
+                      "<span class='my-layer-item-steelblue'>Police Precincts</span>": l_precincts,
+                      "<span class='my-layer-item-steelblue'>Zip Codes</span>": l_zipcode,
+                      "<span class='my-layer-item-steelblue'>UHF Zones</span>": l_uhf_health
+      },
+      "Labels": {
+                    "Cartodb Basemap Labels": l_labels_overlay,   
+                    "CAU's Neighborhood Labels": l_neigh_labels
+      },
+      "Facilities": {
+                      "<img src='images/protest.svg'  height='12px' width='12px'/> Community Based Orgs": l_cbo,
+                      "<img src='images/Hospital_Sign_32.png'  height='12px' width='12px'/> Hospitals & Clinics": l_health,
+                      "<img src='images/Open_book_32.png'  height='12px' width='12px'/> Libraries": l_library,
+                      "<img src='images/Swimming_silhouette_32.png'  height='12px' width='12px'/> Senior & Rec Centers": l_fac,
+                      "NYCHA developments": l_nycha,
+                      "Subway Lines": l_subways,
+                      "Parks Properties": l_dpr_parks 
+      },
+      "Religious Organizations" :{
+                      "<img src='images/red_cross-50px.png'  height='12px' width='12px'/> <span class='my-layer-item-red'>Christian Orgs</span>": l_christian,
+                      "<img src='images/Star_of_David-50-px.png'  height='12px' width='12px'/><span class='my-layer-item-blue'> Jewish Orgs</span>": l_jewish,
+                      "<img src='images/muslim_crescent-50px.png'  height='12px' width='12px'/><span class='my-layer-item-green'> Muslim Orgs</span>": l_muslim,
+                      "<img src='images/Om-50px.png'  height='12px' width='12px'/><span class='my-layer-item-salmon'> Hindu Orgs</span>": l_hindu,
+                      "<img src='images/dharma_wheel_2-50px.png'  height='12px' width='12px'/><span class='my-layer-item-orange'> Buddhist Orgs</span>": l_buddhist,
+                      "<img src='images/Khanda-50px.png'  height='12px' width='12px'/><span class='my-layer-item-yellow'> Sikh Orgs</span>": l_sikh,
+                      "<img src='images/lotus-50px.png'  height='12px' width='12px'/><span class='my-layer-item-purple'> Hare Krishna Orgs</span>": l_krishna, 
+                      "<img src='images/domed_building-50px.png'  height='12px' width='12px'/> Other Religious Orgs": l_other_religion,
+      },
+      "CAU Outreach Targets": {
+                    "CAU events by Neigh": l_cau_events,
+                    "SCRIE Outreach": l_scrie,
+                    "Rent Regulated Target": l_rentreg,
+                    "ID NY Target Locations": l_id_ny,
+                    "Paid Sick Leave": l_paid_sick,
+                    "Nail Salon // Action": l_nails,
+                    "Vision Zero": l_vision_zero
+      },
+      "Demographics": {
+                  "None": l_none,
+                  "Percent Hispanic": l_percent_hispanic_choro,
+                  "Percent NH White": l_percent_nhwhite_choro,
+                  "Percent NH Black": l_percent_nhblack_choro,       
+                  "Percent NH Asian": l_percent_nhasian_choro
+      },
+      "Income": {
+                  "Median HH Income": l_median_inc_choro,
+                  "Median Inc to Rent": l_median_inc_to_rent
+      },
+      "DOE Language Data": {
+                  "DOE: Lang Plurality": l_lang_plurality,
+                  "DOE: Non-Engl Plur": l_plur_non_eng,
+                  "DOE: Non-Engl/Span": l_nonengspan
+      },
+      "Foreign Born": {     
+                  "Prcnt Foreign Born": l_percent_foreignborn_choro,
+                  "Bangladeshi": l_bangladesh_gradu,
+                  "Pakistani": l_pakistani_gradu,
+                  "Arab": l_arab_gradu
+      }      
+    };
+
+    // Make the "Demographics" group exclusive (use radio inputs)
+    var options = { exclusiveGroups: ["Demographics"], groupCheckboxes: true, collapsed: false, autoZIndex: false };
+
+    // Use the custom grouped layer control, not "L.control.layers"
+    var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, options);
+    map_object.addControl(layerControl);
+
+
+
+
 
             }
         </script>
