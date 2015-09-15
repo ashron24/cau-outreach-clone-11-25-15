@@ -524,7 +524,7 @@ map_object.addLayer(l_neigh_labels);
 // **********************************************************************************
 // Leaflet Religious and CBO's overlays using cartodb.createLayer and .addTo() method
 
-var cbo = cartodb.createLayer(map_object, {' https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/68dd2cbe-5b14-11e5-8bb4-0ec6f7c8b2b9/viz.json'};
+var cbo = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/68dd2cbe-5b14-11e5-8bb4-0ec6f7c8b2b9/viz.json';
     
 /*                    user_name: 'ashron24',
                     type: 'cartodb',
@@ -741,10 +741,8 @@ var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/ap
 var mayoral_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5d22cf6e-5b1e-11e5-a5bd-0ec6f7c8b2b9/viz.json'); 
           var l_mayoral_events = new L.LayerGroup();
           mayoral_events.addTo(l_mayoral_events);
-          
-
- https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/48b460c6-5b12-11e5-b6ba-0e8dde98a187/viz.json
-var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5d22cf6e-5b1e-11e5-a5bd-0ec6f7c8b2b9/viz.json'); 
+         
+var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/48b460c6-5b12-11e5-b6ba-0e8dde98a187/viz.json'); 
           var l_cau_vols_by_zip = new L.LayerGroup();
           cau_vols_by_zip.addTo(l_cau_vols_by_zip);
 
@@ -759,7 +757,6 @@ var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.
         "Muslim Outreach": l_cau_muslim,
         "Cau vols by zip": l_cau_vols_by_zip,
         "Mayoral events" : l_mayoral_events
-        
     };
 
      L.control.layers(null, cau_outreach_targets, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
