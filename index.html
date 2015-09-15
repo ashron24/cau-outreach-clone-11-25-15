@@ -518,6 +518,8 @@ var boundaries_group = {
 L.control.layers(null, boundaries_group, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
 //  L.control.layers(baseMaps, boundaries_group, {collapsed: false, position:'topright', autoZIndex: true}).addTo(map_object);
 
+// initial layer    
+map_object.addLayer(l_neigh_labels);
 
 // **********************************************************************************
 // Leaflet Religious and CBO's overlays using cartodb.createLayer and .addTo() method
@@ -915,6 +917,8 @@ var arab_gradu = cartodb.createLayer(map_object, {
         "Pakistani": l_pakistani_gradu,
         "Arab": l_arab_gradu
     };
+
+
   L.control.layers(null, demographic, {collapsed: false, position:'topright', autoZIndex: false}).addTo(map_object);
 
             }
