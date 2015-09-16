@@ -420,7 +420,7 @@ var nycc = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nycc",
-                      cartocss: "#layer{ polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1; } #nycc::labels [zoom >= 12]{   text-name: 'CC: '+[coundist];   text-face-name: 'Lato Bold Italic';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer{ polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1; } #nycc::labels [zoom >= 12]{   text-name: 'CC '+[coundist];   text-face-name: 'Lato Bold Italic';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nycc = new L.LayerGroup();
@@ -443,7 +443,7 @@ var nyss = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nyss WHERE stsendist is not null",
-                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #800080; line-width: 2; line-opacity: 1; } #nyss::labels [zoom >= 12]{   text-name: 'SS: '+[stsendist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #800080;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #800080; line-width: 2; line-opacity: 1; } #nyss::labels [zoom >= 12]{   text-name: 'SS '+[stsendist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #800080;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nyss = new L.LayerGroup();
@@ -455,7 +455,7 @@ var nyad = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nyad WHERE assemdist is not null",
-                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #191970; line-width: 2; line-opacity: 1; } #nyad::labels [zoom >= 12]{   text-name: 'AD: '+[assemdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #191970;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #191970; line-width: 2; line-opacity: 1; } #nyad::labels [zoom >= 12]{   text-name: 'AD '+[assemdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #191970;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nyad = new L.LayerGroup();
@@ -467,7 +467,7 @@ var nycg = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nycg WHERE congdist is not null",
-                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #B22222; line-width: 2; line-opacity: 1; } #nycg::labels [zoom >= 12]{   text-name: 'CG: '+[congdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #B22222;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #B22222; line-width: 2; line-opacity: 1; } #nycg::labels [zoom >= 12]{   text-name: 'CG '+[congdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #B22222;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nycg = new L.LayerGroup();
@@ -745,7 +745,7 @@ var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u
           var l_id_ny = new L.LayerGroup();
           id_ny.addTo(l_id_ny);
 
-var scrie = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/765c7704-2bfe-11e5-99c0-0e018d66dc29/viz.json'); 
+var scrie = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5270fe74-5cb3-11e5-badb-0e4fddd5de28/viz.json'); 
           var l_scrie = new L.LayerGroup();
           scrie.addTo(l_scrie);
 
@@ -765,6 +765,10 @@ var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.
           var l_cau_vols_by_zip = new L.LayerGroup();
           cau_vols_by_zip.addTo(l_cau_vols_by_zip);
 
+var voters_by_ed = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/d02066be-5c97-11e5-adec-0e853d047bba/viz.json'); 
+          var l_voters_by_ed = new L.LayerGroup();
+          voters_by_ed.addTo(l_voters_by_ed);
+          
 /*
     var cau_outreach_targets = {
         "CAU events by Neigh": l_cau_events,
@@ -1018,8 +1022,8 @@ var baseLayers = {
                     "Paid Sick Leave Business Walks": l_paid_sick,
                     "Nail Salon Day of Action Targets": l_nails,
                     "Vision Zero Borough Plans": l_vision_zero,
-                    "Muslim Outreach": l_cau_muslim
-
+                    "Muslim Outreach": l_cau_muslim,
+                    "Voters by Election District": l_voters_by_ed
       },
       "Demographics": {
                   "None": l_none,
