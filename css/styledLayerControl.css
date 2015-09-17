@@ -115,18 +115,19 @@
 .menu-item-radio{
 	font-family: 'Ubuntu-Regular', Arial, sans-serif;
 	font-size: 13px;
-	padding-left: 3px;
+	padding-left: 6px;
 	
 }
 
 .menu-item-checkbox{
 	font-family: 'Ubuntu-Regular', Arial, sans-serif;
 	font-size: 14px;
+	vertical-align: center;
 	padding-left: 3px;
 	
 }
 
-.bt_delete{
+/*.bt_delete{
     position: relative;
 	float: right;
 	background-image: url(images/delete.png); 
@@ -138,7 +139,7 @@
     height: 16px;   
     width: 16px;	
     vertical-align: middle; 
-}
+}*/
 
 .leaflet-control-layers:hover {
 	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
