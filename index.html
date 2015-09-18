@@ -312,7 +312,7 @@ $('#hide_show_instructions').click(function() {
                 // Instantiate new map object, place it in 'map' element
               var map_object = new L.Map('map', {
                     center: [40.7033,-73.9796], // New York, NY
-                    zoomControl: false,
+                    zoomControl: false,   // remove default zoomControl position
                     zoom: 11,
                     maxZoom: 16,
                     minZoom: 10, 
@@ -320,7 +320,7 @@ $('#hide_show_instructions').click(function() {
                     //scrollWheelZoom: false   // to keep from zooming accidentally
               });
 
-              map_object.addControl( L.control.zoom({position: 'topright'}) );                
+              map_object.addControl( L.control.zoom({position: 'topright'}) );      //add custom zoom position         
 
 // ***********************************************************************
 // Leaflet BOUNDARY overlays using cartodb.createLayer and .addTo() method
