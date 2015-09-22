@@ -43,8 +43,10 @@
 */
 /* legend code test 1 */
 
-    .my-legend {  /* the container? */
+    #my-legend {  /* the container? */
         position: absolute;
+        width: auto;
+        padding: 20px;
         float: left;
         bottom: 30px;
         right: 10px;
@@ -317,7 +319,8 @@
 
 <!--   MAPBOX-style LEGEND  - framwork from SCHLANG map -->
 
-<div class='my-legend'>
+<div id='my-legend' class='my-legend'>
+
 <div class='legend-title'>L E G E N D</div>
 <hr style="background:#000; border:0; height:2px" />
 <div class='layer-title'>Demographic Layers</div>
