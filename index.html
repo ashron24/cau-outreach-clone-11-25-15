@@ -780,6 +780,10 @@ var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u
           var l_id_ny = new L.LayerGroup();
           id_ny.addTo(l_id_ny);
 
+  var rezoning = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/6812b31e-60a3-11e5-b0e0-0ec6f7c8b2b9/viz.json'); 
+          var l_rezoning = new L.LayerGroup();
+          rezoning.addTo(l_rezoning);
+          
 var scrie = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5270fe74-5cb3-11e5-badb-0e4fddd5de28/viz.json'); 
           var l_scrie = new L.LayerGroup();
           scrie.addTo(l_scrie);
@@ -1080,6 +1084,7 @@ map_object.addLayer(l_neigh_labels);
                             "SCRIE Targets": l_scrie,
                             "Rent Regulated Targets": l_rentreg,
                             "IDNYC Target Turf": l_id_ny,
+                            "Rezoning Areas": l_rezoning,
                             "Paid Sick Leave Business Walks": l_paid_sick,
                             "Nail Salon Day of Action Targets": l_nails,
                             "Vision Zero Borough Plans": l_vision_zero,
