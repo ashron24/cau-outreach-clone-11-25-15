@@ -973,6 +973,28 @@ var arab_gradu = cartodb.createLayer(map_object, {
     var l_arab_gradu = new L.LayerGroup();
     arab_gradu.addTo(l_arab_gradu); 
 
+var turkish_gradu = cartodb.createLayer(map_object, {   
+                      user_name: 'andrewmartini',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, turkish FROM tracttemp WHERE turkish > 5",
+                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #F84F40;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #F84F40;   marker-allow-overlap: true;   marker-clip: false; } #layer [ turkish <= 1600] {    marker-width: 32.0; } #layer [ turkish <= 1000] {    marker-width: 24.0; } #layer [ turkish <= 500] {    marker-width: 18; } #layer [ turkish <= 100] {    marker-width: 12; } #layer [ turkish <= 50] {    marker-width: 8; } #layer [ turkish <= 10] {   marker-width: 2.0; } ",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_turkish_gradu  = new L.LayerGroup();
+    turkish_gradu.addTo(l_turkish_gradu); 
+
+var senegalese_gradu = cartodb.createLayer(map_object, {   
+                      user_name: 'andrewmartini',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, senegalese FROM tracttemp WHERE senegalese > 5",
+                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #F84F40;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #F84F40;   marker-allow-overlap: true;   marker-clip: false; } #layer [ senegalese <= 1600] {    marker-width: 32.0; } #layer [ senegalese <= 1000] {    marker-width: 24.0; } #layer [ senegalese <= 500] {    marker-width: 18; } #layer [ senegalese <= 100] {    marker-width: 12; } #layer [ senegalese <= 50] {    marker-width: 8; } #layer [ senegalese <= 10] {   marker-width: 2.0; } ",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_senegalese_gradu  = new L.LayerGroup();
+    senegalese_gradu.addTo(l_senegalese_gradu); 
+    
 var dot_bike_2015 = cartodb.createLayer(map_object, { 
                       user_name: 'andrewmartini',
                       type: 'cartodb',
@@ -1092,7 +1114,9 @@ map_object.addLayer(l_neigh_labels);
                             "Bangladeshi": l_bangladesh_gradu,
                             "Pakistani": l_pakistani_gradu,
                             "Indian": l_asianindia_gradu,
-                            "Arab": l_arab_gradu
+                            "Arab": l_arab_gradu,
+                            "Turkish": l_turkish_gradu,
+                            "Senegalese": l_senegalese_gradu
                               }      
       },
       {
