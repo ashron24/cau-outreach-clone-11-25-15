@@ -982,7 +982,7 @@ var turkish_gradu = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, turkish FROM tracttemp WHERE turkish > 5",
-                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #F84F40;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #F84F40;   marker-allow-overlap: true;   marker-clip: false; } #layer [ turkish <= 1600] {    marker-width: 32.0; } #layer [ turkish <= 1000] {    marker-width: 24.0; } #layer [ turkish <= 500] {    marker-width: 18; } #layer [ turkish <= 100] {    marker-width: 12; } #layer [ turkish <= 50] {    marker-width: 8; } #layer [ turkish <= 10] {   marker-width: 2.0; } ",
+                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #e0a8bf;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #f4aee0;   marker-allow-overlap: true;   marker-clip: false; } #layer [ turkish <= 1600] {    marker-width: 32.0; } #layer [ turkish <= 1000] {    marker-width: 24.0; } #layer [ turkish <= 500] {    marker-width: 18; } #layer [ turkish <= 100] {    marker-width: 12; } #layer [ turkish <= 50] {    marker-width: 8; } #layer [ turkish <= 10] {   marker-width: 2.0; } ",
                       interactivity: "cartodb_id"}]
                     });
     var l_turkish_gradu  = new L.LayerGroup();
