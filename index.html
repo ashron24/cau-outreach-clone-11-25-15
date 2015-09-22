@@ -43,28 +43,32 @@
 */
 /* legend code test 1 */
 
-    .my-legend {  /* the container */
+    .my-legend {  /* the container? */
         position: absolute;
-        bottom: 35px;
+        bottom: 30px;
         right: 10px;
-        background: rgba(255,255,255,1);
-        /* background: transparent url(css/images/bgnoise_lg.jpg) repeat top left; */
+      }
+      .my-legend { 
+        background: rgba(255,255,255,1); 
+        background: transparent url(css/images/bgnoise_lg.jpg) repeat top left; 
         border-radius: 5px;
+        border: 0;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);       
         font-family: 'Ubuntu-Regular', Arial, sans-serif;
         font-size: 18px;
         text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
-        padding: 0;  /* top, right, bottom, left  */
-        /* margin: 15px 25px 10px 10px;  */
+        padding: 5px 5px 5px 5px;  /* top, right, bottom, left  */
+        /* margin: 5px 25px 4px 10px;  */
         max-height: 200px;
         width: auto;
+        overflow-x: hidden;
         overflow-y: auto;  
             }
             
   .my-legend .legend-title {
-   font-family: 'Ubuntu-Regular', Arial, sans-serif;
-    text-align: left;
-    margin-bottom: 5px;
+    font-family: 'Ubuntu-Regular', Arial, sans-serif;
+    /*margin-bottom: 5px;*/
+    padding-bottom: 5px;
     font-weight: bold;
     font-size: 155%;
     }
@@ -72,8 +76,8 @@
   .my-legend .layer-title {
    font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;    
     text-align: left;
-    margin-bottom: 1px;
-    margin-top: 9px;
+    padding-bottom: 1px;
+    padding-top: 9px;
     font-weight: bold;
     font-size: 105%;
     }  
@@ -366,7 +370,7 @@
 
 <div class='my-legend'>
 <div class='legend-title'>L E G E N D</div>
-<hr style="background:#c0c0c0; border:0; height:2px" />
+<hr style="background:#000; border:0; height:2px" />
 <div class='layer-title'>Demographic Layers</div>
 <div class='legend-scale'>
   <ul class='legend-labels'>
@@ -1113,7 +1117,7 @@ map_object.addLayer(l_neigh_labels);
    // map_object.addControl(layerControl);
 
       var options = {
-        //container_width   : "250px",
+        container_width   : "260px",
         group_maxHeight     : "350px",
         container_maxHeight : "450px", 
         exclusive : false,  // true makes only one group able to be opened at a time! 
