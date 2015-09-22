@@ -2,7 +2,7 @@ L.Control.StyledLayerControl = L.Control.Layers.extend({
 		options : {
 			collapsed : false,
 			position : 'topleft',
-			autoZIndex : false,
+			autoZIndex : false
 		},
 
 		initialize : function (baseLayers, groupedOverlays, options) {
