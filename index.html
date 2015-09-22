@@ -46,7 +46,7 @@
     #my-legend {  /* the container? */
         position: absolute;
         width: auto;
-        padding: 20px;
+        padding: 10px;
         float: left;
         bottom: 30px;
         right: 10px;
@@ -99,6 +99,19 @@
     text-shadow: none;
     list-style: none;
     }
+
+  /*.my-legend .legend-labels {  /*   testing a way to rotate labels   
+    display: block;
+        -webkit-transform: rotate(-45deg);
+    float: left; 
+    width: 35px;
+    text-align: center;
+    font-size: 60%;
+    text-shadow: none;
+    list-style: none;
+    } */
+
+
   .my-legend ul.legend-labels li span {
     display: block;
     float: left;
@@ -145,10 +158,6 @@
               border: 0px solid #fff;
               }
     
-
-   
-
-
 
 /*  temporarily hiding this feature 9/16 -AM
 .instructions {
@@ -326,13 +335,13 @@
 <div class='layer-title'>Demographic Layers</div>
 <div class='legend-scale'>
   <ul class='legend-labels'>
-    <li><span style='background:#FFFFB2;'></span>0-10%</li>
-    <li><span style='background:#FED976;'></span>20%</li>
-    <li><span style='background:#FEB24C;'></span>35%</li>
-    <li><span style='background:#FD8D3C;'></span>50%</li>
-    <li><span style='background:#FC4E2A;'></span>65%</li>
-    <li><span style='background:#E31A1C;'></span>80%</li>
-    <li><span style='background:#B10026;'></span>90%</li>
+    <li><span style='background:#FFFFB2;'></span> >=10%</li>  
+    <li><span style='background:#FED976;'></span> >=20%</li>
+    <li><span style='background:#FEB24C;'></span> >=35%</li>
+    <li><span style='background:#FD8D3C;'></span> >=50%</li>
+    <li><span style='background:#FC4E2A;'></span> >=65%</li>
+    <li><span style='background:#E31A1C;'></span> >=80%</li>
+    <li><span style='background:#B10026;'></span> >=90%</li>
   </ul>
 
 </div>
@@ -819,7 +828,7 @@ var percent_nhblack_choro = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, (nhblack/totalpop)*100 as percent_black FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_black <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_black <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_black <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_black <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_black <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_black <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_black <= 10] {    polygon-fill: #FFFFB2; }",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_black >= 10] {    polygon-fill: #FFFFB2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_black >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_black >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_black >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_black >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_black >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_black >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_nhblack_choro = new L.LayerGroup();
