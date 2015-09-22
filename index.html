@@ -993,7 +993,7 @@ var senegalese_gradu = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, senegalese FROM tracttemp WHERE senegalese > 5",
-                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #F84F40;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #F84F40;   marker-allow-overlap: true;   marker-clip: false; } #layer [ senegalese <= 1600] {    marker-width: 32.0; } #layer [ senegalese <= 1000] {    marker-width: 24.0; } #layer [ senegalese <= 500] {    marker-width: 18; } #layer [ senegalese <= 100] {    marker-width: 12; } #layer [ senegalese <= 50] {    marker-width: 8; } #layer [ senegalese <= 10] {   marker-width: 2.0; } ",
+                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #F84F40;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #5CA2D1;   marker-allow-overlap: true;   marker-clip: false; } #layer [ senegalese <= 1600] {    marker-width: 32.0; } #layer [ senegalese <= 1000] {    marker-width: 24.0; } #layer [ senegalese <= 500] {    marker-width: 18; } #layer [ senegalese <= 100] {    marker-width: 12; } #layer [ senegalese <= 50] {    marker-width: 8; } #layer [ senegalese <= 10] {   marker-width: 2.0; } ",
                       interactivity: "cartodb_id"}]
                     });
     var l_senegalese_gradu  = new L.LayerGroup();
