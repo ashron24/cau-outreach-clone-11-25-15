@@ -54,7 +54,7 @@
         font-family: 'Ubuntu-Regular', Arial, sans-serif;
         font-size: 18px;
         text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
-        padding: 10px 80px 10px 10px;   /* top, right, bottom, left  */
+        padding: 10px;  /* top, right, bottom, left  */
         /* margin: 15px 25px 10px 10px;  */
         max-height: 200px;
         width: auto;
@@ -82,21 +82,23 @@
     float: left;
     list-style: none;
     }
-  .my-legend .legend-scale ul li {
+  .my-legend .legend-scale ul li {  /* color span and text block area */
     display: block;
     float: left;
     width: 35px;
     margin-bottom: 1px;
     text-align: center;
     font-size: 55%;
-     text-shadow: none;
+    text-shadow: none;
     list-style: none;
     }
   .my-legend ul.legend-labels li span {
     display: block;
-    float: right;
+    float: left;
     height: 20px;  /* height & width of the span blocks in pixels */
     width: 35px;
+    margin: 0;
+    padding: 0;
     }
   .my-legend .legend-source {
     font-size: 55%;
@@ -134,7 +136,7 @@
               height: 15px;
               width: 18px;
               margin-right: 2px;
-              margin-left: 4px;
+              margin-left: 2px;
               border: 0px solid #fff;
               }
     
