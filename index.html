@@ -949,7 +949,7 @@ var pakistani_gradu = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, pakistani FROM tracttemp WHERE pakistani > 5",
-                        cartocss: " #tracttemp{   marker-fill-opacity: 0.8;   marker-line-color: #75513c;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #8c6149;   marker-allow-overlap: true;   marker-clip: false; } #tracttemp [ pakistani <= 1600] {    marker-width: 32.0; } #tracttemp [ pakistani <= 1000] {    marker-width: 24.0; } #tracttemp [ pakistani <= 500] {    marker-width: 18; } #tracttemp [ pakistani <= 100] {    marker-width: 12; } #tracttemp [ pakistani <= 50] {    marker-width: 8; } #tracttemp [ pakistani <= 10] {    marker-width: 2.0; }",
+                        cartocss: " #tracttemp{   marker-fill-opacity: 0.8;   marker-line-color: #896f60;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #8c6149;   marker-allow-overlap: true;   marker-clip: false; } #tracttemp [ pakistani <= 1600] {    marker-width: 32.0; } #tracttemp [ pakistani <= 1000] {    marker-width: 24.0; } #tracttemp [ pakistani <= 500] {    marker-width: 18; } #tracttemp [ pakistani <= 100] {    marker-width: 12; } #tracttemp [ pakistani <= 50] {    marker-width: 8; } #tracttemp [ pakistani <= 10] {    marker-width: 2.0; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_pakistani_gradu  = new L.LayerGroup();
