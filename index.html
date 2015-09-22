@@ -738,6 +738,10 @@ var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u
           var l_id_ny = new L.LayerGroup();
           id_ny.addTo(l_id_ny);
 
+  var rezoning = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/6812b31e-60a3-11e5-b0e0-0ec6f7c8b2b9/viz.json'); 
+          var l_rezoning = new L.LayerGroup();
+          rezoning.addTo(l_rezoning);
+          
 var scrie = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5270fe74-5cb3-11e5-badb-0e4fddd5de28/viz.json'); 
           var l_scrie = new L.LayerGroup();
           scrie.addTo(l_scrie);
@@ -870,8 +874,8 @@ var median_inc_to_rent = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT * FROM tracttemp WHERE Totalpop > 250",
-                        cartocss: "#tracttemp{   polygon-fill: #EDF8FB;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ medrenttoh <= 50] {    polygon-fill: #d73027; } #tracttemp [ medrenttoh <= 44.65] {    polygon-fill: #fc8d59; } #tracttemp [ medrenttoh <= 40.15] {    polygon-fill: #fee08b; } #tracttemp [ medrenttoh <= 35.65] {    polygon-fill: #ffffbf; } #tracttemp [ medrenttoh <= 31.15] {    polygon-fill: #d9ef8b; } #tracttemp [ medrenttoh <= 26.65] {    polygon-fill: #91cf60; } #tracttemp [ medrenttoh <= 22.15] {    polygon-fill: #1a9850; }",
-                      interactivity: "cartodb_id"}]
+                        cartocss: "#tracttemp{polygon-fill: #0080ff;polygon-opacity: 0.8;line-color: #FFF;line-width: 0.5;line-opacity: 1;}#tracttemp [ medrenttoh <= 50] {polygon-fill: #ff4d4d;}#tracttemp [ medrenttoh <= 44.6] {polygon-fill: #ff7a7a;}#tracttemp [ medrenttoh <= 40.1] {polygon-fill: #ffa6a6;}#tracttemp [ medrenttoh <= 35.6] {polygon-fill: #fff2cc;}#tracttemp [ medrenttoh <= 31.1] {polygon-fill: #7fbfff;}#tracttemp [ medrenttoh <= 26.6] {polygon-fill: #40a0ff;}#tracttemp [ medrenttoh <= 22.1] {polygon-fill: #0080ff;}",                      
+                        interactivity: "cartodb_id"}]
                     });
     var l_median_inc_to_rent = new L.LayerGroup();
     median_inc_to_rent.addTo(l_median_inc_to_rent); 
@@ -903,11 +907,22 @@ var pakistani_gradu = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, pakistani FROM tracttemp WHERE pakistani > 5",
-                        cartocss: " #tracttemp{   marker-fill-opacity: 0.8;   marker-line-color: #B8905F;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #B8905F;   marker-allow-overlap: true;   marker-clip: false; } #tracttemp [ pakistani <= 1600] {    marker-width: 32.0; } #tracttemp [ pakistani <= 1000] {    marker-width: 24.0; } #tracttemp [ pakistani <= 500] {    marker-width: 18; } #tracttemp [ pakistani <= 100] {    marker-width: 12; } #tracttemp [ pakistani <= 50] {    marker-width: 8; } #tracttemp [ pakistani <= 10] {    marker-width: 2.0; }",
+                        cartocss: " #tracttemp{   marker-fill-opacity: 0.8;   marker-line-color: #896f60;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #8c6149;   marker-allow-overlap: true;   marker-clip: false; } #tracttemp [ pakistani <= 1600] {    marker-width: 32.0; } #tracttemp [ pakistani <= 1000] {    marker-width: 24.0; } #tracttemp [ pakistani <= 500] {    marker-width: 18; } #tracttemp [ pakistani <= 100] {    marker-width: 12; } #tracttemp [ pakistani <= 50] {    marker-width: 8; } #tracttemp [ pakistani <= 10] {    marker-width: 2.0; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_pakistani_gradu  = new L.LayerGroup();
     pakistani_gradu.addTo(l_pakistani_gradu); 
+
+var asianindia_gradu = cartodb.createLayer(map_object, {   
+                      user_name: 'andrewmartini',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, asianindia FROM tracttemp WHERE asianindia > 5",
+                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #F84F40;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #F84F40;   marker-allow-overlap: true;   marker-clip: false; } #layer [ asianindia <= 1600] {    marker-width: 32.0; } #layer [ asianindia <= 1000] {    marker-width: 24.0; } #layer [ asianindia <= 500] {    marker-width: 18; } #layer [ asianindia <= 100] {    marker-width: 12; } #layer [ asianindia <= 50] {    marker-width: 8; } #layer [ asianindia <= 10] {   marker-width: 2.0; } ",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_asianindia_gradu  = new L.LayerGroup();
+    asianindia_gradu.addTo(l_asianindia_gradu); 
 
 var arab_gradu = cartodb.createLayer(map_object, {   
                       user_name: 'andrewmartini',
@@ -920,6 +935,28 @@ var arab_gradu = cartodb.createLayer(map_object, {
     var l_arab_gradu = new L.LayerGroup();
     arab_gradu.addTo(l_arab_gradu); 
 
+var turkish_gradu = cartodb.createLayer(map_object, {   
+                      user_name: 'andrewmartini',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, turkish FROM tracttemp WHERE turkish > 5",
+                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #e0a8bf;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #f4aee0;   marker-allow-overlap: true;   marker-clip: false; } #layer [ turkish <= 1600] {    marker-width: 32.0; } #layer [ turkish <= 1000] {    marker-width: 24.0; } #layer [ turkish <= 500] {    marker-width: 18; } #layer [ turkish <= 100] {    marker-width: 12; } #layer [ turkish <= 50] {    marker-width: 8; } #layer [ turkish <= 10] {   marker-width: 2.0; } ",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_turkish_gradu  = new L.LayerGroup();
+    turkish_gradu.addTo(l_turkish_gradu); 
+
+var senegalese_gradu = cartodb.createLayer(map_object, {   
+                      user_name: 'andrewmartini',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, senegalese FROM tracttemp WHERE senegalese > 5",
+                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #4b95c6;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #5CA2D1;   marker-allow-overlap: true;   marker-clip: false; } #layer [ senegalese <= 1600] {    marker-width: 32.0; } #layer [ senegalese <= 1000] {    marker-width: 24.0; } #layer [ senegalese <= 500] {    marker-width: 18; } #layer [ senegalese <= 100] {    marker-width: 12; } #layer [ senegalese <= 50] {    marker-width: 8; } #layer [ senegalese <= 10] {   marker-width: 2.0; } ",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_senegalese_gradu  = new L.LayerGroup();
+    senegalese_gradu.addTo(l_senegalese_gradu); 
+    
 var dot_bike_2015 = cartodb.createLayer(map_object, { 
                       user_name: 'andrewmartini',
                       type: 'cartodb',
@@ -1005,10 +1042,10 @@ map_object.addLayer(l_neigh_labels);
                             "SCRIE Targets": l_scrie,
                             "Rent Regulated Targets": l_rentreg,
                             "IDNYC Target Turf": l_id_ny,
+                            "Rezoning Areas": l_rezoning,
                             "Paid Sick Leave Business Walks": l_paid_sick,
                             "Nail Salon Day of Action Targets": l_nails,
                             "Vision Zero Borough Plans": l_vision_zero,
-                            "Muslim Outreach": l_cau_muslim,
                             "Voters by Election District": l_voters_by_ed
                             }
       },
@@ -1038,7 +1075,10 @@ map_object.addLayer(l_neigh_labels);
                             "% Foreign Born": l_percent_foreignborn_choro,
                             "Bangladeshi": l_bangladesh_gradu,
                             "Pakistani": l_pakistani_gradu,
-                            "Arab": l_arab_gradu
+                            "Indian": l_asianindia_gradu,
+                            "Arab": l_arab_gradu,
+                            "Turkish": l_turkish_gradu,
+                            "Senegalese": l_senegalese_gradu
                               }      
       },
       {
@@ -1047,7 +1087,8 @@ map_object.addLayer(l_neigh_labels);
                 layers    : {  
                           "Plurality Language": l_lang_plurality,
                           "Non-English Plurality": l_plur_non_eng,
-                          "Non-English/Spanish Plurality": l_nonengspan
+                          "Non-English/Spanish Plurality": l_nonengspan,
+                          "Muslim Languages": l_cau_muslim
                            }
       },
       {
