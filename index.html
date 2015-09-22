@@ -912,7 +912,7 @@ var median_inc_to_rent = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT * FROM tracttemp WHERE Totalpop > 250",
-                        cartocss: "#tracttemp{   polygon-fill: #EDF8FB;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ medrenttoh <= 50] {    polygon-fill: #d73027; } #tracttemp [ medrenttoh <= 44.65] {    polygon-fill: #fc8d59; } #tracttemp [ medrenttoh <= 40.15] {    polygon-fill: #fee08b; } #tracttemp [ medrenttoh <= 35.65] {    polygon-fill: #ffffbf; } #tracttemp [ medrenttoh <= 31.15] {    polygon-fill: #d9ef8b; } #tracttemp [ medrenttoh <= 26.65] {    polygon-fill: #91cf60; } #tracttemp [ medrenttoh <= 22.15] {    polygon-fill: #1a9850; }",
+                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ medrenttoh <= 50] {    polygon-fill: #d73027; } #tracttemp [ medrenttoh <= 44.65] {    polygon-fill: #fed976; } #tracttemp [ medrenttoh <= 40.15] {    polygon-fill: #feb24c; } #tracttemp [ medrenttoh <= 35.65] {    polygon-fill: #fd8d3c; } #tracttemp [ medrenttoh <= 31.15] {    polygon-fill: #fc4e2a; } #tracttemp [ medrenttoh <= 26.65] {    polygon-fill: #e31a1c; } #tracttemp [ medrenttoh <= 22.15] {    polygon-fill: #b10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_median_inc_to_rent = new L.LayerGroup();
