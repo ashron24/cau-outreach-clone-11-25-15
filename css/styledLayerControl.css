@@ -20,11 +20,12 @@
 
 .ac-container{
 	width: auto;
-	margin: 1px 0px 1px 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
 	text-align: left;
 	overflow-y: auto;
 	overflow-x: hidden;
-	max-height: 450px;
+	/*max-height: 450px;*/
 	box-sizing: content-box;
 	background: #e0e3ec url(images/bgnoise_lg.jpg) repeat top left;
 }
@@ -143,7 +144,7 @@
 }*/
 
 .leaflet-control-layers:hover {
-	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.4);
 	/*background: #e0e3ec url(images/bgnoise_lg.jpg) repeat top left; */
 	border-radius: 5px;
 }
