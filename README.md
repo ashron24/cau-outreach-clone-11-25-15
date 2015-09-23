@@ -7,9 +7,9 @@ This is a draft version. Lots of kinks to be worked out.
 
 #TODO:
 <ul>
-<li> Create a legend for layers that need them (i.e. choropleths). This legend needs to either be in a sidebar DIV element or in a popup.
-  >>  <li> Make the legend hide-able
-  >>  <li>Make the legend items "active" only when the corresponding layer is displayed.
+<li> Create a _legend_ for layers that need them (i.e. choropleths). This legend needs to either be in a sidebar DIV element or in a popup.
+⋅⋅* Make the legend hide-able
+⋅⋅* Make the legend items "active" only when the corresponding layer is displayed.
 <li> Make hover-over interactivity (or info-window) for polygons and points. (preferably with D3-style info / box).
 <li> Move layer selector to a collapsible/minimizable sidebar.  (with a tab for instructions)
 <li> Add a secure log-in page.
