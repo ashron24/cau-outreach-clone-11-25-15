@@ -198,32 +198,6 @@
                 overflow-x: hidden;
        } 
 
-/* change the appearance of the leaflet zoom control, copied from http://wcfcourier.com/app/special/fatalcrashes/css/styles.css */
-      .leaflet-control-zoom a {
-          background-color: #C5E1EB;
-          color: #000;  
-          text-decoration: none;
-      }
-
-      .leaflet-bar a:hover {
-          background-color: #000;
-      }
-
-      .leaflet-control-zoom a:hover {
-          background-color: #000;
-          color: #CCC;
-          text-decoration: none;
-      }
-
-      .leaflet-control-zoom a.leaflet-disabled {
-          background-color: #999;
-        color: #BBB;
-      }
-
-      .leaflet-control-zoom a.leaflet-disabled:hover {
-          color: #BBB;
-      }
-
       /* "instructions" box */
       #instructions {
         background-color: #C5E1EB;  /* main Instructions box  */
@@ -283,7 +257,6 @@
       #hide_show_instructions {
         height: 20px;
         z-index: 8;
-        padding: 5px 0 0 6px;
         margin: 0 0 0 0;
         font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
         font-weight: 800;
@@ -293,7 +266,7 @@
 
       .icon-sort-up, .icon-sort-down, .hide_show_instructions_text {
         float: right;
-        padding-right: 5px;
+        padding-right: 15px;
         cursor: pointer;
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -302,15 +275,39 @@
         -ms-user-select: none;
         user-select: none;
       }
-
       .icon-sort-up {
         padding-top: 5px;
       }
-
       .icon-sort-down {
         padding-bottom: 5px;
       }
-      */
+      
+/* change the appearance of the leaflet zoom control, copied from http://wcfcourier.com/app/special/fatalcrashes/css/styles.css */
+      .leaflet-control-zoom a {
+          background-color: #C5E1EB;
+          color: #000;  
+          text-decoration: none;
+      }
+
+      .leaflet-bar a:hover {
+          background-color: #000;
+      }
+
+      .leaflet-control-zoom a:hover {
+          background-color: #000;
+          color: #CCC;
+          text-decoration: none;
+      }
+
+      .leaflet-control-zoom a.leaflet-disabled {
+          background-color: #999;
+        color: #BBB;
+      }
+
+      .leaflet-control-zoom a.leaflet-disabled:hover {
+          color: #BBB;
+      }
+
 
       </style>  
     </head>
