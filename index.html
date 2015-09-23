@@ -335,13 +335,13 @@
 <div class='layer-title'>Demographic Layers</div>
 <div class='legend-scale'>
   <ul class='legend-labels'>
-    <li><span style='background:#FFFFB2;'></span> >=10%</li>  
-    <li><span style='background:#FED976;'></span> >=20%</li>
-    <li><span style='background:#FEB24C;'></span> >=35%</li>
-    <li><span style='background:#FD8D3C;'></span> >=50%</li>
-    <li><span style='background:#FC4E2A;'></span> >=65%</li>
-    <li><span style='background:#E31A1C;'></span> >=80%</li>
-    <li><span style='background:#B10026;'></span> >=90%</li>
+    <li><span style='background:#FFFFB2;'></span> 10-19%</li>  
+    <li><span style='background:#FED976;'></span> 20-34%</li>
+    <li><span style='background:#FEB24C;'></span> 35-49%</li>
+    <li><span style='background:#FD8D3C;'></span> 50-64%</li>
+    <li><span style='background:#FC4E2A;'></span> 65-79%</li>
+    <li><span style='background:#E31A1C;'></span> 80-89%</li>
+    <li><span style='background:#B10026;'></span> 90-100%</li>
   </ul>
 
 </div>
@@ -349,7 +349,7 @@
 
 <hr style="background:#c0c0c0; border:0; height:2px" />
 
-  <div class='layer-title'>Median HH Income Layer</div>
+  <div class='layer-title'>Median HH Income</div>
   <div class='legend-scale'>
     <ul class='legend-labels'>
       <li><span style='background:#d73027;'></span><= $30k</li>
@@ -364,6 +364,23 @@
      <div class='legend-source'>Source: 2014 ACS? </div> 
 
 <hr style="background:#c0c0c0; border:0; height:2px" />
+
+  <div class='layer-title'>Median Income to Rent</div>
+  <div class='legend-scale'>
+    <ul class='legend-labels'>
+      <li><span style='background:#0080ff;'></span> 22-25% </li>
+     <li><span style='background:#40a0ff;'></span> 26-31% </li>      
+      <li><span style='background:#7fbfff;'></span> 31-35% </li>
+      <li><span style='background:#fff2cc;'></span> 37-40% </li>
+      <li><span style='background:#ffa6a6;'></span> 40-44% </li>
+      <li><span style='background:#ff7a7a;'></span> 45-50% </li>
+      <li><span style='background:#ff4d4d;'></span> 50+% </li>
+    </ul>
+  </div>
+     <div class='legend-source'>Source: ?? </div> 
+
+<hr style="background:#c0c0c0; border:0; height:2px" />
+
     <div class='layer-title'>DOE Language Groups </div>
         <div class='legend-scale-2'>
           <ul class='legend-labels-2'>
@@ -538,7 +555,6 @@ var nyad = cartodb.createLayer(map_object, {
       var l_nyad = new L.LayerGroup();
       nyad.addTo(l_nyad); 
 
-
 var nycg = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
                     type: 'cartodb',
@@ -549,7 +565,6 @@ var nycg = cartodb.createLayer(map_object, {
                   });
       var l_nycg = new L.LayerGroup();
       nycg.addTo(l_nycg); 
-
 
 var nybb = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -727,7 +742,7 @@ var nycha = cartodb.createLayer(map_object, {
 //******************************************************
 // GROUP 3 CAU OUTREACH TARGETS 
 
-var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/34963db0-5b0f-11e5-8fc5-0e0c41326911/viz.json');
+  var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/34963db0-5b0f-11e5-8fc5-0e0c41326911/viz.json');
           var l_cau_muslim = new L.LayerGroup();
           cau_muslim.addTo(l_cau_muslim);
           
@@ -751,27 +766,27 @@ var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u
           var l_rezoning = new L.LayerGroup();
           rezoning.addTo(l_rezoning);
           
-var scrie = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5270fe74-5cb3-11e5-badb-0e4fddd5de28/viz.json'); 
+  var scrie = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5270fe74-5cb3-11e5-badb-0e4fddd5de28/viz.json'); 
           var l_scrie = new L.LayerGroup();
           scrie.addTo(l_scrie);
 
-var cau_events = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/8bcbcfa4-354a-11e5-9b8e-0e4fddd5de28/viz.json'); 
+  var cau_events = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/8bcbcfa4-354a-11e5-9b8e-0e4fddd5de28/viz.json'); 
           var l_cau_events = new L.LayerGroup();
           cau_events.addTo(l_cau_events);
 
-var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/b985e2b8-1911-11e5-bd0e-0e853d047bba/viz.json'); 
+  var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/b985e2b8-1911-11e5-bd0e-0e853d047bba/viz.json'); 
           var l_paid_sick = new L.LayerGroup();
           paid_sick.addTo(l_paid_sick);
 
-var mayoral_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5d22cf6e-5b1e-11e5-a5bd-0ec6f7c8b2b9/viz.json'); 
+  var mayoral_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5d22cf6e-5b1e-11e5-a5bd-0ec6f7c8b2b9/viz.json'); 
           var l_mayoral_events = new L.LayerGroup();
           mayoral_events.addTo(l_mayoral_events);
      
-var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/48b460c6-5b12-11e5-b6ba-0e8dde98a187/viz.json'); 
+  var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/48b460c6-5b12-11e5-b6ba-0e8dde98a187/viz.json'); 
           var l_cau_vols_by_zip = new L.LayerGroup();
           cau_vols_by_zip.addTo(l_cau_vols_by_zip);
 
-var voters_by_ed = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5f73b708-608f-11e5-b0e0-0ec6f7c8b2b9/viz.json'); 
+  var voters_by_ed = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5f73b708-608f-11e5-b0e0-0ec6f7c8b2b9/viz.json'); 
           var l_voters_by_ed = new L.LayerGroup();
           voters_by_ed.addTo(l_voters_by_ed);
         
@@ -812,7 +827,7 @@ var lang_plurality = cartodb.createLayer(map_object, {
          var l_nonengspan = new L.LayerGroup();
          nonengspan.addTo(l_nonengspan);
 
-var none = cartodb.createLayer(map_object, {    // dummy placeholder for "none" value
+/* var none = cartodb.createLayer(map_object, {    // dummy placeholder for "none" value
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -821,7 +836,7 @@ var none = cartodb.createLayer(map_object, {    // dummy placeholder for "none" 
                       interactivity: "cartodb_id"}]
                     });
     var l_none = new L.LayerGroup();
-    none.addTo(l_none); 
+    none.addTo(l_none); */
 
 var percent_nhblack_choro = cartodb.createLayer(map_object, {   
                       user_name: 'andrewmartini',
@@ -839,7 +854,7 @@ var percent_nhwhite_choro = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, (nhwhite/totalpop)*100 as percent_white FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_white <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_white <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_white <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_white <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_white <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_white <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_white <= 10] {    polygon-fill: #FFFFB2; }",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_white >= 10] {    polygon-fill: #FFFFB2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_white >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_white >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_white >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_white >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_white >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_white >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_nhwhite_choro = new L.LayerGroup();
@@ -850,7 +865,7 @@ var percent_foreignborn_choro = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, (foreignbor/totalpop)*100 AS percent_fb FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_fb <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_fb <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_fb <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_fb <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_fb <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_fb <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_fb <= 10] {    polygon-fill: #FFFFB2; }",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_fb >= 10] {    polygon-fill: #FFFFB2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_fb >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_fb >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_fb >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_fb >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_fb >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_fb >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_foreignborn_choro = new L.LayerGroup();
@@ -861,7 +876,7 @@ var percent_nhasian_choro = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, (nhasian/totalpop)*100 as percent_asian FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_asian <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_asian <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_asian <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_asian <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_asian <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_asian <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_asian <= 10] {    polygon-fill: #FFFFB2; }",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_asian >= 10] {    polygon-fill: #FFFFB2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_asian >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_asian >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_asian >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_asian >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_asian >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_asian >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_nhasian_choro = new L.LayerGroup();
@@ -871,8 +886,8 @@ var percent_hispanic_choro = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT cartodb_id, the_geom_webmercator, (hispanic/totalpop)*100 as percent_asian FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_asian <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_asian <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_asian <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_asian <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_asian <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_asian <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_asian <= 10] {    polygon-fill: #FFFFB2; }",
+                        sql: "SELECT cartodb_id, the_geom_webmercator, (hispanic/totalpop)*100 AS percent_hispanic FROM tracttemp where totalpop > 100",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_hispanic >= 10] {    polygon-fill: #FFFfb2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_hispanic >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_hispanic >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_hispanic >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_hispanic >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_hispanic >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_hispanic >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_hispanic_choro = new L.LayerGroup();
