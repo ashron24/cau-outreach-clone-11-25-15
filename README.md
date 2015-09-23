@@ -16,6 +16,6 @@ This is a draft version. Lots of kinks to be worked out.
 <li> Convert choropleth items to radio-button type of selector
 <li> Add nesting/ layer tree groups - style ala ArcGIS.
 <li> Add Map Title
-<li> ~~Rotate legend item lables.~~
+<li>  ~~Rotate legend item lables.~~
 <li> Fix layer selector to be compatible with mobile/touchscreen devices (scroll issue)
 </ul>
