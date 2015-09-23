@@ -92,9 +92,9 @@
     } 
   .my-legend .legend-scale ul li {  /* color span and text block area - the li*/
     display: block;
-    float: left; 
-    width: 35px;
-    text-align: center;
+    padding-bottom: 5px;
+    float: left;
+    width: 40px;
     font-size: 60%;
     text-shadow: none;
     list-style: none;
@@ -111,12 +111,25 @@
     list-style: none;
     } */
 
+.rotate-text{
+  transform: rotate(-50deg);
+  transform-origin: left top 5;
+}
+
+.rotate-text{
+  /*display: inline-block; */
+  float: left;
+  text-align: center;
+  padding: 18px 0px 8px 1px;
+  font-weight: 600;
+}
+
 
   .my-legend ul.legend-labels li span {
     display: block;
     float: left;
     height: 20px;  /* height & width of the span blocks in pixels */
-    width: 35px;
+    width: 40px;
     }
   .my-legend .legend-source {
     font-size: 55%;
@@ -144,7 +157,7 @@
               list-style: none;
               text-shadow: none;
               margin-left: 0px;
-              margin-right: 2px;
+              margin-right: 1px;
               line-height: 15px;
               margin-bottom: 1px;
               }
@@ -335,13 +348,13 @@
 <div class='layer-title'>Demographic Layers</div>
 <div class='legend-scale'>
   <ul class='legend-labels'>
-    <li><span style='background:#FFFFB2;'></span>10-19%</li>  
-    <li><span style='background:#FED976;'></span>20-34%</li>
-    <li><span style='background:#FEB24C;'></span>35-49%</li>
-    <li><span style='background:#FD8D3C;'></span>50-64%</li>
-    <li><span style='background:#FC4E2A;'></span>65-79%</li>
-    <li><span style='background:#E31A1C;'></span>80-89%</li>
-    <li><span style='background:#B10026;'></span>90-100%</li>
+    <li><span style='background:#FFFFB2;'></span><span class="rotate-text">10-19%</span></li>  
+    <li><span style='background:#FED976;'></span><span class="rotate-text">20-34%</span></li>
+    <li><span style='background:#FEB24C;'></span><span class="rotate-text">35-49%</span></li>
+    <li><span style='background:#FD8D3C;'></span><span class="rotate-text">50-64%</span></li>
+    <li><span style='background:#FC4E2A;'></span><span class="rotate-text">65-79%</span></li>
+    <li><span style='background:#E31A1C;'></span><span class="rotate-text">80-89%</span></li>
+    <li><span style='background:#B10026;'></span><span class="rotate-text">90+ %</span></li>
   </ul>
 
 </div>
@@ -352,13 +365,13 @@
   <div class='layer-title'>Median HH Income</div>
   <div class='legend-scale'>
     <ul class='legend-labels'>
-      <li><span style='background:#d73027;'></span><= $30k</li>
-      <li><span style='background:#f79272;'></span><= $39k</li>
-      <li><span style='background:#fed6b0;'></span><= $48k</li>
-      <li><span style='background:#fff2cc;'></span><= $57k</li>
-      <li><span style='background:#d2ecb4;'></span><= $57k</li>
-      <li><span style='background:#8cce8a;'></span><= $84k</li>
-      <li><span style='background:#1a9850;'></span><= $244k</li>
+      <li><span style='background:#d73027;'></span><span class="rotate-text">$30,000</li>
+      <li><span style='background:#f79272;'></span><span class="rotate-text">$39,000</li>
+      <li><span style='background:#fed6b0;'></span><span class="rotate-text">$48,000</li>
+      <li><span style='background:#fff2cc;'></span><span class="rotate-text">$57,000</li>
+      <li><span style='background:#d2ecb4;'></span><span class="rotate-text">$67,000</li>
+      <li><span style='background:#8cce8a;'></span><span class="rotate-text">$84,000</li>
+      <li><span style='background:#1a9850;'></span><span class="rotate-text">$244,000</li>
     </ul>
   </div>
      <div class='legend-source'>Source: 2014 ACS? </div> 
@@ -368,13 +381,13 @@
   <div class='layer-title'>Median Income to Rent</div>
   <div class='legend-scale'>
     <ul class='legend-labels'>
-      <li><span style='background:#0080ff;'></span> 22-25% </li>
-     <li><span style='background:#40a0ff;'></span> 26-31% </li>      
-      <li><span style='background:#7fbfff;'></span> 31-35% </li>
-      <li><span style='background:#fff2cc;'></span> 37-40% </li>
-      <li><span style='background:#ffa6a6;'></span> 40-44% </li>
-      <li><span style='background:#ff7a7a;'></span> 45-50% </li>
-      <li><span style='background:#ff4d4d;'></span> 50+% </li>
+      <li><span style='background:#0080ff;'></span><span class="rotate-text"> 22-25% </li>
+     <li><span style='background:#40a0ff;'></span><span class="rotate-text"> 26-31% </li>      
+      <li><span style='background:#7fbfff;'></span><span class="rotate-text"> 31-35% </li>
+      <li><span style='background:#fff2cc;'></span><span class="rotate-text"> 36-40% </li>
+      <li><span style='background:#ffa6a6;'></span><span class="rotate-text"> 40-44% </li>
+      <li><span style='background:#ff7a7a;'></span><span class="rotate-text"> 45-50% </li>
+      <li><span style='background:#ff4d4d;'></span><span class="rotate-text"> 50+ % </li>
     </ul>
   </div>
      <div class='legend-source'>Source: ?? </div> 
