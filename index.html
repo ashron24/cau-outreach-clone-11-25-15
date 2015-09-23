@@ -335,13 +335,13 @@
 <div class='layer-title'>Demographic Layers</div>
 <div class='legend-scale'>
   <ul class='legend-labels'>
-    <li><span style='background:#FFFFB2;'></span> 10-19%</li>  
-    <li><span style='background:#FED976;'></span> 20-34%</li>
-    <li><span style='background:#FEB24C;'></span> 35-49%</li>
-    <li><span style='background:#FD8D3C;'></span> 50-64%</li>
-    <li><span style='background:#FC4E2A;'></span> 65-79%</li>
-    <li><span style='background:#E31A1C;'></span> 80-89%</li>
-    <li><span style='background:#B10026;'></span> 90-100%</li>
+    <li><span style='background:#FFFFB2;'></span>10-19%</li>  
+    <li><span style='background:#FED976;'></span>20-34%</li>
+    <li><span style='background:#FEB24C;'></span>35-49%</li>
+    <li><span style='background:#FD8D3C;'></span>50-64%</li>
+    <li><span style='background:#FC4E2A;'></span>65-79%</li>
+    <li><span style='background:#E31A1C;'></span>80-89%</li>
+    <li><span style='background:#B10026;'></span>90-100%</li>
   </ul>
 
 </div>
@@ -456,6 +456,14 @@ $('#hide_show_instructions').click(function() {
                     minZoom: 2,
                     maxZoom: 18
                   });
+
+              var MapQuestOpen_OSM = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}', {
+                type: 'map',
+                ext: 'jpg',
+                attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                subdomains: '1234'
+              });
+
 
                 // Instantiate new map object, place it in 'map' element
               var map_object = new L.Map('map', {
@@ -1001,10 +1009,11 @@ map_object.addLayer(l_neigh_labels);
                 groupName : "Basemaps",
                 expanded : false,
                 layers    : {
-                  "Gray"      :  light_nolabels, 
+                  "Gray"      :  light_nolabels,
                   "Satellite" :  Esri_WorldImagery,
                   "Streets"   :  OpenStreetMap_Mapnik,
-                  "Terrain"   :  Stamen_TerrainBackground,
+                  "Mapquest streets" : MapQuestOpen_OSM,
+                  "Relief"   :  Stamen_TerrainBackground,
                   "Acetate terrain" : Acetate_terrain,
                   "Black": black_wallpaper
                 }
