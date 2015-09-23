@@ -568,7 +568,7 @@ var nycg = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nycg WHERE congdist is not null",
-                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #B22222; line-width: 2; line-opacity: 1; } #nycg::labels [zoom >= 12]{   text-name: 'CG '+[congdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #B22222;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0;  ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #B22222; line-width: 3; line-opacity: 1; } } #nycg::labels [zoom >= 12]{   text-name: 'CG '+[congdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #B22222;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nycg = new L.LayerGroup();
@@ -590,7 +590,7 @@ var nybb = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                         sql: "SELECT * FROM nyc_zipcode_2014_edit",
-                        cartocss: "#layer {   polygon-fill: #FFF;   polygon-opacity: 0;   line-color: #11002F;   line-width: 2;   line-opacity: 1; }  #nyc_zipcode_2014_edit::labels [zoom >12]{   text-name: [postal];   text-face-name: 'Lato Bold';   text-size: 14;   text-label-position-tolerance: 10;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple; } ",
+                        cartocss: "#layer {   polygon-fill: #FFF;   polygon-opacity: 0;   ::case {line-color: #fff; line-width: 6; line-opacity: 1;}  ::fill { line-color: #636363; line-width: 2.5; line-opacity: 1; line-cap: round; line-dasharray: 4, 4; }}   #nyc_zipcode_2014_edit::labels [zoom >12]{   text-name: [postal];   text-face-name: 'Lato Bold';   text-size: 14;   text-label-position-tolerance: 10;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple; } ",
                         interactivity: "cartodb_id"}]
                         });
       var l_zipcode = new L.LayerGroup();
@@ -605,7 +605,7 @@ var uhf_health = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                         sql: "SELECT * FROM chs_2009_dohmh_2010b",
-                        cartocss: "#layer  {   polygon-fill: #FFf;   polygon-opacity: 0;   line-color: #000000;   line-width: 2;   line-opacity: 1; }  #chs_2009_dohmh_2010b::labels [zoom > 12] {   text-name: 'UHF: '+ [first_uhf_];   text-face-name: 'Lato Regular';   text-size: 12;   text-label-position-tolerance: 0;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: true;   text-placement: interior;   text-placement-type: dummy; }",
+                        cartocss: "#layer  {   polygon-fill: #FFf;   polygon-opacity: 0;   ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #000; line-width: 3; line-opacity: 1;  }}  #chs_2009_dohmh_2010b::labels [zoom > 12] {   text-name: 'UHF: '+ [first_uhf_];   text-face-name: 'Lato Regular';   text-size: 12;   text-label-position-tolerance: 0;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: true;   text-placement: interior;   text-placement-type: dummy; }",
                         interactivity: "cartodb_id"}]
                       });
       var l_uhf_health = new L.LayerGroup();
@@ -994,7 +994,7 @@ var dot_bike_2015 = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT * FROM nyc_bike_routes_2015",
-                        cartocss: "#nyc_bike_routes_2015 { line-color: #FF6600; line-width: 2;  line-opacity: 0.7;}",
+                        cartocss: "#nyc_bike_routes_2015 { line-opacity: 0.7; } #nyc_bike_routes_2015 [facilitycl='I'] { line-color: #055D00; line-width: 4; } #nyc_bike_routes_2015[facilitycl='II'] { line-color: #055D00; line-width: 3; } #nyc_bike_routes_2015[facilitycl='III'] { line-color: #229A00; line-width: 3; line-dasharray: 6,3; } #nyc_bike_routes_2015{ line-color: #fdbf6f;  line-width: 2;}",
                       interactivity: "cartodb_id"}]
                     });
     var l_dot_bike_2015 = new L.LayerGroup();
