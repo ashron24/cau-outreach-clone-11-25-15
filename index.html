@@ -28,21 +28,7 @@
                 margin: 0;
             }
 
-/* new legend code test ---  source :   http://gis.stackexchange.com/questions/141745/horizontal-legend-leaflet-js?rq=1  */
-
-/*.legend span, .legend label {
-  display: block;
-  background: rgba(255,255,255,1);
-  width: 40px;
-  height: 18px;
-  float: left;
-  opacity: 1;
-  text-align: center;
-  font-size: 80%
-}
-*/
-/* legend code test 1 */
-
+/* style and position the legend  */
     #my-legend {  /* the container? */
         position: absolute;
         width: auto;
@@ -65,94 +51,81 @@
         max-height: 200px;
         max-width: 320px;
         overflow-x: hidden;
-        overflow-y: scroll;  
-            }
+        overflow-y: scroll;
+      }
             
-  .my-legend .legend-title {
-    font-family: 'Ubuntu-Regular', Arial, sans-serif;
-    /*margin-bottom: 5px;*/
-    padding-bottom: 5px;
-    font-weight: bold;
-    font-size: 155%;
-    }
+      .my-legend .legend-title {
+        font-family: 'Ubuntu-Regular', Arial, sans-serif;
+        /*margin-bottom: 5px;*/
+        padding-bottom: 5px;
+        font-weight: bold;
+        font-size: 155%;
+        }
 
-  .my-legend .layer-title {
-   font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;    
-    text-align: left;
-    padding-bottom: 1px;
-    padding-top: 9px;
-    font-weight: bold;
-    font-size: 105%;
-    }  
-  .my-legend .legend-scale ul {
-    margin: 0;
-    padding: 0;
-    float: left; 
-    list-style: none;
-    } 
-  .my-legend .legend-scale ul li {  /* color span and text block area - the li*/
-    display: block;
-    padding-bottom: 5px;
-    float: left;
-    width: 40px;
-    font-size: 60%;
-    text-shadow: none;
-    list-style: none;
-    }
+      .my-legend .layer-title {
+       font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;    
+        text-align: left;
+        padding-bottom: 1px;
+        padding-top: 9px;
+        font-weight: bold;
+        font-size: 105%;
+        }  
+      .my-legend .legend-scale ul {
+        margin: 0;
+        padding: 0;
+        float: left; 
+        list-style: none;
+        } 
+      .my-legend .legend-scale ul li {  /* color span and text block area - the li*/
+        display: block;
+        padding-bottom: 5px;
+        float: left;
+        width: 40px;
+        font-size: 60%;
+        text-shadow: none;
+        list-style: none;
+        }
 
-  /*.my-legend .legend-labels {  /*   testing a way to rotate labels   
-    display: block;
-        -webkit-transform: rotate(-45deg);
-    float: left; 
-    width: 35px;
-    text-align: center;
-    font-size: 60%;
-    text-shadow: none;
-    list-style: none;
-    } */
+    /* rotate legend labels*/
+      .rotate-text{
+        transform: rotate(-50deg);
+        transform-origin: left top 5;
+      }
+      .rotate-text{
+        float: left;
+        text-align: center;
+        padding: 18px 0px 8px 1px;
+        font-weight: 600;
+      }
 
-.rotate-text{
-  transform: rotate(-50deg);
-  transform-origin: left top 5;
-}
-
-.rotate-text{
-  /*display: inline-block; */
-  float: left;
-  text-align: center;
-  padding: 18px 0px 8px 1px;
-  font-weight: 600;
-}
-
-
-  .my-legend ul.legend-labels li span {
-    display: block;
-    float: left;
-    height: 20px;  /* height & width of the span blocks in pixels */
-    width: 40px;
-    }
-  .my-legend .legend-source {
-    font-size: 55%;
-    font-style: italic;
-    text-align: right;
-    color: #999;
-    clear: both;
-    margin-bottom: 3px;
-    }
-  .my-legend a {
-    color: #2b8cbe;
-    } 
+      .my-legend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 20px;  /* height & width of the span blocks in pixels */
+        width: 40px;
+        }
+      .my-legend .legend-source {
+        font-size: 55%;
+        font-style: italic;
+        text-align: right;
+        color: #999;
+        clear: both;
+        margin-bottom: 3px;
+        }
+      .my-legend a {
+        color: #2b8cbe;
+        } 
 
 
         /* vertical legend style for DOE data*/
-            .my-legend .legend-scale-2 ul {
+          .my-legend .legend-scale-2 ul {
               margin: 0;
               margin-bottom: 0;
               padding: 0;
               float: left;
               list-style: none;
               }
-            .my-legend .legend-scale-2 ul li {
+          .my-legend .legend-scale-2 ul li {
               font-size: 70%;
               list-style: none;
               text-shadow: none;
@@ -161,7 +134,7 @@
               line-height: 15px;
               margin-bottom: 1px;
               }
-            .my-legend ul.legend-labels-2 li span {
+          .my-legend ul.legend-labels-2 li span {
               display: block;
               float: left;
               height: 15px;
@@ -171,34 +144,34 @@
               border: 0px solid #fff;
               }
     
-
-/*  temporarily hiding this feature 9/16 -AM
+/*  */
 .instructions {
-        position: absolute;
+        position: relative;
         top: 10px;
-        left: 50px;
-        background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+        padding-right: 50px;
+        background: none repeat scroll 0 0 rgba(255, 255, 255, 0);
         border-radius: 5px;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
-        font: 13px/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif;
-        padding: 1px 12px 4px 4px;   /* top, right, bottom, left 
-        height: 80px;
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.9);
+        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-size: 14px; 
+       /* padding: 1px 12px 4px 4px;    top, right, bottom, left */
+        height: 150px;
         width: 230px;
-        overflow: auto;    /* allows scrolling in selector 
+        overflow-y: auto; 
     }
 
       .instruct_title {
-        font: 18px/1.8 "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-size: 170%; 
         color: #000;
         font-weight: 900;
         padding: 0 12px 1px 4px;
        }
 
       .instruct_text {
-        font: 13px/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-size: 100%; 
         color: #000;
         padding: 5px 1px 4px 4px;
-       } */
+       } 
 
 /* change the appearance of the leaflet zoom control, copied from http://wcfcourier.com/app/special/fatalcrashes/css/styles.css */
       .leaflet-control-zoom a {
@@ -226,28 +199,36 @@
           color: #BBB;
       }
 
-      /* "instructions" box   !! temporarily hiding this feature 9/16 -AM
-      #instructions, #hide_show_instructions {
-        background-color: #333;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
+      /* "instructions" box */
+      #instructions {
+        background-color: #C5E1EB;  /* main Instructions box  */
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
         border-radius: 4px;
-        left: 45px;
+        right: 50px;
         position: absolute;
         z-index: 20;
         top: 10px;
-        color: #FFF;
-        font: 13px  "Helvetica Neue", Arial, Helvetica, sans-serif;
+        color: #000;
+
       }
-      .title {
-        font: 32px  "Helvetica Neue", Arial, Helvetica, sans-serif;
-        font-weight: 700;
-        text-align: right;
+      #hide_show_instructions {
+        background-color: #C5E1EB; 
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0);
+        border-radius: 4px;
+        right: 50px;
+        position: absolute;
+        z-index: 20;
+        top: 10px;
+        color: #000;
+ 
       }
 
-      .credits {
+      .title {
+        padding-top: 8px;
+        font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;  
+        font-size: 36px; 
+        font-weight: 700;
         text-align: left;
-        font: 10px/2.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
-        font-weight: 200;
       }
 
       #instructions {
@@ -255,16 +236,15 @@
         max-width: 250px;
         max-height: 120px;
         z-index: 7;
-        padding: 0 25px 2px 8px;
-        border: none;
-        overflow: auto;
+        padding: 0 5px 2px 8px;
+        border: 2px;
+        overflow-y: auto;
       }
       #instructions h1 {
         width: 25%;
         text-align: right;
         max-width: 200px;
         z-index: 7;
-        padding: 2px 0 0 85px;
         border: none;
       }
 
@@ -276,16 +256,16 @@
         clear: both;
       }
 
-      /* Hide, show instructions buttons 
+      /* Hide, show  buttons */
       #hide_show_instructions {
         height: 20px;
         z-index: 8;
         padding: 5px 0 0 6px;
         margin: 0 0 0 0;
-                font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
-                font-weight: 700;
-              color: #0080ff;
-              border: none;
+        font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        color: #000;
+        border: none;
       }
 
       .icon-sort-up, .icon-sort-down, .hide_show_instructions_text {
@@ -315,29 +295,27 @@
     <body>
         <div id="map"></div>
 
-<!-- temporarily hiding this feature 9/16 -AM
-<!-- code for "instructions" (legend) from  http://wcfcourier.com/app/special/fatalcrashes/ 
+<!-- code for "instructions" (legend) from  http://wcfcourier.com/app/special/fatalcrashes/ -->
   <div id="hide_show_instructions">
     <div class="hide_instructions">
-      <!-- <div class="icon-sort-up"></div> --
+      <div class="icon-sort-up"></div> 
       <div class="hide_show_instructions_text"> HIDE </div>
     </div>
     <div class="show_instructions" style="display: none;">
-      <!-- <div class="icon-sort-down"></div> --
+       <div class="icon-sort-down"></div> 
       <div class="hide_show_instructions_text"> SHOW </div>
     </div>
   </div>
 
   <div id="instructions" class="box-shadow">
-      <p class = "title">Instructions</p> <hr>
-
+      <p class = "title">Instructions</p> 
+<hr style="background:#c0c0c0; border:0; height:2px" />
       <div id="instructions-text-intro">
         <p class = "instructions">Layers are drawn as you select them, newest on top of oldest. To change the order, simply toggle a layer off and then on again to make it appear on top of others.</p>
-        <hr> 
-        <p class = "credits">_</p>
+
       </div>
     </div>
-    -->
+
 
 <!--   MAPBOX-style LEGEND  - framwork from SCHLANG map -->
 
@@ -423,7 +401,7 @@
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
         <![endif]-->
  
- <!--
+ 
  <script>
 // Toggle for show, hide instructions
 // Only visible on desktop
@@ -446,7 +424,7 @@ $('#hide_show_instructions').click(function() {
     isHideButton = true;
   }
 });
-</script> -->
+</script> 
 
         <script type="text/javascript">
             window.onload = function () {
