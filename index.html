@@ -498,7 +498,7 @@ var neighborhoods = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM neighborhoods",
-                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1;}", 
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 5; line-opacity: 1;}  ::fill {line-color: #c0c0c0; line-width: 2.5; line-opacity: 1; }}", 
                       interactivity: "cartodb_id" }]
                     });
     var l_neighborhoods = new L.LayerGroup();
@@ -557,7 +557,7 @@ var nyad = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nyad WHERE assemdist is not null",
-                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #191970; line-width: 2; line-opacity: 1; } #nyad::labels [zoom >= 12]{   text-name: 'AD '+[assemdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #191970;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #191970; line-width: 3; line-opacity: 1; } } #nyad::labels [zoom >= 12]{   text-name: 'AD '+[assemdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #191970;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nyad = new L.LayerGroup();
@@ -579,7 +579,7 @@ var nybb = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                         sql: "SELECT * FROM nybb",
-                        cartocss: "#layer { polygon-fill: #636363;  polygon-opacity: 0;  line-color: #636363;  line-width: 3;  line-opacity: 1; }",
+                        cartocss: "#layer { polygon-fill: #636363;  polygon-opacity: 0;  ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill { line-color: #636363; line-width: 4; line-opacity: 1; } }",
                         interactivity: "cartodb_id"}]
                         });
       var l_nybb = new L.LayerGroup();
@@ -1000,7 +1000,7 @@ var dot_bike_2015 = cartodb.createLayer(map_object, {
     var l_dot_bike_2015 = new L.LayerGroup();
     dot_bike_2015.addTo(l_dot_bike_2015); 
 
-// initial layer    
+// initial layers    
 map_object.addLayer(l_nybb);
 map_object.addLayer(l_neigh_labels);
 
@@ -1144,8 +1144,8 @@ map_object.addLayer(l_neigh_labels);
 
       var options = {
         container_width   : "260px",
-        group_maxHeight     : "350px",
-        container_maxHeight : "450px", 
+        group_maxHeight     : "",
+        container_maxHeight : "", 
         exclusive : false,  // true makes only one group able to be opened at a time! 
         collapsed: false,
         autoZIndex: false,
