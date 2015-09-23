@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            CAU Clergy Map | DRAFT | update:09/21/15
+            CAU Clergy Map | DRAFT | update:09/23/15
         </title>
  
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -28,198 +28,150 @@
                 margin: 0;
             }
 
-/* new legend code test ---  source :   http://gis.stackexchange.com/questions/141745/horizontal-legend-leaflet-js?rq=1  */
-
-/*.legend span, .legend label {
-  display: block;
-  background: rgba(255,255,255,1);
-  width: 40px;
-  height: 18px;
-  float: left;
-  opacity: 1;
-  text-align: center;
-  font-size: 80%
-}
-*/
-/* legend code test 1 */
-
-    .my-legend {  /* the container */
+/* style and position the legend  */
+    #my-legend {  /* the container? */
         position: absolute;
-        bottom: 35px;
+        width: auto;
+        padding: 10px;
+        float: left;
+        bottom: 30px;
         right: 10px;
-        background: rgba(255,255,255,1);
-        background: transparent url(css/images/bgnoise_lg.jpg) repeat top left;
+      }
+      .my-legend { 
+        background: rgba(255,255,255,1); 
+        background: transparent url(css/images/bgnoise_lg.jpg) repeat top left; 
         border-radius: 5px;
+        border: 0;
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);       
         font-family: 'Ubuntu-Regular', Arial, sans-serif;
         font-size: 18px;
         text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
-        padding: 5px 21px 10px 10px;   /* top, right, bottom, left  */
-        height: 200px;
-        width: auto;
-        overflow-y: auto;  
-            }
+        padding: 5px 5px 5px 5px;  /* top, right, bottom, left  */
+        /* margin: 5px 25px 4px 10px;  */
+        max-height: 200px;
+        max-width: 320px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
             
-  .my-legend .legend-title {
-   font-family: 'Ubuntu-Regular', Arial, sans-serif;
-    text-align: left;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 155%;
-    }
+      .my-legend .legend-title {
+        font-family: 'Ubuntu-Regular', Arial, sans-serif;
+        /*margin-bottom: 5px;*/
+        padding-bottom: 5px;
+        font-weight: bold;
+        font-size: 155%;
+        }
 
-  .my-legend .layer-title {
-   font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;    text-align: left;
-    margin-bottom: 1px;
-    margin-top: 9px;
-    font-weight: bold;
-    font-size: 105%;
-    }  
-  .my-legend .legend-scale ul {
-    margin: 0;
-    padding: 0;
-    float: left;
-    list-style: none;
-    }
-  .my-legend .legend-scale ul li {
-    display: block;
-    float: left;
-    width: 35px;
-    margin-bottom: 1px;
-    text-align: center;
-    font-size: 55%;
-     text-shadow: none;
-    list-style: none;
-    }
-  .my-legend ul.legend-labels li span {
-    display: block;
-    float: right;
-    height: 20px;  /* height & width of the span blocks in pixels */
-    width: 35px;
-    }
-  .my-legend .legend-source {
-    font-size: 55%;
-    font-style: italic;
-    text-align: right;
-    color: #999;
-    clear: both;
-    margin-bottom: 3px;
-    }
-  .my-legend a {
-    color: #2b8cbe;
-    } 
+      .my-legend .layer-title {
+       font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;    
+        text-align: left;
+        padding-bottom: 1px;
+        padding-top: 9px;
+        font-weight: bold;
+        font-size: 105%;
+        }  
+      .my-legend .legend-scale ul {
+        margin: 0;
+        padding: 0;
+        float: left; 
+        list-style: none;
+        } 
+      .my-legend .legend-scale ul li {  /* color span and text block area - the li*/
+        display: block;
+        padding-bottom: 5px;
+        float: left;
+        width: 40px;
+        font-size: 60%;
+        text-shadow: none;
+        list-style: none;
+        }
+
+    /* rotate legend labels*/
+      .rotate-text{
+        transform: rotate(-50deg);
+        transform-origin: left top 5;
+      }
+      .rotate-text{
+        float: left;
+        text-align: center;
+        padding: 18px 0px 8px 1px;
+        font-weight: 600;
+      }
+
+      .my-legend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 20px;  /* height & width of the span blocks in pixels */
+        width: 40px;
+        }
+      .my-legend .legend-source {
+        font-size: 55%;
+        font-style: italic;
+        text-align: right;
+        color: #999;
+        clear: both;
+        margin-bottom: 3px;
+        }
+      .my-legend a {
+        color: #2b8cbe;
+        } 
 
 
         /* vertical legend style for DOE data*/
-            .my-legend .legend-scale-2 ul {
+          .my-legend .legend-scale-2 ul {
               margin: 0;
               margin-bottom: 0;
               padding: 0;
               float: left;
               list-style: none;
               }
-            .my-legend .legend-scale-2 ul li {
+          .my-legend .legend-scale-2 ul li {
               font-size: 70%;
               list-style: none;
               text-shadow: none;
               margin-left: 0px;
-              margin-right: 0px;
+              margin-right: 1px;
               line-height: 15px;
               margin-bottom: 1px;
               }
-            .my-legend ul.legend-labels-2 li span {
+          .my-legend ul.legend-labels-2 li span {
               display: block;
               float: left;
               height: 15px;
               width: 18px;
               margin-right: 2px;
-              margin-left: 4px;
+              margin-left: 2px;
               border: 0px solid #fff;
               }
     
-
-/* leaflet style overrides */
-
- /*.leaflet-control-layers-toggle { 
-        width:auto;
-        background-position:6px 50% ;
-        padding:3px;
-        padding-left:36px;
-        text-decoration:none;
-        line-height:36px;
-    }
-
-    .leaflet-right .leaflet-control {
-      float: right;
-      }
-    .leaflet-top .leaflet-control {
-      margin-top: 5px;
-      }
-    .leaflet-bottom .leaflet-control {
-      margin-bottom: 5px;
-      }
-    .leaflet-left .leaflet-control {
-      margin-left: 10px;
-      }
-    .leaflet-right .leaflet-control {
-      margin-right: 10px;
-      }
-*/
-
-   /* .leaflet-control-layers-expanded {
-          background: none repeat scroll 0 0 rgba(246, 249, 254, 0.95);
-       /*   border-radius: 5px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.95);
-        /*  font: 14px  "Helvetica Neue", Arial, Helvetica, sans-serif;
-          font-weight: 500;
-          line-height: 22px;
-        /*  padding: 10px 10px 6px 5px;   /* top, right, bottom, left 
-          height: 550px;
-          width: auto;
-         /* width: 175px;  
-          overflow: scroll;
-          overflow-y: auto;  
-        } */
-
-  /*    For creating layer block spans - not working yet */
-  .layer-selector-items-NYCHA {
-    display: block;
-    color: #0700ff;
-    float: left;
-    height: 12px;  
-    width: 15px;
-     }
-   
-
-
-
-/*  temporarily hiding this feature 9/16 -AM
+/*  */
 .instructions {
-        position: absolute;
+        position: relative;
         top: 10px;
-        left: 50px;
-        background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+        padding-right: 50px;
+        background: none repeat scroll 0 0 rgba(255, 255, 255, 0);
         border-radius: 5px;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
-        font: 13px/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif;
-        padding: 1px 12px 4px 4px;   /* top, right, bottom, left 
-        height: 80px;
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0.9);
+        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-size: 14px; 
+       /* padding: 1px 12px 4px 4px;    top, right, bottom, left */
+        height: 150px;
         width: 230px;
-        overflow: auto;    /* allows scrolling in selector 
+        overflow-y: auto; 
     }
 
       .instruct_title {
-        font: 18px/1.8 "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-size: 170%; 
         color: #000;
         font-weight: 900;
         padding: 0 12px 1px 4px;
        }
 
       .instruct_text {
-        font: 13px/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-size: 100%; 
         color: #000;
         padding: 5px 1px 4px 4px;
-       } */
+       } 
 
 /* change the appearance of the leaflet zoom control, copied from http://wcfcourier.com/app/special/fatalcrashes/css/styles.css */
       .leaflet-control-zoom a {
@@ -247,28 +199,36 @@
           color: #BBB;
       }
 
-      /* "instructions" box   !! temporarily hiding this feature 9/16 -AM
-      #instructions, #hide_show_instructions {
-        background-color: #333;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
+      /* "instructions" box */
+      #instructions {
+        background-color: #C5E1EB;  /* main Instructions box  */
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
         border-radius: 4px;
-        left: 45px;
+        right: 50px;
         position: absolute;
         z-index: 20;
         top: 10px;
-        color: #FFF;
-        font: 13px  "Helvetica Neue", Arial, Helvetica, sans-serif;
+        color: #000;
+
       }
-      .title {
-        font: 32px  "Helvetica Neue", Arial, Helvetica, sans-serif;
-        font-weight: 700;
-        text-align: right;
+      #hide_show_instructions {
+        background-color: #C5E1EB; 
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0);
+        border-radius: 4px;
+        right: 50px;
+        position: absolute;
+        z-index: 20;
+        top: 10px;
+        color: #000;
+ 
       }
 
-      .credits {
+      .title {
+        padding-top: 8px;
+        font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;  
+        font-size: 36px; 
+        font-weight: 700;
         text-align: left;
-        font: 10px/2.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
-        font-weight: 200;
       }
 
       #instructions {
@@ -276,16 +236,15 @@
         max-width: 250px;
         max-height: 120px;
         z-index: 7;
-        padding: 0 25px 2px 8px;
-        border: none;
-        overflow: auto;
+        padding: 0 5px 2px 8px;
+        border: 2px;
+        overflow-y: auto;
       }
       #instructions h1 {
         width: 25%;
         text-align: right;
         max-width: 200px;
         z-index: 7;
-        padding: 2px 0 0 85px;
         border: none;
       }
 
@@ -297,16 +256,16 @@
         clear: both;
       }
 
-      /* Hide, show instructions buttons 
+      /* Hide, show  buttons */
       #hide_show_instructions {
         height: 20px;
         z-index: 8;
         padding: 5px 0 0 6px;
         margin: 0 0 0 0;
-                font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
-                font-weight: 700;
-              color: #0080ff;
-              border: none;
+        font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        color: #000;
+        border: none;
       }
 
       .icon-sort-up, .icon-sort-down, .hide_show_instructions_text {
@@ -336,45 +295,44 @@
     <body>
         <div id="map"></div>
 
-<!-- temporarily hiding this feature 9/16 -AM
-<!-- code for "instructions" (legend) from  http://wcfcourier.com/app/special/fatalcrashes/ 
+<!-- code for "instructions" (legend) from  http://wcfcourier.com/app/special/fatalcrashes/ -->
   <div id="hide_show_instructions">
     <div class="hide_instructions">
-      <!-- <div class="icon-sort-up"></div> --
+      <div class="icon-sort-up"></div> 
       <div class="hide_show_instructions_text"> HIDE </div>
     </div>
     <div class="show_instructions" style="display: none;">
-      <!-- <div class="icon-sort-down"></div> --
+       <div class="icon-sort-down"></div> 
       <div class="hide_show_instructions_text"> SHOW </div>
     </div>
   </div>
 
   <div id="instructions" class="box-shadow">
-      <p class = "title">Instructions</p> <hr>
-
+      <p class = "title">Instructions</p> 
+<hr style="background:#c0c0c0; border:0; height:2px" />
       <div id="instructions-text-intro">
         <p class = "instructions">Layers are drawn as you select them, newest on top of oldest. To change the order, simply toggle a layer off and then on again to make it appear on top of others.</p>
-        <hr> 
-        <p class = "credits">_</p>
+
       </div>
     </div>
-    -->
+
 
 <!--   MAPBOX-style LEGEND  - framwork from SCHLANG map -->
 
-<div class='my-legend'>
+<div id='my-legend' class='my-legend'>
+
 <div class='legend-title'>L E G E N D</div>
-<hr style="background:#c0c0c0; border:0; height:2px" />
+<hr style="background:#000; border:0; height:2px" />
 <div class='layer-title'>Demographic Layers</div>
 <div class='legend-scale'>
   <ul class='legend-labels'>
-    <li><span style='background:#FFFFB2;'></span>0-10%</li>
-    <li><span style='background:#FED976;'></span>20%</li>
-    <li><span style='background:#FEB24C;'></span>35%</li>
-    <li><span style='background:#FD8D3C;'></span>50%</li>
-    <li><span style='background:#FC4E2A;'></span>65%</li>
-    <li><span style='background:#E31A1C;'></span>80%</li>
-    <li><span style='background:#B10026;'></span>90%</li>
+    <li><span style='background:#FFFFB2;'></span><span class="rotate-text">10-19%</span></li>  
+    <li><span style='background:#FED976;'></span><span class="rotate-text">20-34%</span></li>
+    <li><span style='background:#FEB24C;'></span><span class="rotate-text">35-49%</span></li>
+    <li><span style='background:#FD8D3C;'></span><span class="rotate-text">50-64%</span></li>
+    <li><span style='background:#FC4E2A;'></span><span class="rotate-text">65-79%</span></li>
+    <li><span style='background:#E31A1C;'></span><span class="rotate-text">80-89%</span></li>
+    <li><span style='background:#B10026;'></span><span class="rotate-text">90+ %</span></li>
   </ul>
 
 </div>
@@ -382,21 +340,38 @@
 
 <hr style="background:#c0c0c0; border:0; height:2px" />
 
-  <div class='layer-title'>Median HH Income Layer</div>
+  <div class='layer-title'>Median HH Income</div>
   <div class='legend-scale'>
     <ul class='legend-labels'>
-      <li><span style='background:#d73027;'></span><= $30k</li>
-      <li><span style='background:#f79272;'></span><= $39k</li>
-      <li><span style='background:#fed6b0;'></span><= $48k</li>
-      <li><span style='background:#fff2cc;'></span><= $57k</li>
-      <li><span style='background:#d2ecb4;'></span><= $57k</li>
-      <li><span style='background:#8cce8a;'></span><= $84k</li>
-      <li><span style='background:#1a9850;'></span><= $244k</li>
+      <li><span style='background:#d73027;'></span><span class="rotate-text">$30,000</li>
+      <li><span style='background:#f79272;'></span><span class="rotate-text">$39,000</li>
+      <li><span style='background:#fed6b0;'></span><span class="rotate-text">$48,000</li>
+      <li><span style='background:#fff2cc;'></span><span class="rotate-text">$57,000</li>
+      <li><span style='background:#d2ecb4;'></span><span class="rotate-text">$67,000</li>
+      <li><span style='background:#8cce8a;'></span><span class="rotate-text">$84,000</li>
+      <li><span style='background:#1a9850;'></span><span class="rotate-text">$244,000</li>
     </ul>
   </div>
      <div class='legend-source'>Source: 2014 ACS? </div> 
 
 <hr style="background:#c0c0c0; border:0; height:2px" />
+
+  <div class='layer-title'>Median Income to Rent</div>
+  <div class='legend-scale'>
+    <ul class='legend-labels'>
+      <li><span style='background:#0080ff;'></span><span class="rotate-text"> 22-25% </li>
+     <li><span style='background:#40a0ff;'></span><span class="rotate-text"> 26-31% </li>      
+      <li><span style='background:#7fbfff;'></span><span class="rotate-text"> 31-35% </li>
+      <li><span style='background:#fff2cc;'></span><span class="rotate-text"> 36-40% </li>
+      <li><span style='background:#ffa6a6;'></span><span class="rotate-text"> 40-44% </li>
+      <li><span style='background:#ff7a7a;'></span><span class="rotate-text"> 45-50% </li>
+      <li><span style='background:#ff4d4d;'></span><span class="rotate-text"> 50+ % </li>
+    </ul>
+  </div>
+     <div class='legend-source'>Source: ?? </div> 
+
+<hr style="background:#c0c0c0; border:0; height:2px" />
+
     <div class='layer-title'>DOE Language Groups </div>
         <div class='legend-scale-2'>
           <ul class='legend-labels-2'>
@@ -426,7 +401,7 @@
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
         <![endif]-->
  
- <!--
+ 
  <script>
 // Toggle for show, hide instructions
 // Only visible on desktop
@@ -449,7 +424,7 @@ $('#hide_show_instructions').click(function() {
     isHideButton = true;
   }
 });
-</script> -->
+</script> 
 
         <script type="text/javascript">
             window.onload = function () {
@@ -472,6 +447,14 @@ $('#hide_show_instructions').click(function() {
                     minZoom: 2,
                     maxZoom: 18
                   });
+
+              var MapQuestOpen_OSM = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}', {
+                type: 'map',
+                ext: 'jpg',
+                attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                subdomains: '1234'
+              });
+
 
                 // Instantiate new map object, place it in 'map' element
               var map_object = new L.Map('map', {
@@ -506,7 +489,7 @@ var neighborhoods = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM neighborhoods",
-                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1;}", 
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 5; line-opacity: 1;}  ::fill {line-color: #c0c0c0; line-width: 2.5; line-opacity: 1; }}", 
                       interactivity: "cartodb_id" }]
                     });
     var l_neighborhoods = new L.LayerGroup();
@@ -530,7 +513,7 @@ var nycc = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nycc",
-                      cartocss: "#layer{ polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1; } #nycc::labels [zoom >= 12]{   text-name: 'CC '+[coundist];   text-face-name: 'Lato Bold Italic';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer{ polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #000000; line-width: 4; line-opacity: 1; } } #nycc::labels [zoom >= 12]{   text-name: 'CC '+[coundist];   text-face-name: 'Lato Bold Italic';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nycc = new L.LayerGroup();
@@ -541,7 +524,7 @@ var nycd = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nycd_append",
-                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #000000; line-width: 2; line-opacity: 1; } #nycd::labels [zoom >= 12]{   text-name: [b_name]+' '+[dist_num];   text-face-name: 'Lato Bold';   text-size: 14;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #000000; line-width: 3; line-opacity: 1; }  } #nycd::labels [zoom >= 12]{   text-name: [b_name]+' '+[dist_num];   text-face-name: 'Lato Bold';   text-size: 14;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nycd = new L.LayerGroup();
@@ -553,7 +536,7 @@ var nyss = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nyss WHERE stsendist is not null",
-                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; line-color: #800080; line-width: 2; line-opacity: 1; } #nyss::labels [zoom >= 12]{   text-name: 'SS '+[stsendist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #800080;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #800080; line-width: 3; line-opacity: 1; }  } #nyss::labels [zoom >= 12]{   text-name: 'SS '+[stsendist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #800080;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nyss = new L.LayerGroup();
@@ -565,31 +548,29 @@ var nyad = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nyad WHERE assemdist is not null",
-                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #191970; line-width: 2; line-opacity: 1; } #nyad::labels [zoom >= 12]{   text-name: 'AD '+[assemdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #191970;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #191970; line-width: 3; line-opacity: 1; } } #nyad::labels [zoom >= 12]{   text-name: 'AD '+[assemdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #191970;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nyad = new L.LayerGroup();
       nyad.addTo(l_nyad); 
-
 
 var nycg = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nycg WHERE congdist is not null",
-                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0; line-color: #B22222; line-width: 2; line-opacity: 1; } #nycg::labels [zoom >= 12]{   text-name: 'CG '+[congdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #B22222;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer { polygon-fill: #000; polygon-opacity: 0;  ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #B22222; line-width: 3; line-opacity: 1; } } #nycg::labels [zoom >= 12]{   text-name: 'CG '+[congdist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #B22222;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 10;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nycg = new L.LayerGroup();
       nycg.addTo(l_nycg); 
-
 
 var nybb = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
                     type: 'cartodb',
                     sublayers: [{
                         sql: "SELECT * FROM nybb",
-                        cartocss: "#layer { polygon-fill: #636363;  polygon-opacity: 0;  line-color: #636363;  line-width: 3;  line-opacity: 1; }",
+                        cartocss: "#layer { polygon-fill: #636363;  polygon-opacity: 0;  ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill { line-color: #636363; line-width: 4; line-opacity: 1; } }",
                         interactivity: "cartodb_id"}]
                         });
       var l_nybb = new L.LayerGroup();
@@ -600,7 +581,7 @@ var nybb = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                         sql: "SELECT * FROM nyc_zipcode_2014_edit",
-                        cartocss: "#layer {   polygon-fill: #FFF;   polygon-opacity: 0;   line-color: #11002F;   line-width: 2;   line-opacity: 1; }  #nyc_zipcode_2014_edit::labels [zoom >12]{   text-name: [postal];   text-face-name: 'Lato Bold';   text-size: 14;   text-label-position-tolerance: 10;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple; } ",
+                        cartocss: "#layer {   polygon-fill: #FFF;   polygon-opacity: 0;   ::case {line-color: #fff; line-width: 6; line-opacity: 1;}  ::fill { line-color: #636363; line-width: 2.5; line-opacity: 1; line-cap: round; line-dasharray: 4, 4; }}   #nyc_zipcode_2014_edit::labels [zoom >12]{   text-name: [postal];   text-face-name: 'Lato Bold';   text-size: 14;   text-label-position-tolerance: 10;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple; } ",
                         interactivity: "cartodb_id"}]
                         });
       var l_zipcode = new L.LayerGroup();
@@ -615,7 +596,7 @@ var uhf_health = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                         sql: "SELECT * FROM chs_2009_dohmh_2010b",
-                        cartocss: "#layer  {   polygon-fill: #FFf;   polygon-opacity: 0;   line-color: #000000;   line-width: 2;   line-opacity: 1; }  #chs_2009_dohmh_2010b::labels [zoom > 12] {   text-name: 'UHF: '+ [first_uhf_];   text-face-name: 'Lato Regular';   text-size: 12;   text-label-position-tolerance: 0;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: true;   text-placement: interior;   text-placement-type: dummy; }",
+                        cartocss: "#layer  {   polygon-fill: #FFf;   polygon-opacity: 0;   ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #000; line-width: 3; line-opacity: 1;  }}  #chs_2009_dohmh_2010b::labels [zoom > 12] {   text-name: 'UHF: '+ [first_uhf_];   text-face-name: 'Lato Regular';   text-size: 12;   text-label-position-tolerance: 0;   text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1;   text-dy: 0;   text-allow-overlap: true;   text-placement: interior;   text-placement-type: dummy; }",
                         interactivity: "cartodb_id"}]
                       });
       var l_uhf_health = new L.LayerGroup();
@@ -760,7 +741,7 @@ var nycha = cartodb.createLayer(map_object, {
 //******************************************************
 // GROUP 3 CAU OUTREACH TARGETS 
 
-var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/34963db0-5b0f-11e5-8fc5-0e0c41326911/viz.json');
+  var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/34963db0-5b0f-11e5-8fc5-0e0c41326911/viz.json');
           var l_cau_muslim = new L.LayerGroup();
           cau_muslim.addTo(l_cau_muslim);
           
@@ -784,27 +765,27 @@ var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u
           var l_rezoning = new L.LayerGroup();
           rezoning.addTo(l_rezoning);
           
-var scrie = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5270fe74-5cb3-11e5-badb-0e4fddd5de28/viz.json'); 
+  var scrie = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5270fe74-5cb3-11e5-badb-0e4fddd5de28/viz.json'); 
           var l_scrie = new L.LayerGroup();
           scrie.addTo(l_scrie);
 
-var cau_events = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/8bcbcfa4-354a-11e5-9b8e-0e4fddd5de28/viz.json'); 
+  var cau_events = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/8bcbcfa4-354a-11e5-9b8e-0e4fddd5de28/viz.json'); 
           var l_cau_events = new L.LayerGroup();
           cau_events.addTo(l_cau_events);
 
-var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/b985e2b8-1911-11e5-bd0e-0e853d047bba/viz.json'); 
+  var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/b985e2b8-1911-11e5-bd0e-0e853d047bba/viz.json'); 
           var l_paid_sick = new L.LayerGroup();
           paid_sick.addTo(l_paid_sick);
 
-var mayoral_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5d22cf6e-5b1e-11e5-a5bd-0ec6f7c8b2b9/viz.json'); 
+  var mayoral_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5d22cf6e-5b1e-11e5-a5bd-0ec6f7c8b2b9/viz.json'); 
           var l_mayoral_events = new L.LayerGroup();
           mayoral_events.addTo(l_mayoral_events);
      
-var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/48b460c6-5b12-11e5-b6ba-0e8dde98a187/viz.json'); 
+  var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/48b460c6-5b12-11e5-b6ba-0e8dde98a187/viz.json'); 
           var l_cau_vols_by_zip = new L.LayerGroup();
           cau_vols_by_zip.addTo(l_cau_vols_by_zip);
 
-var voters_by_ed = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5f73b708-608f-11e5-b0e0-0ec6f7c8b2b9/viz.json'); 
+  var voters_by_ed = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5f73b708-608f-11e5-b0e0-0ec6f7c8b2b9/viz.json'); 
           var l_voters_by_ed = new L.LayerGroup();
           voters_by_ed.addTo(l_voters_by_ed);
         
@@ -845,7 +826,7 @@ var lang_plurality = cartodb.createLayer(map_object, {
          var l_nonengspan = new L.LayerGroup();
          nonengspan.addTo(l_nonengspan);
 
-var none = cartodb.createLayer(map_object, {    // dummy placeholder for "none" value
+/* var none = cartodb.createLayer(map_object, {    // dummy placeholder for "none" value
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -854,14 +835,14 @@ var none = cartodb.createLayer(map_object, {    // dummy placeholder for "none" 
                       interactivity: "cartodb_id"}]
                     });
     var l_none = new L.LayerGroup();
-    none.addTo(l_none); 
+    none.addTo(l_none); */
 
 var percent_nhblack_choro = cartodb.createLayer(map_object, {   
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, (nhblack/totalpop)*100 as percent_black FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_black <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_black <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_black <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_black <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_black <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_black <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_black <= 10] {    polygon-fill: #FFFFB2; }",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_black >= 10] {    polygon-fill: #FFFFB2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_black >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_black >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_black >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_black >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_black >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_black >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_nhblack_choro = new L.LayerGroup();
@@ -872,7 +853,7 @@ var percent_nhwhite_choro = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, (nhwhite/totalpop)*100 as percent_white FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_white <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_white <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_white <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_white <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_white <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_white <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_white <= 10] {    polygon-fill: #FFFFB2; }",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_white >= 10] {    polygon-fill: #FFFFB2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_white >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_white >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_white >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_white >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_white >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_white >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_nhwhite_choro = new L.LayerGroup();
@@ -883,7 +864,7 @@ var percent_foreignborn_choro = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, (foreignbor/totalpop)*100 AS percent_fb FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_fb <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_fb <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_fb <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_fb <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_fb <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_fb <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_fb <= 10] {    polygon-fill: #FFFFB2; }",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_fb >= 10] {    polygon-fill: #FFFFB2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_fb >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_fb >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_fb >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_fb >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_fb >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_fb >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_foreignborn_choro = new L.LayerGroup();
@@ -894,7 +875,7 @@ var percent_nhasian_choro = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, (nhasian/totalpop)*100 as percent_asian FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_asian <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_asian <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_asian <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_asian <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_asian <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_asian <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_asian <= 10] {    polygon-fill: #FFFFB2; }",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_asian >= 10] {    polygon-fill: #FFFFB2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_asian >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_asian >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_asian >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_asian >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_asian >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_asian >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_nhasian_choro = new L.LayerGroup();
@@ -904,8 +885,8 @@ var percent_hispanic_choro = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT cartodb_id, the_geom_webmercator, (hispanic/totalpop)*100 as percent_asian FROM tracttemp where totalpop > 100",
-                        cartocss: "#tracttemp{   polygon-fill: #ffffb2;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_asian <= 100] {    polygon-fill: #B10026; } #tracttemp [ percent_asian <= 90] {    polygon-fill: #E31A1C; } #tracttemp [ percent_asian <= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_asian <= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_asian <= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_asian <= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_asian <= 10] {    polygon-fill: #FFFFB2; }",
+                        sql: "SELECT cartodb_id, the_geom_webmercator, (hispanic/totalpop)*100 AS percent_hispanic FROM tracttemp where totalpop > 100",
+                        cartocss: "#tracttemp{  polygon-fill: #fff;   polygon-opacity: 0;   line-color: #FFF;   line-width: 0;   line-opacity: 0; } #tracttemp [ percent_hispanic >= 10] {    polygon-fill: #FFFfb2;    polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #tracttemp [ percent_hispanic >= 20] {    polygon-fill: #FED976; } #tracttemp [ percent_hispanic >= 35] {    polygon-fill: #FEB24C; } #tracttemp [ percent_hispanic >= 50] {    polygon-fill: #FD8D3C; } #tracttemp [ percent_hispanic >= 65] {    polygon-fill: #FC4E2A; } #tracttemp [ percent_hispanic >= 80] {    polygon-fill: #E31A1C; } #tracttemp [ percent_hispanic >= 90] {    polygon-fill: #B10026; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_percent_hispanic_choro = new L.LayerGroup();
@@ -1004,13 +985,13 @@ var dot_bike_2015 = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT * FROM nyc_bike_routes_2015",
-                        cartocss: "#nyc_bike_routes_2015 { line-color: #FF6600; line-width: 2;  line-opacity: 0.7;}",
+                        cartocss: "#nyc_bike_routes_2015 { line-opacity: 0.7; } #nyc_bike_routes_2015 [facilitycl='I'] { line-color: #055D00; line-width: 4; } #nyc_bike_routes_2015[facilitycl='II'] { line-color: #055D00; line-width: 3; } #nyc_bike_routes_2015[facilitycl='III'] { line-color: #229A00; line-width: 3; line-dasharray: 6,3; } #nyc_bike_routes_2015{ line-color: #fdbf6f;  line-width: 2;}",
                       interactivity: "cartodb_id"}]
                     });
     var l_dot_bike_2015 = new L.LayerGroup();
     dot_bike_2015.addTo(l_dot_bike_2015); 
 
-// initial layer    
+// initial layers    
 map_object.addLayer(l_nybb);
 map_object.addLayer(l_neigh_labels);
 
@@ -1019,10 +1000,11 @@ map_object.addLayer(l_neigh_labels);
                 groupName : "Basemaps",
                 expanded : false,
                 layers    : {
-                  "Gray"      :  light_nolabels, 
+                  "Gray"      :  light_nolabels,
                   "Satellite" :  Esri_WorldImagery,
                   "Streets"   :  OpenStreetMap_Mapnik,
-                  "Terrain"   :  Stamen_TerrainBackground,
+                  "Mapquest streets" : MapQuestOpen_OSM,
+                  "Relief"   :  Stamen_TerrainBackground,
                   "Acetate terrain" : Acetate_terrain,
                   "Black": black_wallpaper
                 }
@@ -1152,16 +1134,17 @@ map_object.addLayer(l_neigh_labels);
    // map_object.addControl(layerControl);
 
       var options = {
-        container_width   : "240px",
-        group_maxHeight     : "250px",
-        container_maxHeight : "450px", 
+        container_width   : "",
+        group_maxHeight     : "",
+        container_maxHeight : "", 
         exclusive : false,  // true makes only one group able to be opened at a time! 
         collapsed: false,
         autoZIndex: false,
         //exclusive: ["Demographics"],   want to have radio check boxes here - may need to steal 'exclusive' code or make a basemap type
-        groupCheckboxes: true
+        //groupCheckboxes: true
       };
-            var control = L.Control.styledLayerControl(baseMaps, overlays, options);
+
+      var control = L.Control.styledLayerControl(baseMaps, overlays, options);
         map_object.addControl(control);
 
             }
