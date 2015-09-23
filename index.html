@@ -37,6 +37,8 @@
         bottom: 30px;
         right: 10px;
       }
+
+
       .my-legend { 
         background: rgba(255,255,255,1); 
         background: transparent url(css/images/bgnoise_lg.jpg) repeat top left; 
@@ -47,7 +49,6 @@
         font-size: 18px;
         text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
         padding: 5px 5px 5px 5px;  /* top, right, bottom, left  */
-        /* margin: 5px 25px 4px 10px;  */
         max-height: 200px;
         max-width: 320px;
         overflow-x: hidden;
@@ -148,16 +149,16 @@
 .instructions {
         position: relative;
         top: 10px;
-        padding-right: 50px;
+        padding-right: 0px;
         background: none repeat scroll 0 0 rgba(255, 255, 255, 0);
         border-radius: 5px;
         box-shadow: 0 0 0px rgba(0, 0, 0, 0.9);
-        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-family: 'Ubuntu-Regular', Arial, sans-serif;
         font-size: 14px; 
-       /* padding: 1px 12px 4px 4px;    top, right, bottom, left */
-        height: 150px;
-        width: 230px;
-        overflow-y: auto; 
+        padding: 4px 12px 0px 4px;   /* top, right, bottom, left */
+        height: 110px;
+        width: 280px;
+
     }
 
       .instruct_title {
@@ -171,36 +172,12 @@
         font-size: 100%; 
         color: #000;
         padding: 5px 1px 4px 4px;
+                overflow-x: hidden;
        } 
-
-/* change the appearance of the leaflet zoom control, copied from http://wcfcourier.com/app/special/fatalcrashes/css/styles.css */
-      .leaflet-control-zoom a {
-          background-color: #C5E1EB;
-          color: #000;  
-          text-decoration: none;
-      }
-
-      .leaflet-bar a:hover {
-          background-color: #000;
-      }
-
-      .leaflet-control-zoom a:hover {
-          background-color: #000;
-          color: #CCC;
-          text-decoration: none;
-      }
-
-      .leaflet-control-zoom a.leaflet-disabled {
-          background-color: #999;
-        color: #BBB;
-      }
-
-      .leaflet-control-zoom a.leaflet-disabled:hover {
-          color: #BBB;
-      }
 
       /* "instructions" box */
       #instructions {
+        width: auto;
         background-color: #C5E1EB;  /* main Instructions box  */
         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
         border-radius: 4px;
@@ -220,11 +197,11 @@
         z-index: 20;
         top: 10px;
         color: #000;
- 
       }
 
-      .title {
+      .title {  /* of the instructions box */
         padding-top: 8px;
+        padding-left: 8px;
         font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;  
         font-size: 36px; 
         font-weight: 700;
@@ -232,18 +209,14 @@
       }
 
       #instructions {
-        width: 25%;
-        max-width: 250px;
-        max-height: 120px;
         z-index: 7;
-        padding: 0 5px 2px 8px;
-        border: 2px;
-        overflow-y: auto;
+        padding: 2px 5px 2px 8px;
+        overflow-y: hidden;
+        overflow-x: hidden;
       }
       #instructions h1 {
         width: 25%;
         text-align: right;
-        max-width: 200px;
         z-index: 7;
         border: none;
       }
@@ -251,7 +224,6 @@
       .instructions p {
         margin: 2px;
         text-align: left;
-        line-height: 13px;
         padding: 2px 5px 2px 5px;
         clear: both;
       }
@@ -279,15 +251,39 @@
         -ms-user-select: none;
         user-select: none;
       }
-
       .icon-sort-up {
         padding-top: 5px;
       }
-
       .icon-sort-down {
         padding-bottom: 5px;
       }
-      */
+      
+/* change the appearance of the leaflet zoom control, copied from http://wcfcourier.com/app/special/fatalcrashes/css/styles.css */
+      .leaflet-control-zoom a {
+          background-color: #C5E1EB;
+          color: #000;  
+          text-decoration: none;
+      }
+
+      .leaflet-bar a:hover {
+          background-color: #000;
+      }
+
+      .leaflet-control-zoom a:hover {
+          background-color: #000;
+          color: #CCC;
+          text-decoration: none;
+      }
+
+      .leaflet-control-zoom a.leaflet-disabled {
+          background-color: #999;
+        color: #BBB;
+      }
+
+      .leaflet-control-zoom a.leaflet-disabled:hover {
+          color: #BBB;
+      }
+
 
       </style>  
     </head>
@@ -308,7 +304,7 @@
   </div>
 
   <div id="instructions" class="box-shadow">
-      <p class = "title">Instructions</p> 
+      <p class = "title">CAU Outreach Map</p> 
 <hr style="background:#c0c0c0; border:0; height:2px" />
       <div id="instructions-text-intro">
         <p class = "instructions">Layers are drawn as you select them, newest on top of oldest. To change the order, simply toggle a layer off and then on again to make it appear on top of others.</p>
@@ -321,8 +317,8 @@
 
 <div id='my-legend' class='my-legend'>
 
-<div class='legend-title'>L E G E N D</div>
-<hr style="background:#000; border:0; height:2px" />
+<!-- <div class='legend-title'></div>
+<hr style="background:#000; border:0; height:2px" /> -->
 <div class='layer-title'>Demographic Layers</div>
 <div class='legend-scale'>
   <ul class='legend-labels'>
@@ -919,7 +915,7 @@ var bangladesh_gradu = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, bangladesh FROM tracttemp WHERE bangladesh > 5",
-                        cartocss:  "#layer {   marker-fill-opacity: 0.8;   marker-line-color: #FFBE34;   marker-line-width: 1.5;   marker-line-opacity: 1;   marker-placement: point;   marker-multi-policy: largest;   marker-type: ellipse;   marker-fill: #FFBE34;   marker-allow-overlap: true;   marker-clip: false; } #layer [ bangladesh <= 1600] {    marker-width: 32.0; } #layer [ bangladesh <= 1000] {    marker-width: 24.0; } #layer [ bangladesh <= 500] {    marker-width: 18; } #layer [ bangladesh <= 100] {    marker-width: 12; } #layer [ bangladesh <= 50] {    marker-width: 8; } #layer [ bangladesh <= 10] {   marker-width: 2.0; } ",
+                        cartocss:  "#layer{ marker-fill-opacity: 0.0; marker-line-color: #FFBE34; marker-line-width: 0; marker-line-opacity: 0; marker-placement: point; marker-multi-policy: largest; marker-type: ellipse; marker-fill: #FFBE34; marker-allow-overlap: true; marker-clip: false; marker-comp-op: darken; } #layer [ bangladesh <= 1600] { marker-width: 23.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh <= 400] { marker-width: 15.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh <= 200] { marker-width: 11.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh <= 50] { marker-width: 7.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh < 10] { marker-width: 5.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh <= 5] { marker-width: 0; marker-fill-opacity: 0.0; marker-line-width: 0; marker-line-opacity: 0; } #layer [ bangladesh <= 1600] [zoom >= 12] {marker-width: 34;} #layer [ bangladesh <= 400] [zoom >= 12] {marker-width: 23;} #layer [ bangladesh <= 200] [zoom >= 12] {marker-width: 17;} #layer [ bangladesh <= 50] [zoom >= 12] {marker-width: 11;} #layer [ bangladesh < 10] [zoom >= 12] {marker-width: 8;} #layer [ bangladesh <= 5] [zoom >= 12] {marker-width: 0;} #layer [ bangladesh <= 1600] [zoom >= 13] {marker-width: 52;} #layer [ bangladesh <= 400] [zoom >= 13] {marker-width: 35;} #layer [ bangladesh <= 200] [zoom >= 13] {marker-width: 25;} #layer [ bangladesh <= 50] [zoom >= 13] {marker-width: 17;} #layer [ bangladesh < 10] [zoom >= 13] {marker-width: 11;} #layer [ bangladesh <= 5] [zoom >= 13] {marker-width: 0.0;} #layer [ bangladesh <= 1600] [zoom >= 14] {marker-width: 78;} #layer [ bangladesh <= 400] [zoom >= 14] {marker-width: 52;} #layer [ bangladesh <= 200] [zoom >= 14] {marker-width: 37;} #layer [ bangladesh <= 50] [zoom >= 14] {marker-width: 25;} #layer [ bangladesh < 10] [zoom >= 14] {marker-width: 15;} #layer [ bangladesh <= 5] [zoom >= 14] {marker-width: 0.0;} #layer [ bangladesh <= 1600] [zoom >= 15] {marker-width: 116;} #layer [ bangladesh <= 400] [zoom >= 15] {marker-width: 78;} #layer [ bangladesh <= 200] [zoom >= 15] {marker-width: 56;} #layer [ bangladesh <= 50] [zoom >= 15] {marker-width: 38;} #layer [ bangladesh < 10] [zoom >= 15] {marker-width: 21;} #layer [ bangladesh <= 5] [zoom >= 15] {marker-width: 0.0;} #layer::labels [zoom >= 13] [bangladesh > 5] { /** label size for single-digit values */ text-name: [bangladesh]; text-face-name: 'Lato Bold'; text-size: 8; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 13] [bangladesh >= 10] { text-name: [bangladesh]; text-size: 11; text-fill: #FFFFFF; } #layer::labels [zoom >= 13] [bangladesh >= 50] { text-name: [bangladesh]; text-size: 11; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 13] [bangladesh >= 400] { text-name: [bangladesh]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 14] [bangladesh > 5] { /** label size for single-digit values */ text-name: [bangladesh]; text-face-name: 'Lato Bold'; text-size: 10; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 14] [bangladesh >= 10] { text-name: [bangladesh]; text-fill: #FFFFFF; text-size: 12; } #layer::labels [zoom >= 14] [bangladesh >= 50] { text-name: [bangladesh]; text-size: 12; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 14] [bangladesh >= 400] { text-name: [bangladesh]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [bangladesh >= 10] { text-name: [bangladesh]; text-face-name: 'Lato Bold'; text-size: 15; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000; text-halo-radius: 0.4; text-dy: 0; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 15] [bangladesh >= 50] { text-name: [bangladesh]; text-size: 16; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [bangladesh >= 400] {text-name: [bangladesh]; text-size: 18; text-fill: #FFFFFF; text-halo-radius: 0.4;}",
                       interactivity: "cartodb_id"}]
                     });
     var l_bangladesh_gradu  = new L.LayerGroup();
@@ -1134,12 +1130,12 @@ map_object.addLayer(l_neigh_labels);
    // map_object.addControl(layerControl);
 
       var options = {
-        container_width   : "",
-        group_maxHeight     : "",
-        container_maxHeight : "", 
+       // container_width   : "",
+       // group_maxHeight     : "",
+       // container_maxHeight : "", 
         exclusive : false,  // true makes only one group able to be opened at a time! 
         collapsed: false,
-        autoZIndex: false,
+        autoZIndex: false
         //exclusive: ["Demographics"],   want to have radio check boxes here - may need to steal 'exclusive' code or make a basemap type
         //groupCheckboxes: true
       };
