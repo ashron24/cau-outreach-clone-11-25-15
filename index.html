@@ -509,7 +509,7 @@ var nycc = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM nycc",
-                      cartocss: "#layer{ polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #000000; line-width: 4; line-opacity: 1; } } #nycc::labels [zoom >= 12]{   text-name: 'CC '+[coundist];   text-face-name: 'Lato Bold Italic';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
+                      cartocss: "#layer{ polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill {line-color: #FF2900; line-width: 4; line-opacity: 1; } } #nycc::labels [zoom >= 12]{   text-name: 'CC '+[coundist];   text-face-name: 'Lato Bold';   text-size: 16;   text-label-position-tolerance: 10;  text-character-spacing: 1.3; text-fill: #000;   text-halo-fill: #FFF;   text-halo-radius: 1.5;   text-dy: 0;   text-allow-overlap: false;   text-placement: interior;   text-placement-type: simple;}",
                       interactivity: "cartodb_id"}]
                   });
       var l_nycc = new L.LayerGroup();
