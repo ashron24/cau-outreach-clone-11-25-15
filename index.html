@@ -485,7 +485,7 @@ var neighborhoods = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM neighborhoods",
-                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 5; line-opacity: 1;}  ::fill {line-color: #c0c0c0; line-width: 2.5; line-opacity: 1; }}", 
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 4; line-opacity: 1;}  ::fill {line-color: #928d8d; line-width: 2.5; line-opacity: 1; }}", 
                       interactivity: "cartodb_id" }]
                     });
     var l_neighborhoods = new L.LayerGroup();
@@ -566,7 +566,7 @@ var nybb = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                         sql: "SELECT * FROM nybb",
-                        cartocss: "#layer { polygon-fill: #636363;  polygon-opacity: 0;  ::case {line-color: #FFFFFF; line-width: 6; line-opacity: 1;}  ::fill { line-color: #636363; line-width: 4; line-opacity: 1; } }",
+                        cartocss: "#layer { polygon-fill: #636363;  polygon-opacity: 0;  ::case {line-color: #FFFFFF; line-width: 5; line-opacity: 1;}  ::fill { line-color: #636363; line-width: 3; line-opacity: 1; } }",
                         interactivity: "cartodb_id"}]
                         });
       var l_nybb = new L.LayerGroup();
