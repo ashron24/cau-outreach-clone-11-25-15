@@ -785,10 +785,7 @@ var nycha = cartodb.createLayer(map_object, {
           var l_voters_by_ed = new L.LayerGroup();
           voters_by_ed.addTo(l_voters_by_ed);
         
-  var wildlife_complaints = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/4da60e72-3164-11e5-9c90-0e018d66dc29/viz.json'); 
-          var l_wildlife_complaints = new L.LayerGroup();
-          wildlife_complaints.addTo(l_wildlife_complaints);
-          
+
           
 //******************************************************
 // GROUP 4 DEMOGRAPHICS & OTHER
@@ -1064,7 +1061,6 @@ map_object.addLayer(l_neigh_labels);
                             "SCRIE Targets": l_scrie,
                             "Rent Regulated Targets": l_rentreg,
                             "IDNYC Target Turf": l_id_ny,
-                            "Wildlife Sightings": 1_wildlife_complaints,
                             "Rezoning Areas": l_rezoning,
                             "Paid Sick Leave Business Walks": l_paid_sick,
                             "Nail Salon Day of Action Targets": l_nails,
