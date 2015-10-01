@@ -615,6 +615,20 @@ var cbo = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherr
     var l_cbo = new L.LayerGroup();
     cbo.addTo(l_cbo);
 
+var schools = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/4d34b840-687c-11e5-b7d9-0e674067d321/viz.json');
+    
+/*                    user_name: 'ashron24',
+                    type: 'cartodb',
+                    sublayers: [{
+                      sql: "SELECT cartodb_id, the_geom_webmercator, label FROM scrieloc2_1 ",
+                      cartocss: "#layer [label='CBO'][zoom >= 10] {marker-width: 6; marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150519173646protest.svg); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [label='CBO'] [zoom >= 11] { marker-width: 9; } #layer [label='CBO'][zoom >= 12]{marker-width: 12; } #layer  [label='CBO'] [zoom >= 13]{   marker-width: 18; } #layer  [label='CBO'] [zoom >= 15]{ marker-width: 24; }",
+                      interactivity: "cartodb_id"}]
+                  }); */
+    var l_schools = new L.LayerGroup();
+    schools.addTo(l_schools);
+
+
+
 var health = cartodb.createLayer(map_object, {  //hospitals and clinics
                     user_name: 'ashron24',
                     type: 'cartodb',
@@ -1033,6 +1047,7 @@ map_object.addLayer(l_neigh_labels);
                 expanded : true,
                 layers    : {                   
                             "<img src='css/images/protest.svg'  height='14px' width='14px'/> Community Based Orgs": l_cbo,
+                            "<img src='css/images/school52.png'  height='14px' width='14px'/> Schools": l_schools,
                             "<img src='css/images/Hospital_Sign_32.png'  height='14px' width='14px'/> Hospitals & Clinics": l_health,
                             "<img src='css/images/Open_book_32.png'  height='14px' width='14px'/> Libraries": l_library,
                             "<img src='css/images/Swimming_silhouette_32.png'  height='14px' width='14px'/> Senior & Rec Centers": l_fac,
