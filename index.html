@@ -785,7 +785,10 @@ var nycha = cartodb.createLayer(map_object, {
           var l_voters_by_ed = new L.LayerGroup();
           voters_by_ed.addTo(l_voters_by_ed);
         
-
+  var wildlife_complaints = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5f73b708-608f-11e5-b0e0-0ec6f7c8b2b9/viz.json'); 
+          var l_wildlife_complaints = new L.LayerGroup();
+          wildlife_complaints.addTo(l_wildlife_complaints);
+          
           
 //******************************************************
 // GROUP 4 DEMOGRAPHICS & OTHER
