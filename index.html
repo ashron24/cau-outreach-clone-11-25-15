@@ -789,6 +789,10 @@ var nycha = cartodb.createLayer(map_object, {
           var l_wildlife_complaints = new L.LayerGroup();
           wildlife_complaints.addTo(l_wildlife_complaints);
           
+   var public_schools = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/4d34b840-687c-11e5-b7d9-0e674067d321/viz.json'); 
+          var l_public_schools = new L.LayerGroup();
+          public_schools.addTo(l_public_schools);
+          
           
 //******************************************************
 // GROUP 4 DEMOGRAPHICS & OTHER
