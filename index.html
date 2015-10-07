@@ -598,7 +598,7 @@ var library = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT cartodb_id, the_geom_webmercator, facname, facaddress, facility_t, group_type, subgroup_t, capacity, capacity_t, agency_ope, agency_ove, factype FROM fac15 ",
-                      cartocss: "#layer [zoom >= 10] {marker-width: 6;marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150707192220Open_book_32.png); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [zoom >= 11] { marker-width: 9; } #layer [zoom >= 12]{marker-width: 12; } #layer   [zoom >= 13]{   marker-width: 18; } #layer   [zoom >= 15]{ marker-width: 24; }",
+                      cartocss: "#layer [factype>1400][factype<1403][zoom >= 10] {marker-width: 6;marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150707192220Open_book_32.png); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [factype>1400][factype<1403][zoom >= 11] { marker-width: 9; } #layer [factype>1400][factype<1403][zoom >= 12]{marker-width: 12; } #layer   [factype>1400][factype<1403][zoom >= 13]{   marker-width: 18; } #layer   [factype>1400][factype<1403][zoom >= 15]{ marker-width: 24; }",
                       interactivity: "cartodb_id"}]
                   });
     var l_library = new L.LayerGroup();
