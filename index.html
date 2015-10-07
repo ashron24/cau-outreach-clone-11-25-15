@@ -577,11 +577,11 @@ var schools = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/as
     schools.addTo(l_schools);
 
 var health = cartodb.createLayer(map_object, {  //hospitals and clinics
-                    user_name: 'ashron24',
+                    user_name: 'doitt',
                     type: 'cartodb',
                     sublayers: [{
-                      sql: "SELECT cartodb_id, the_geom_webmercator, name, label FROM scrieloc2_1 ",
-                      cartocss: "#layer [label='Health'][zoom >= 10] {marker-width: 6; marker-file: url('https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150707191228Hospital_Sign_Silhouette_32.png'); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [label='Health'] [zoom >= 11] { marker-width: 9; } #layer [label='Health'][zoom >= 12]{marker-width: 12; } #layer  [label='Health'] [zoom >= 13]{   marker-width: 18; } #layer  [label='Health'] [zoom >= 15]{ marker-width: 24; }",
+                      sql: "SELECT cartodb_id, the_geom_webmercator, name, grouptype FROM asherross.fac15 ",
+                      cartocss: "#layer [grouptype=4][zoom >= 10] {marker-width: 6; marker-file: url('https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150707191228Hospital_Sign_Silhouette_32.png'); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [grouptype=4] [zoom >= 11] { marker-width: 9; } #layer [grouptype=4][zoom >= 12]{marker-width: 12; } #layer  [grouptype=4] [zoom >= 13]{   marker-width: 18; } #layer  [grouptype=4] [zoom >= 15]{ marker-width: 24; }",
                       interactivity: "cartodb_id"}]
                   });
     var l_health = new L.LayerGroup();
