@@ -1,0 +1,213 @@
+/* instructor code v.2 */
+#instructor, #hide_show_instructor {
+	font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+	background-color: #333;
+	right: 15px;
+	position: absolute;
+	z-index: 8;
+	bottom: 250px;
+	color: #FFF;
+}
+
+
+#instructor {
+	display: none;   /* initial state of instructor div is hidden */
+	width: 25%;
+	max-width: 270px;
+	z-index: 7;
+	padding: 10px;
+	border: 0px solid #FFF;  /* reduced border from 1px  12/28*/
+}
+
+#instructor p {
+	font-family: 'Ubuntu-Regular', Arial, sans-serif;
+	font-size: 13px;
+	margin: 0px;
+	line-height: 17px;
+	padding-bottom: 15px;
+	clear: both;
+}
+
+#icon {
+	float: left;
+	width: 100%;
+	padding-bottom: 10px;
+}
+
+/* Icon */
+#icon img {
+	width: 20px;
+	float: right;
+}
+
+#icon-text {
+	float: left;
+	width: 88%;
+}
+
+
+/* Select box */
+.select_box {
+	width: 100%;
+}
+
+#compare_the_maps_header, .switch_maps_header {
+	float: left;
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+
+.select_box select {
+	margin-bottom: 5px;
+	width: 100%;
+	float: right;
+}
+
+.select_box h5 {
+	margin: 5px 0;
+}
+
+#typeSelect {
+	float: left;
+	font-size: 12px;
+	height: 25px;
+}
+
+#typeSelect_mobile, #switch_maps_header_mobile {
+	margin-left: 5px;
+}
+
+#instructor a {
+	color: #bad5e7;
+}
+
+#instructor-text, #instructor-text p, .description_box_text p {
+	float: left;
+}
+
+#instructor_paragraph_mobile_only {
+	display: none;
+}
+
+
+/* Hide, show instructor buttons */
+#hide_show_instructor {
+	height: 20px;
+	z-index: 8;
+	padding: 5px 5px 0 5px;
+	margin: 5px 5px 0 0;
+}
+
+.icon-sort-up, .icon-sort-down, .hide_show_instructor_text {
+	float: right;
+	padding-left: 5px;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.icon-sort-up {
+	padding-top: 5px;
+}
+
+.icon-sort-down {
+	padding-bottom: 5px;
+}
+
+
+/* Shows total_number acres for selected map */
+#total_number, #total_number_mobile {
+	float: left;
+	padding-bottom: 5px;
+	font-size: 14px;
+}
+
+#total_number_number {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FB8072;
+}
+
+#total_number_mobile {
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+
+
+/* instructor color key */
+.colors {
+  line-height: 20px;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.instructor_colors {
+	float: left;
+	width: 100%;
+	font-size: 12px;
+}
+
+.checkbox_border {
+    background-color: #737373;
+    border: 1px solid #848484;
+}
+
+.colors .button {
+    background-color: #737373;
+    border: 1px solid #848484;
+}
+
+.colors label.checkbox {
+	padding-left: 0;
+	padding-right: 5px;
+}
+.colors label.checkbox input {
+    clear: both;
+    float: left;
+    margin-left: 0;
+    width: 20px;
+}
+
+.colors span {
+	display: block;
+    float: left;
+    height: 20px;
+    margin-right: 5px;
+    width: 20px;
+    border: 1px solid #333333;
+}
+
+.color_one {
+  background-color: #018571;
+}
+
+
+/* Credits */
+#instructor #credits, .description_box_text #credits {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding-bottom: 10px;
+  float: left;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+
+/* Social links */
+#share {
+	width: 100%;
+}
+
+#share ul {
+	margin: 0px;
+}
+
+#share li {
+	list-style: none;
+	float: left;
+}
