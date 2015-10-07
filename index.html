@@ -594,17 +594,17 @@ var health = cartodb.createLayer(map_object, {  //hospitals and clinics
          });
 
 var library = cartodb.createLayer(map_object, {  
-                    user_name: 'ashron24',
+                    user_name: 'ashron2224',
                     type: 'cartodb',
                     sublayers: [{
-                      sql: "SELECT cartodb_id, the_geom_webmercator, name, label FROM scrieloc2_1 ",
-                      cartocss: "#layer [label='Library'][zoom >= 10] {marker-width: 6;marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150707192220Open_book_32.png); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [label='Library'] [zoom >= 11] { marker-width: 9; } #layer [label='Library'][zoom >= 12]{marker-width: 12; } #layer  [label='Library'] [zoom >= 13]{   marker-width: 18; } #layer  [label='Library'] [zoom >= 15]{ marker-width: 24; }",
+                      sql: "SELECT cartodb_id, the_geom_webmercator, facname, facaddress, facility_t, group_type, subgroup_t, capacity, capacity_t, agency_ope, agency_ove, factype FROM fac15 ",
+                      cartocss: "#layer [factype>=1401][factype<=1402][zoom >= 10] {marker-width: 6;marker-file: url(https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150707192220Open_book_32.png); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [factype>=1401][factype<=1402][zoom >= 11] { marker-width: 9; } #layer [factype>=1401][factype<=1402][zoom >= 12]{marker-width: 12; } #layer  [factype>=1401][factype<=1402] [zoom >= 13]{   marker-width: 18; } #layer  [factype>=1401][factype<=1402] [zoom >= 15]{ marker-width: 24; }",
                       interactivity: "cartodb_id"}]
                   });
     var l_library = new L.LayerGroup();
     library.addTo(l_library)
           .on('done', function(layer) {
-          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['name',  'cartodb_id'])
+          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['facname', 'facaddress', 'facility_t', 'group_type', 'subgroup_t', 'capacity', 'capacity_t', 'agency_ope', 'agency_ove'])
          });
 
 var fac = cartodb.createLayer(map_object, {  
