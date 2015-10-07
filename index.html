@@ -580,8 +580,8 @@ var health = cartodb.createLayer(map_object, {  //hospitals and clinics
                     user_name: 'asherross',
                     type: 'cartodb',
                     sublayers: [{
-                      sql: "SELECT cartodb_id, the_geom_webmercator, name, grouptype FROM fac15 ",
-                      cartocss: "#layer [grouptype=4][zoom >= 10] {marker-width: 6; marker-file: url('https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150707191228Hospital_Sign_Silhouette_32.png'); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [grouptype=4] [zoom >= 11] { marker-width: 9; } #layer [grouptype=4][zoom >= 12]{marker-width: 12; } #layer  [grouptype=4] [zoom >= 13]{   marker-width: 18; } #layer  [grouptype=4] [zoom >= 15]{ marker-width: 24; }",
+                      sql: "SELECT cartodb_id, the_geom_webmercator, facname, facaddress, facility_type, capacity_type, capacity, factype FROM fac15 ",
+                      cartocss: "#layer [factype > 3100][factype < 4000][zoom >= 10] {marker-width: 6; marker-file: url('https://s3.amazonaws.com/com.cartodb.users-assets.production/production/ashron24/assets/20150707191228Hospital_Sign_Silhouette_32.png'); marker-line-color: #FFFFFF; marker-placement: point; marker-type: ellipse;  marker-allow-overlap: true; }  #layer  [factype > 3100][factype < 4000] [zoom >= 11] { marker-width: 9; } #layer [factype > 3100][factype < 4000][zoom >= 12]{marker-width: 12; } #layer  [factype > 3100][factype < 4000] [zoom >= 13]{   marker-width: 18; } #layer  [factype > 3100][factype < 4000] [zoom >= 15]{ marker-width: 24; }",
                       interactivity: "cartodb_id"}]
                   });
     var l_health = new L.LayerGroup();
