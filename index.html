@@ -587,7 +587,7 @@ var health = cartodb.createLayer(map_object, {  //hospitals and clinics
     var l_health = new L.LayerGroup();
     health.addTo(l_health)
           .on('done', function(layer) {
-          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['name', 'cartodb_id'])
+          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['facname', 'cartodb_id'])
          }); 
 
 var library = cartodb.createLayer(map_object, {  
