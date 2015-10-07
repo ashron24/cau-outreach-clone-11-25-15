@@ -577,7 +577,7 @@ var schools = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/as
     schools.addTo(l_schools);
 
 var health = cartodb.createLayer(map_object, {  //hospitals and clinics
-                    user_name: 'asherross',
+                    user_name: 'ashron2224',
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT cartodb_id, the_geom_webmercator, facname, facaddress, factype FROM fac15 ",
@@ -586,12 +586,12 @@ var health = cartodb.createLayer(map_object, {  //hospitals and clinics
                   });
     var l_health = new L.LayerGroup();
     health.addTo(l_health);
-/*          .on('done', function(layer) {
+          .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['facname', 'cartodb_id'])
          }).on('error', function() {
       console.log("some error occurred" + err);//log the error
        alert("some error occurred: " + err);
-         })*/
+         });
 
 var library = cartodb.createLayer(map_object, {  
                     user_name: 'ashron24',
