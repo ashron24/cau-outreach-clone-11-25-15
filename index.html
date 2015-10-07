@@ -585,13 +585,13 @@ var health = cartodb.createLayer(map_object, {  //hospitals and clinics
                       interactivity: "cartodb_id"}]
                   });
     var l_health = new L.LayerGroup();
-    health.addTo(l_health)
-          .on('done', function(layer) {
+    health.addTo(l_health);
+/*          .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['facname', 'cartodb_id'])
          }).on('error', function() {
       console.log("some error occurred" + err);//log the error
        alert("some error occurred: " + err);
-         });
+         })*/
 
 var library = cartodb.createLayer(map_object, {  
                     user_name: 'ashron24',
