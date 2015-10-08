@@ -313,14 +313,14 @@ $('#hide_show_instructor').click(function() {
     $('.hide_instructor').hide();
     $('.show_instructor').show();
     $('#instructor').slideUp();
-    $('#hide_show_instructor').addClass('box-shadow');
+    $('#hide_show_instructor').removeClass('box-shadow');
     $('.hide_show_instructor').show();
     isHideButton = false;
   } else {
     $('.show_instructor').hide();
     $('.hide_instructor').show();
     $('#instructor').slideDown();
-    $('#hide_show_instructor').removeClass('box-shadow');
+    $('#hide_show_instructor').addClass('box-shadow');
     $('.hide_show_instructor').show();
     isHideButton = true;
   }
@@ -435,13 +435,7 @@ var labels_overlay = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_la
     var l_labels_overlay = new L.LayerGroup();
     labels_overlay.addTo(l_labels_overlay).setZIndex(100);  // high Z - to keep on top of all other layers
 
-var Stamen_TonerLabels = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.png', {
-  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  subdomains: 'abcd',
-  minZoom: 0,
-  maxZoom: 20,
-  ext: 'png'
-});
+var Stamen_TonerLabels = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.png', {  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>', subdomains: 'abcd', minZoom: 0,  maxZoom: 20,  ext: 'png'});
 
 var neighborhoods = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -488,7 +482,6 @@ var nycd = cartodb.createLayer(map_object, {
       var l_nycd = new L.LayerGroup();
       nycd.addTo(l_nycd); 
 
-
 var nyss = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
                     type: 'cartodb',
@@ -499,7 +492,6 @@ var nyss = cartodb.createLayer(map_object, {
                   });
       var l_nyss = new L.LayerGroup();
       nyss.addTo(l_nyss); 
-
 
 var nyad = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -562,7 +554,6 @@ var uhf_health = cartodb.createLayer(map_object, {
           .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), [ 'cartodb_id'])
          });
-
 
 
 // **********************************************************************************
@@ -912,7 +903,7 @@ var median_inc_choro = cartodb.createLayer(map_object, {
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, the_geom_webmercator, medianhhin FROM tract12 WHERE Totalpop > 250",
-                        cartocss: "#layer{   polygon-fill: #d73027;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #layer [ medianhhin <= 243622] {    polygon-fill: #1a9850; } #layer [ medianhhin <= 84240] {    polygon-fill: #8cce8a; } #layer [ medianhhin <= 67394] {    polygon-fill: #d2ecb4; } #layer [ medianhhin <= 57176] {    polygon-fill: #fff2cc; } #layer [ medianhhin <= 48159] {    polygon-fill: #fed6b0; } #layer [ medianhhin <= 39538] {    polygon-fill: #f79272; } #layer [ medianhhin <= 30106] {    polygon-fill: #d73027; }",
+                        cartocss: "#layer{ polygon-fill: #d73027;   polygon-opacity: 0.8;   line-color: #FFF;   line-width: 0.1;   line-opacity: 1; } #layer [ medianhhin <= 243622] { polygon-fill: #1a9850; } #layer [ medianhhin <= 84240] { polygon-fill: #8cce8a; } #layer [ medianhhin <= 67394] { polygon-fill: #d2ecb4; } #layer [ medianhhin <= 57176] { polygon-fill: #fff2cc; } #layer [ medianhhin <= 48159] { polygon-fill: #fed6b0; } #layer [ medianhhin <= 39538] { polygon-fill: #f79272; } #layer [ medianhhin <= 30106] { polygon-fill: #d73027; }",
                       interactivity: "cartodb_id"}]
                     });
     var l_median_inc_choro_12  = new L.LayerGroup();
@@ -921,96 +912,119 @@ var median_inc_choro = cartodb.createLayer(map_object, {
            cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['medianhhin', 'cartodb_id'])  
         });
 
-var bangladesh_gradu = cartodb.createLayer(map_object, {   
+// testing graduated cylinder size w/redundant code reduction using variables //
+var ethnicity_props= "marker-fill-opacity: 0; marker-line-width: 0; marker-line-opacity: 0; marker-placement: point; marker-multi-policy: largest; marker-type: ellipse;  marker-allow-overlap: true; marker-clip: false; marker-comp-op: darken; ";
+var redundantcode = "marker-fill-opacity: 0.7; marker-line-width: 2; marker-line-opacity: 1;";
+var text_props = "text-face-name: 'Lato Bold'; text-size: 11; text-fill: #FFF; text-halo-radius: 1; text-halo-fill: #000; text-allow-overlap: true; text-placement: point; text-placement-type: simple; text-character-spacing: 1.1; text-label-position-tolerance: 20;";
+  var size6css =  "marker-width: 27.0; "+redundantcode+" marker-fill-opacity: 0.9; ";   // n >=1001
+  var size5css =  "marker-width: 20.0; "+redundantcode;   // 401 < n <=1000
+  var size4css =  "marker-width: 14.0; "+redundantcode;   // 201 < n <=400
+  var size3css =  "marker-width: 11.0; "+redundantcode;   // 51 < n <=200
+  var size2css =  "marker-width: 7.5;  "+redundantcode;   // 21 < n <=50
+  var size1css =  "marker-width: 4.0;  "+redundantcode;   // 6 < n <=20
+  var size0css =  "marker-width: 0; marker-fill-opacity: 0; marker-line-width: 0; marker-line-opacity: 0;"; // n <=5 
+
+// color choices for individual groups
+var bangladesh_color = "marker-fill: #5CA2D1; marker-line-color: #5CA2D1; ";
+var pakistani_color = "marker-fill: #966B6B; marker-line-color: #966B6B; ";
+var asianindia_color = "marker-fill: #e25043; marker-line-color: #e25043; ";
+var arab_color = "marker-fill: #6fc98d; marker-line-color: #6fc98d; ";
+var turkish_color = "marker-fill: #e0a8bf; marker-line-color: #e0a8bf; ";
+var senegalese_color = "marker-fill: #0d697f; marker-line-color: #0d697f; ";
+
+// ethnicity layers go below this line
+var bangladesh_gradu_12 = cartodb.createLayer(map_object, {   
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, fbbanglade, bangladesh FROM tract12 WHERE bangladesh > 5",
-                        cartocss:  "#layer{ marker-fill-opacity: 0.0; marker-line-color: #4b95c6; marker-line-width: 0; marker-line-opacity: 0; marker-placement: point; marker-multi-policy: largest; marker-type: ellipse; marker-fill: #5CA2D1; marker-allow-overlap: true; marker-clip: false; marker-comp-op: darken; } #layer [ bangladesh <= 1600] { marker-width: 23.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh <= 400] { marker-width: 15.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh <= 200] { marker-width: 11.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh <= 50] { marker-width: 7.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh < 10] { marker-width: 5.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ bangladesh <= 5] { marker-width: 0; marker-fill-opacity: 0.0; marker-line-width: 0; marker-line-opacity: 0; } #layer [ bangladesh <= 1600] [zoom >= 12] {marker-width: 34;} #layer [ bangladesh <= 400] [zoom >= 12] {marker-width: 23;} #layer [ bangladesh <= 200] [zoom >= 12] {marker-width: 17;} #layer [ bangladesh <= 50] [zoom >= 12] {marker-width: 11;} #layer [ bangladesh < 10] [zoom >= 12] {marker-width: 8;} #layer [ bangladesh <= 5] [zoom >= 12] {marker-width: 0;} #layer [ bangladesh <= 1600] [zoom >= 13] {marker-width: 52;} #layer [ bangladesh <= 400] [zoom >= 13] {marker-width: 35;} #layer [ bangladesh <= 200] [zoom >= 13] {marker-width: 25;} #layer [ bangladesh <= 50] [zoom >= 13] {marker-width: 17;} #layer [ bangladesh < 10] [zoom >= 13] {marker-width: 11;} #layer [ bangladesh <= 5] [zoom >= 13] {marker-width: 0.0;} #layer [ bangladesh <= 1600] [zoom >= 14] {marker-width: 78;} #layer [ bangladesh <= 400] [zoom >= 14] {marker-width: 52;} #layer [ bangladesh <= 200] [zoom >= 14] {marker-width: 37;} #layer [ bangladesh <= 50] [zoom >= 14] {marker-width: 25;} #layer [ bangladesh < 10] [zoom >= 14] {marker-width: 15;} #layer [ bangladesh <= 5] [zoom >= 14] {marker-width: 0.0;} #layer [ bangladesh <= 1600] [zoom >= 15] {marker-width: 116;} #layer [ bangladesh <= 400] [zoom >= 15] {marker-width: 78;} #layer [ bangladesh <= 200] [zoom >= 15] {marker-width: 56;} #layer [ bangladesh <= 50] [zoom >= 15] {marker-width: 38;} #layer [ bangladesh < 10] [zoom >= 15] {marker-width: 21;} #layer [ bangladesh <= 5] [zoom >= 15] {marker-width: 0.0;} #layer::labels [zoom >= 13] [bangladesh > 5] { /** label size for single-digit values */ text-name: [bangladesh]; text-face-name: 'Lato Bold'; text-size: 8; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 13] [bangladesh >= 10] { text-name: [bangladesh]; text-size: 11; text-fill: #FFFFFF; } #layer::labels [zoom >= 13] [bangladesh >= 50] { text-name: [bangladesh]; text-size: 11; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 13] [bangladesh >= 400] { text-name: [bangladesh]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 14] [bangladesh > 5] { /** label size for single-digit values */ text-name: [bangladesh]; text-face-name: 'Lato Bold'; text-size: 10; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 14] [bangladesh >= 10] { text-name: [bangladesh]; text-fill: #FFFFFF; text-size: 12; } #layer::labels [zoom >= 14] [bangladesh >= 50] { text-name: [bangladesh]; text-size: 12; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 14] [bangladesh >= 400] { text-name: [bangladesh]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [bangladesh >= 10] { text-name: [bangladesh]; text-face-name: 'Lato Bold'; text-size: 15; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000; text-halo-radius: 0.4; text-dy: 0; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 15] [bangladesh >= 50] { text-name: [bangladesh]; text-size: 16; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [bangladesh >= 400] {text-name: [bangladesh]; text-size: 18; text-fill: #FFFFFF; text-halo-radius: 0.4;}",
+                        cartocss:  "#layer{ "+bangladesh_color+ethnicity_props+"} #layer [ bangladesh >= 1001] { "+size6css+" } #layer [ bangladesh <= 1000] { "+size5css+" } #layer [ bangladesh <= 400] { "+size4css+" } #layer [ bangladesh  <= 200] { "+size3css+" } #layer [ bangladesh <= 50] { "+size2css+"  } #layer [ bangladesh <= 20] { "+size1css+" } #layer [ bangladesh  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [bangladesh>= 400] { text-name: [bangladesh]; "+text_props+"}",
                       interactivity: "cartodb_id"}]
                     });
     var l_bangladesh_gradu_12  = new L.LayerGroup();
-    bangladesh_gradu.addTo(l_bangladesh_gradu_12)
+    bangladesh_gradu_12.addTo(l_bangladesh_gradu_12)
           .on('done', function(layer) {
-           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['bangladesh', 'fbbanglade', 'cartodb_id'])  
+          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['bangladesh', 'fbbanglade', 'cartodb_id'])  
         });
 
-var pakistani_gradu = cartodb.createLayer(map_object, {   
+var pakistani_gradu_12 = cartodb.createLayer(map_object, { 
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, fbpakistan, pakistani FROM tract12 WHERE pakistani > 5",
-                        cartocss:  "#layer{ marker-fill-opacity: 0.0; marker-line-color: #966B6B; marker-line-width: 0; marker-line-opacity: 0; marker-placement: point; marker-multi-policy: largest; marker-type: ellipse; marker-fill: #966B6B; marker-allow-overlap: true; marker-clip: false; marker-comp-op: darken; } #layer [ pakistani <= 1600] { marker-width: 23.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ pakistani <= 400] { marker-width: 15.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ pakistani <= 200] { marker-width: 11.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ pakistani <= 50] { marker-width: 7.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ pakistani < 10] { marker-width: 5.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ pakistani <= 5] { marker-width: 0; marker-fill-opacity: 0.0; marker-line-width: 0; marker-line-opacity: 0; } #layer [ pakistani <= 1600] [zoom >= 12] {marker-width: 34;} #layer [ pakistani <= 400] [zoom >= 12] {marker-width: 23;} #layer [ pakistani <= 200] [zoom >= 12] {marker-width: 17;} #layer [ pakistani <= 50] [zoom >= 12] {marker-width: 11;} #layer [ pakistani < 10] [zoom >= 12] {marker-width: 8;} #layer [ pakistani <= 5] [zoom >= 12] {marker-width: 0;} #layer [ pakistani <= 1600] [zoom >= 13] {marker-width: 52;} #layer [ pakistani <= 400] [zoom >= 13] {marker-width: 35;} #layer [ pakistani <= 200] [zoom >= 13] {marker-width: 25;} #layer [ pakistani <= 50] [zoom >= 13] {marker-width: 17;} #layer [ pakistani < 10] [zoom >= 13] {marker-width: 11;} #layer [ pakistani <= 5] [zoom >= 13] {marker-width: 0.0;} #layer [ pakistani <= 1600] [zoom >= 14] {marker-width: 78;} #layer [ pakistani <= 400] [zoom >= 14] {marker-width: 52;} #layer [ pakistani <= 200] [zoom >= 14] {marker-width: 37;} #layer [ pakistani <= 50] [zoom >= 14] {marker-width: 25;} #layer [ pakistani < 10] [zoom >= 14] {marker-width: 15;} #layer [ pakistani <= 5] [zoom >= 14] {marker-width: 0.0;} #layer [ pakistani <= 1600] [zoom >= 15] {marker-width: 116;} #layer [ pakistani <= 400] [zoom >= 15] {marker-width: 78;} #layer [ pakistani <= 200] [zoom >= 15] {marker-width: 56;} #layer [ pakistani <= 50] [zoom >= 15] {marker-width: 38;} #layer [ pakistani < 10] [zoom >= 15] {marker-width: 21;} #layer [ pakistani <= 5] [zoom >= 15] {marker-width: 0.0;} #layer::labels [zoom >= 13] [pakistani > 5] { /** label size for single-digit values */ text-name: [pakistani]; text-face-name: 'Lato Bold'; text-size: 8; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 13] [pakistani >= 10] { text-name: [pakistani]; text-size: 11; text-fill: #FFFFFF; } #layer::labels [zoom >= 13] [pakistani >= 50] { text-name: [pakistani]; text-size: 11; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 13] [pakistani >= 400] { text-name: [pakistani]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 14] [pakistani > 5] { /** label size for single-digit values */ text-name: [pakistani]; text-face-name: 'Lato Bold'; text-size: 10; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 14] [pakistani >= 10] { text-name: [pakistani]; text-fill: #FFFFFF; text-size: 12; } #layer::labels [zoom >= 14] [pakistani >= 50] { text-name: [pakistani]; text-size: 12; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 14] [pakistani >= 400] { text-name: [pakistani]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [pakistani >= 10] { text-name: [pakistani]; text-face-name: 'Lato Bold'; text-size: 15; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000; text-halo-radius: 0.4; text-dy: 0; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 15] [pakistani >= 50] { text-name: [pakistani]; text-size: 16; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [pakistani >= 400] {text-name: [pakistani]; text-size: 18; text-fill: #FFFFFF; text-halo-radius: 0.4;}",                      
-                      interactivity: "cartodb_id"}]
+                        cartocss:  "#layer{ "+pakistani_color+ethnicity_props+"} #layer [ pakistani >= 1001] { "+size6css+" } #layer [pakistani <= 1000] { "+size5css+" } #layer [pakistani <= 400] { "+size4css+" } #layer [ pakistani  <= 200] { "+size3css+" } #layer [pakistani <= 50] { "+size2css+"  } #layer [pakistani <= 20] { "+size1css+" } #layer [pakistani <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [pakistani>= 400] {text-name: [pakistani]; "+text_props+"}", 
+                        interactivity: "cartodb_id"}]
                     });
     var l_pakistani_gradu_12  = new L.LayerGroup();
-    pakistani_gradu.addTo(l_pakistani_gradu_12)
-              .on('done', function(layer) {
+    pakistani_gradu_12.addTo(l_pakistani_gradu_12)
+           .on('done', function(layer) {
            cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['pakistani', 'fbpakistan', 'cartodb_id'])  
         });
 
-var asianindia_gradu = cartodb.createLayer(map_object, {   
+var asianindia_gradu_12 = cartodb.createLayer(map_object, {   
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, asianindia, fbindia FROM tract12 WHERE asianindia > 5",
-                        cartocss:  "#layer{ marker-fill-opacity: 0.0; marker-line-color: #e25043; marker-line-width: 0; marker-line-opacity: 0; marker-placement: point; marker-multi-policy: largest; marker-type: ellipse; marker-fill: #F84F40; marker-allow-overlap: true; marker-clip: false; marker-comp-op: darken; } #layer [ asianindia <= 1600] { marker-width: 23.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ asianindia <= 400] { marker-width: 15.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ asianindia <= 200] { marker-width: 11.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ asianindia <= 50] { marker-width: 7.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ asianindia < 10] { marker-width: 5.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ asianindia <= 5] { marker-width: 0; marker-fill-opacity: 0.0; marker-line-width: 0; marker-line-opacity: 0; } #layer [ asianindia <= 1600] [zoom >= 12] {marker-width: 34;} #layer [ asianindia <= 400] [zoom >= 12] {marker-width: 23;} #layer [ asianindia <= 200] [zoom >= 12] {marker-width: 17;} #layer [ asianindia <= 50] [zoom >= 12] {marker-width: 11;} #layer [ asianindia < 10] [zoom >= 12] {marker-width: 8;} #layer [ asianindia <= 5] [zoom >= 12] {marker-width: 0;} #layer [ asianindia <= 1600] [zoom >= 13] {marker-width: 52;} #layer [ asianindia <= 400] [zoom >= 13] {marker-width: 35;} #layer [ asianindia <= 200] [zoom >= 13] {marker-width: 25;} #layer [ asianindia <= 50] [zoom >= 13] {marker-width: 17;} #layer [ asianindia < 10] [zoom >= 13] {marker-width: 11;} #layer [ asianindia <= 5] [zoom >= 13] {marker-width: 0.0;} #layer [ asianindia <= 1600] [zoom >= 14] {marker-width: 78;} #layer [ asianindia <= 400] [zoom >= 14] {marker-width: 52;} #layer [ asianindia <= 200] [zoom >= 14] {marker-width: 37;} #layer [ asianindia <= 50] [zoom >= 14] {marker-width: 25;} #layer [ asianindia < 10] [zoom >= 14] {marker-width: 15;} #layer [ asianindia <= 5] [zoom >= 14] {marker-width: 0.0;} #layer [ asianindia <= 1600] [zoom >= 15] {marker-width: 116;} #layer [ asianindia <= 400] [zoom >= 15] {marker-width: 78;} #layer [ asianindia <= 200] [zoom >= 15] {marker-width: 56;} #layer [ asianindia <= 50] [zoom >= 15] {marker-width: 38;} #layer [ asianindia < 10] [zoom >= 15] {marker-width: 21;} #layer [ asianindia <= 5] [zoom >= 15] {marker-width: 0.0;} #layer::labels [zoom >= 13] [asianindia > 5] { /** label size for single-digit values */ text-name: [asianindia]; text-face-name: 'Lato Bold'; text-size: 8; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 13] [asianindia >= 10] { text-name: [asianindia]; text-size: 11; text-fill: #FFFFFF; } #layer::labels [zoom >= 13] [asianindia >= 50] { text-name: [asianindia]; text-size: 11; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 13] [asianindia >= 400] { text-name: [asianindia]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 14] [asianindia > 5] { /** label size for single-digit values */ text-name: [asianindia]; text-face-name: 'Lato Bold'; text-size: 10; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 14] [asianindia >= 10] { text-name: [asianindia]; text-fill: #FFFFFF; text-size: 12; } #layer::labels [zoom >= 14] [asianindia >= 50] { text-name: [asianindia]; text-size: 12; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 14] [asianindia >= 400] { text-name: [asianindia]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [asianindia >= 10] { text-name: [asianindia]; text-face-name: 'Lato Bold'; text-size: 15; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000; text-halo-radius: 0.4; text-dy: 0; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 15] [asianindia >= 50] { text-name: [asianindia]; text-size: 16; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [asianindia >= 400] {text-name: [asianindia]; text-size: 18; text-fill: #FFFFFF; text-halo-radius: 0.4;}",                      interactivity: "cartodb_id"}]
+                        cartocss: "#layer{ "+asianindia_color+ethnicity_props+"} #layer [ asianindia >= 1001] { "+size6css+" }  #layer [ asianindia <= 1000] { "+size5css+" } #layer [ asianindia <= 400] { "+size4css+" } #layer [ asianindia  <= 200] { "+size3css+" } #layer [ asianindia <= 50] { "+size2css+"  } #layer [ asianindia <= 20] { "+size1css+" } #layer [ asianindia  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [asianindia>= 400] { text-name: [asianindia]; "+text_props+"}",
+                       interactivity: "cartodb_id"}]
                     });
     var l_asianindia_gradu_12  = new L.LayerGroup();
-    asianindia_gradu.addTo(l_asianindia_gradu_12)
-                  .on('done', function(layer) {
+    asianindia_gradu_12.addTo(l_asianindia_gradu_12)
+          .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['asianindia', 'fbindia' , 'cartodb_id'])
          }); 
 
-var arab_gradu = cartodb.createLayer(map_object, {   
+var arab_gradu_12 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, arab, fbarab FROM tract12 WHERE arab > 5",
-                        cartocss:  "#layer{ marker-fill-opacity: 0.0; marker-line-color: #6fc98d; marker-line-width: 0; marker-line-opacity: 0; marker-placement: point; marker-multi-policy: largest; marker-type: ellipse; marker-fill: #6EBC88; marker-allow-overlap: true; marker-clip: false; marker-comp-op: darken; } #layer [ arab <= 1600] { marker-width: 23.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ arab <= 400] { marker-width: 15.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ arab <= 200] { marker-width: 11.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ arab <= 50] { marker-width: 7.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ arab < 10] { marker-width: 5.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ arab <= 5] { marker-width: 0; marker-fill-opacity: 0.0; marker-line-width: 0; marker-line-opacity: 0; } #layer [ arab <= 1600] [zoom >= 12] {marker-width: 34;} #layer [ arab <= 400] [zoom >= 12] {marker-width: 23;} #layer [ arab <= 200] [zoom >= 12] {marker-width: 17;} #layer [ arab <= 50] [zoom >= 12] {marker-width: 11;} #layer [ arab < 10] [zoom >= 12] {marker-width: 8;} #layer [ arab <= 5] [zoom >= 12] {marker-width: 0;} #layer [ arab <= 1600] [zoom >= 13] {marker-width: 52;} #layer [ arab <= 400] [zoom >= 13] {marker-width: 35;} #layer [ arab <= 200] [zoom >= 13] {marker-width: 25;} #layer [ arab <= 50] [zoom >= 13] {marker-width: 17;} #layer [ arab < 10] [zoom >= 13] {marker-width: 11;} #layer [ arab <= 5] [zoom >= 13] {marker-width: 0.0;} #layer [ arab <= 1600] [zoom >= 14] {marker-width: 78;} #layer [ arab <= 400] [zoom >= 14] {marker-width: 52;} #layer [ arab <= 200] [zoom >= 14] {marker-width: 37;} #layer [ arab <= 50] [zoom >= 14] {marker-width: 25;} #layer [ arab < 10] [zoom >= 14] {marker-width: 15;} #layer [ arab <= 5] [zoom >= 14] {marker-width: 0.0;} #layer [ arab <= 1600] [zoom >= 15] {marker-width: 116;} #layer [ arab <= 400] [zoom >= 15] {marker-width: 78;} #layer [ arab <= 200] [zoom >= 15] {marker-width: 56;} #layer [ arab <= 50] [zoom >= 15] {marker-width: 38;} #layer [ arab < 10] [zoom >= 15] {marker-width: 21;} #layer [ arab <= 5] [zoom >= 15] {marker-width: 0.0;} #layer::labels [zoom >= 13] [arab > 5] { /** label size for single-digit values */ text-name: [arab]; text-face-name: 'Lato Bold'; text-size: 8; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 13] [arab >= 10] { text-name: [arab]; text-size: 11; text-fill: #FFFFFF; } #layer::labels [zoom >= 13] [arab >= 50] { text-name: [arab]; text-size: 11; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 13] [arab >= 400] { text-name: [arab]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 14] [arab > 5] { /** label size for single-digit values */ text-name: [arab]; text-face-name: 'Lato Bold'; text-size: 10; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 14] [arab >= 10] { text-name: [arab]; text-fill: #FFFFFF; text-size: 12; } #layer::labels [zoom >= 14] [arab >= 50] { text-name: [arab]; text-size: 12; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 14] [arab >= 400] { text-name: [arab]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [arab >= 10] { text-name: [arab]; text-face-name: 'Lato Bold'; text-size: 15; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000; text-halo-radius: 0.4; text-dy: 0; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 15] [arab >= 50] { text-name: [arab]; text-size: 16; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [arab >= 400] {text-name: [arab]; text-size: 18; text-fill: #FFFFFF; text-halo-radius: 0.4;}",                      
+                        cartocss:  "#layer{  "+arab_color+ethnicity_props+"} #layer [ arab >= 1001] { "+size6css+" } #layer [ arab <= 1000] { "+size5css+" } #layer [ arab <= 400] { "+size4css+" } #layer [ arab  <= 200] { "+size3css+" } #layer [ arab <= 50] { "+size2css+"  } #layer [ arab <= 20] { "+size1css+" } #layer [ arab  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [arab>= 400] { text-name: [arab]; "+text_props+"}",
                         interactivity: "cartodb_id"}]
                     });
     var l_arab_gradu_12 = new L.LayerGroup();
-    arab_gradu.addTo(l_arab_gradu_12)
-              .on('done', function(layer) {
+    arab_gradu_12.addTo(l_arab_gradu_12)
+          .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['arab', 'fbarab', 'cartodb_id'])
          }); 
 
-var turkish_gradu = cartodb.createLayer(map_object, {   
+var turkish_gradu_12 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, turkish, fbturkish FROM tract12 WHERE turkish > 5",
-                        cartocss:  "#layer{ marker-fill-opacity: 0.0; marker-line-color: #e0a8bf; marker-line-width: 0; marker-line-opacity: 0; marker-placement: point; marker-multi-policy: largest; marker-type: ellipse; marker-fill: #f4aee0; marker-allow-overlap: true; marker-clip: false; marker-comp-op: darken; } #layer [ turkish <= 1600] { marker-width: 23.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ turkish <= 400] { marker-width: 15.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ turkish <= 200] { marker-width: 11.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ turkish <= 50] { marker-width: 7.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ turkish < 10] { marker-width: 5.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ turkish <= 5] { marker-width: 0; marker-fill-opacity: 0.0; marker-line-width: 0; marker-line-opacity: 0; } #layer [ turkish <= 1600] [zoom >= 12] {marker-width: 34;} #layer [ turkish <= 400] [zoom >= 12] {marker-width: 23;} #layer [ turkish <= 200] [zoom >= 12] {marker-width: 17;} #layer [ turkish <= 50] [zoom >= 12] {marker-width: 11;} #layer [ turkish < 10] [zoom >= 12] {marker-width: 8;} #layer [ turkish <= 5] [zoom >= 12] {marker-width: 0;} #layer [ turkish <= 1600] [zoom >= 13] {marker-width: 52;} #layer [ turkish <= 400] [zoom >= 13] {marker-width: 35;} #layer [ turkish <= 200] [zoom >= 13] {marker-width: 25;} #layer [ turkish <= 50] [zoom >= 13] {marker-width: 17;} #layer [ turkish < 10] [zoom >= 13] {marker-width: 11;} #layer [ turkish <= 5] [zoom >= 13] {marker-width: 0.0;} #layer [ turkish <= 1600] [zoom >= 14] {marker-width: 78;} #layer [ turkish <= 400] [zoom >= 14] {marker-width: 52;} #layer [ turkish <= 200] [zoom >= 14] {marker-width: 37;} #layer [ turkish <= 50] [zoom >= 14] {marker-width: 25;} #layer [ turkish < 10] [zoom >= 14] {marker-width: 15;} #layer [ turkish <= 5] [zoom >= 14] {marker-width: 0.0;} #layer [ turkish <= 1600] [zoom >= 15] {marker-width: 116;} #layer [ turkish <= 400] [zoom >= 15] {marker-width: 78;} #layer [ turkish <= 200] [zoom >= 15] {marker-width: 56;} #layer [ turkish <= 50] [zoom >= 15] {marker-width: 38;} #layer [ turkish < 10] [zoom >= 15] {marker-width: 21;} #layer [ turkish <= 5] [zoom >= 15] {marker-width: 0.0;} #layer::labels [zoom >= 13] [turkish > 5] { /** label size for single-digit values */ text-name: [turkish]; text-face-name: 'Lato Bold'; text-size: 8; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 13] [turkish >= 10] { text-name: [turkish]; text-size: 11; text-fill: #FFFFFF; } #layer::labels [zoom >= 13] [turkish >= 50] { text-name: [turkish]; text-size: 11; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 13] [turkish >= 400] { text-name: [turkish]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 14] [turkish > 5] { /** label size for single-digit values */ text-name: [turkish]; text-face-name: 'Lato Bold'; text-size: 10; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 14] [turkish >= 10] { text-name: [turkish]; text-fill: #FFFFFF; text-size: 12; } #layer::labels [zoom >= 14] [turkish >= 50] { text-name: [turkish]; text-size: 12; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 14] [turkish >= 400] { text-name: [turkish]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [turkish >= 10] { text-name: [turkish]; text-face-name: 'Lato Bold'; text-size: 15; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000; text-halo-radius: 0.4; text-dy: 0; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 15] [turkish >= 50] { text-name: [turkish]; text-size: 16; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [turkish >= 400] {text-name: [turkish]; text-size: 18; text-fill: #FFFFFF; text-halo-radius: 0.4;}",
-                      interactivity: "cartodb_id"}]
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, turkish  FROM tract12 WHERE turkish > 5",
+                        cartocss:  "#layer{  "+turkish_color+ethnicity_props+"} #layer [ turkish >= 1001] { "+size6css+" } #layer [ turkish <= 1000] { "+size5css+" } #layer [ turkish <= 400] { "+size4css+" } #layer [ turkish  <= 200] { "+size3css+" } #layer [ turkish <= 50] { "+size2css+"  } #layer [ turkish <= 20] { "+size1css+" } #layer [ turkish  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [turkish>= 400] { text-name: [turkish]; "+text_props+"}",
+                        interactivity: "cartodb_id"}]
                     });
     var l_turkish_gradu_12  = new L.LayerGroup();
-    turkish_gradu.addTo(l_turkish_gradu_12)
+    turkish_gradu_12.addTo(l_turkish_gradu_12)
          .on('done', function(layer) {
-         cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['turkish', 'fbturkish', 'cartodb_id'])
+         cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['turkish',  'cartodb_id'])
          }); 
 
-var senegalese_gradu = cartodb.createLayer(map_object, {   
+var senegalese_gradu_12 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, senegalese, fbwafrica FROM tract12 WHERE senegalese > 5",
-                        cartocss:  "#layer{ marker-fill-opacity: 0.0; marker-line-color: #0b5f72; marker-line-width: 0; marker-line-opacity: 0; marker-placement: point; marker-multi-policy: largest; marker-type: ellipse; marker-fill: #0d697f; marker-allow-overlap: true; marker-clip: false; marker-comp-op: darken; } #layer [ senegalese <= 1600] { marker-width: 23.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ senegalese <= 400] { marker-width: 15.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ senegalese <= 200] { marker-width: 11.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ senegalese <= 50] { marker-width: 7.5; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ senegalese < 10] { marker-width: 5.0; marker-fill-opacity: 0.8; marker-line-width: 1.5; marker-line-opacity: 1; } #layer [ senegalese <= 5] { marker-width: 0; marker-fill-opacity: 0.0; marker-line-width: 0; marker-line-opacity: 0; } #layer [ senegalese <= 1600] [zoom >= 12] {marker-width: 34;} #layer [ senegalese <= 400] [zoom >= 12] {marker-width: 23;} #layer [ senegalese <= 200] [zoom >= 12] {marker-width: 17;} #layer [ senegalese <= 50] [zoom >= 12] {marker-width: 11;} #layer [ senegalese < 10] [zoom >= 12] {marker-width: 8;} #layer [ senegalese <= 5] [zoom >= 12] {marker-width: 0;} #layer [ senegalese <= 1600] [zoom >= 13] {marker-width: 52;} #layer [ senegalese <= 400] [zoom >= 13] {marker-width: 35;} #layer [ senegalese <= 200] [zoom >= 13] {marker-width: 25;} #layer [ senegalese <= 50] [zoom >= 13] {marker-width: 17;} #layer [ senegalese < 10] [zoom >= 13] {marker-width: 11;} #layer [ senegalese <= 5] [zoom >= 13] {marker-width: 0.0;} #layer [ senegalese <= 1600] [zoom >= 14] {marker-width: 78;} #layer [ senegalese <= 400] [zoom >= 14] {marker-width: 52;} #layer [ senegalese <= 200] [zoom >= 14] {marker-width: 37;} #layer [ senegalese <= 50] [zoom >= 14] {marker-width: 25;} #layer [ senegalese < 10] [zoom >= 14] {marker-width: 15;} #layer [ senegalese <= 5] [zoom >= 14] {marker-width: 0.0;} #layer [ senegalese <= 1600] [zoom >= 15] {marker-width: 116;} #layer [ senegalese <= 400] [zoom >= 15] {marker-width: 78;} #layer [ senegalese <= 200] [zoom >= 15] {marker-width: 56;} #layer [ senegalese <= 50] [zoom >= 15] {marker-width: 38;} #layer [ senegalese < 10] [zoom >= 15] {marker-width: 21;} #layer [ senegalese <= 5] [zoom >= 15] {marker-width: 0.0;} #layer::labels [zoom >= 13] [senegalese > 5] { /** label size for single-digit values */ text-name: [senegalese]; text-face-name: 'Lato Bold'; text-size: 8; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 13] [senegalese >= 10] { text-name: [senegalese]; text-size: 11; text-fill: #FFFFFF; } #layer::labels [zoom >= 13] [senegalese >= 50] { text-name: [senegalese]; text-size: 11; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 13] [senegalese >= 400] { text-name: [senegalese]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 14] [senegalese > 5] { /** label size for single-digit values */ text-name: [senegalese]; text-face-name: 'Lato Bold'; text-size: 10; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000000; text-halo-radius: 0.1; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 14] [senegalese >= 10] { text-name: [senegalese]; text-fill: #FFFFFF; text-size: 12; } #layer::labels [zoom >= 14] [senegalese >= 50] { text-name: [senegalese]; text-size: 12; text-fill: #FFFFFF; text-halo-radius: 0.2; } #layer::labels [zoom >= 14] [senegalese >= 400] { text-name: [senegalese]; text-size: 15; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [senegalese >= 10] { text-name: [senegalese]; text-face-name: 'Lato Bold'; text-size: 15; text-wrap-before: true; text-wrap-width: 20; text-label-position-tolerance: 10; text-fill: #FFFFFF; text-halo-fill: #000; text-halo-radius: 0.4; text-dy: 0; text-allow-overlap: true; text-placement: point; text-placement-type: simple; } #layer::labels [zoom >= 15] [senegalese >= 50] { text-name: [senegalese]; text-size: 16; text-fill: #FFFFFF; text-halo-radius: 0.4; } #layer::labels [zoom >= 15] [senegalese >= 400] {text-name: [senegalese]; text-size: 18; text-fill: #FFFFFF; text-halo-radius: 0.4;}",
-                      interactivity: "cartodb_id"}]
+                        cartocss:  "#layer{  "+senegalese_color+ethnicity_props+"} #layer [ senegalese >= 1001] { "+size6css+" } #layer [ senegalese <= 1000] { "+size5css+" } #layer [ senegalese <= 400] { "+size4css+" } #layer [ senegalese  <= 200] { "+size3css+" } #layer [ senegalese <= 50] { "+size2css+"  } #layer [ senegalese <= 20] { "+size1css+" } #layer [ senegalese  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [senegalese>= 400] { text-name: [senegalese]; "+text_props+"}",  
+                        interactivity: "cartodb_id"}]
                     });
     var l_senegalese_gradu_12  = new L.LayerGroup();
-    senegalese_gradu.addTo(l_senegalese_gradu_12)
+    senegalese_gradu_12.addTo(l_senegalese_gradu_12)
           .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['senegalese', 'fbwafrica', 'cartodb_id'])
-         }); 
+          });
 
-    
+// </> end ethnicity layers
+
 var dot_bike_2015 = cartodb.createLayer(map_object, { 
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT * FROM nyc_bike_routes_2015",
-                        cartocss: "#nyc_bike_routes_2015 { line-opacity: 0.7; } #nyc_bike_routes_2015 [facilitycl='I'] { line-color: #055D00; line-width: 4; } #nyc_bike_routes_2015[facilitycl='II'] { line-color: #055D00; line-width: 3; } #nyc_bike_routes_2015[facilitycl='III'] { line-color: #229A00; line-width: 3; line-dasharray: 6,3; } #nyc_bike_routes_2015{ line-color: #fdbf6f;  line-width: 2;}",
+                        cartocss: "#nyc_bike_routes_2015 { line-opacity: 0.7; } #nyc_bike_routes_2015 [facilitycl='I'] { line-color: #055D00; line-width: 4; } #nyc_bike_routes_2015[facilitycl='II'] { line-color: #055D00; line-width: 3; } #nyc_bike_routes_2015[facilitycl='III'] { line-color: #229A00; line-width: 3; line-dasharray: 6,3; } #nyc_bike_routes_2015 { line-color: #fdbf6f;  line-width: 2;}",
                       interactivity: "cartodb_id"}]
                     });
     var l_dot_bike_2015 = new L.LayerGroup();
@@ -1021,7 +1035,7 @@ var dot_bike_2015 = cartodb.createLayer(map_object, {
 
 // initial layers    
 map_object.addLayer(l_nybb);
-map_object.addLayer(l_neigh_labels);
+map_object.addLayer(l_neigh_labels);  
 
     var baseMaps = [
                       { 
