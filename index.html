@@ -6,19 +6,19 @@
             CAU Clergy Map | DRAFT | update:10/07/15
 
         </title>
- 
+
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
- 
+
         <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
 
        <!-- <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,900' rel='stylesheet' type='text/css'> -->
             <!-- <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7/leaflet.css"/> -->
             <!--<link rel="stylesheet" href="../cau-clergy/css/leaflet.groupedlayercontrol.css" /> -->
 
-        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" type="text/css" /> 
-        <link rel="stylesheet" href="../cau-clergy-10-1-15/css/styledLayerControl.css" /> 
-        <link rel="stylesheet" href="../cau-clergy-10-1-15/css/instructorStyles.css" /> 
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" type="text/css" />
+        <link rel="stylesheet" href="css/styledLayerControl.css" />
+        <link rel="stylesheet" href="css/instructorStyles.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- <script src="//cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script> -->
@@ -33,7 +33,7 @@
             }
 
 /* style and position the legend  */
-    #my-legend { 
+    #my-legend {
         position: absolute;
         width: auto;
         padding: 10px;
@@ -43,12 +43,12 @@
       }
 
 
-      .my-legend { 
-        background: rgba(255,255,255,1); 
-        background: transparent url(css/images/bgnoise_lg.jpg) repeat top left; 
+      .my-legend {
+        background: rgba(255,255,255,1);
+        background: transparent url(css/images/bgnoise_lg.jpg) repeat top left;
         border-radius: 5px;
         border: 0;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);       
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
         font-family: 'Ubuntu-Regular', Arial, sans-serif;
         font-size: 18px;
         text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
@@ -58,7 +58,7 @@
         overflow-x: hidden;
         overflow-y: scroll;
       }
-            
+
       .my-legend .legend-title {
         font-family: 'Ubuntu-Regular', Arial, sans-serif;
         /*margin-bottom: 5px;*/
@@ -68,19 +68,19 @@
         }
 
       .my-legend .layer-title {
-       font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;    
+       font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
         text-align: left;
         padding-bottom: 1px;
         padding-top: 9px;
         font-weight: bold;
         font-size: 105%;
-        }  
+        }
       .my-legend .legend-scale ul {
         margin: 0;
         padding: 0;
-        float: left; 
+        float: left;
         list-style: none;
-        } 
+        }
       .my-legend .legend-scale ul li {  /* color span and text block area - the li*/
         display: block;
         padding-bottom: 5px;
@@ -119,7 +119,7 @@
         }
       .my-legend a {
         color: #2b8cbe;
-        } 
+        }
 
 
         /* vertical legend style for DOE data*/
@@ -153,7 +153,7 @@
 /* change the appearance of the leaflet zoom control, copied from http://wcfcourier.com/app/special/fatalcrashes/css/styles.css */
       .leaflet-control-zoom a {
           background-color: #C5E1EB;
-          color: #000;  
+          color: #000;
           text-decoration: none;
       }
 
@@ -177,7 +177,7 @@
       }
 
 
-      </style>  
+      </style>
     </head>
 
     <body>
@@ -189,9 +189,9 @@
       <div class="icon-sort-up"></div> <i class="fa fa-chevron-up"></i>
       <div class="hide_show_instructor_text">instructions</div>
     </div>
-    <div class="hide_instructor" style="display: none;"> 
+    <div class="hide_instructor" style="display: none;">
       <div class="icon-sort-down"></div> <i class="fa fa-chevron-down"></i>
-      <div class="hide_show_instructor_text">Hide</div> 
+      <div class="hide_show_instructor_text">Hide</div>
     </div>
   </div>
 
@@ -213,7 +213,7 @@
 <div class='layer-title'>Demographic Layers</div>
 <div class='legend-scale'>
   <ul class='legend-labels'>
-    <li><span style='background:#FFFFB2;'></span><span class="rotate-text">10-19%</span></li>  
+    <li><span style='background:#FFFFB2;'></span><span class="rotate-text">10-19%</span></li>
     <li><span style='background:#FED976;'></span><span class="rotate-text">20-34%</span></li>
     <li><span style='background:#FEB24C;'></span><span class="rotate-text">35-49%</span></li>
     <li><span style='background:#FD8D3C;'></span><span class="rotate-text">50-64%</span></li>
@@ -239,7 +239,7 @@
       <li><span style='background:#1a9850;'></span><span class="rotate-text">$244,000</li>
     </ul>
   </div>
-     <div class='legend-source'>Source: 2014 ACS? </div> 
+     <div class='legend-source'>Source: 2014 ACS? </div>
 
 <hr style="background:#c0c0c0; border:0; height:2px" />
 
@@ -247,7 +247,7 @@
   <div class='legend-scale'>
     <ul class='legend-labels'>
       <li><span style='background:#0080ff;'></span><span class="rotate-text"> 22-25% </li>
-     <li><span style='background:#40a0ff;'></span><span class="rotate-text"> 26-31% </li>      
+     <li><span style='background:#40a0ff;'></span><span class="rotate-text"> 26-31% </li>
       <li><span style='background:#7fbfff;'></span><span class="rotate-text"> 31-35% </li>
       <li><span style='background:#fff2cc;'></span><span class="rotate-text"> 36-40% </li>
       <li><span style='background:#ffa6a6;'></span><span class="rotate-text"> 40-44% </li>
@@ -255,7 +255,7 @@
       <li><span style='background:#ff4d4d;'></span><span class="rotate-text"> 50+ % </li>
     </ul>
   </div>
-     <div class='legend-source'>Source: ?? </div> 
+     <div class='legend-source'>Source: ?? </div>
 
 <hr style="background:#c0c0c0; border:0; height:2px" />
 
@@ -275,8 +275,8 @@
             <li><span style='background:#DDDDDD;'></span>English & other</li>
           </ul>
         </div>
-        <div class='legend-source'>Source: NYC Dept of Ed.</div> 
-  </div> 
+        <div class='legend-source'>Source: NYC Dept of Ed.</div>
+  </div>
 <!-- load infowindow template -->
 <script type="infowindow/html" id="infowindow_template">
       <span> custom </span>
@@ -286,7 +286,7 @@
            <div class="cartodb-popup-content">
            <h4 style="position:absolute; top:12px; left:19px; right:21px; display:block; width:auto; padding:8px; text-align:center; color:white; background:rgba(0,0,0,0.7)"> {{content.data.name}}</h4>
              /* content.data contains the field info */
-            
+
            </div>
          </div>
          <div class="cartodb-popup-tip-container"></div>
@@ -297,12 +297,12 @@
         <script src="../cau-clergy-10-1-15/src/styledLayerControl.js"></script>
         <!-- <script src="../cau-clergy/src/leaflet.groupedlayercontrol.js"></script> -->
 
- 
+
         <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
         <![endif]-->
- 
- 
+
+
  <script>
 // Toggle for show, hide instructions
 // Only visible on desktop
@@ -325,7 +325,7 @@ $('#hide_show_instructor').click(function() {
     isHideButton = true;
   }
 });
-</script> 
+</script>
 
         <script type="text/javascript">
             window.onload = function () {
@@ -362,12 +362,12 @@ $('#hide_show_instructor').click(function() {
                     zoomControl: false,   // remove default zoomControl position to create a custom one
                     zoom: 11,
                     maxZoom: 16,
-                    minZoom: 10, 
-                    layers:[light_nolabels]    // initial basemap 
+                    minZoom: 10,
+                    layers:[light_nolabels]    // initial basemap
                     //scrollWheelZoom: false   // to keep from zooming accidentally
               });
 
-              map_object.addControl( L.control.zoom({position: 'topright'}) );      //add custom zoom controller and position         
+              map_object.addControl( L.control.zoom({position: 'topright'}) );      //add custom zoom controller and position
 
 
 // FROM: javisantana’s block #8313604 -- January 8, 2014 -- http://bl.ocks.org/javisantana/8313604
@@ -442,7 +442,7 @@ var neighborhoods = cartodb.createLayer(map_object, {
                     type: 'cartodb',
                     sublayers: [{
                       sql: "SELECT * FROM neighborhoods",
-                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 3; line-opacity: 1;}  ::fill {line-color: #928d8d; line-width: 2; line-opacity: 1; }}", 
+                      cartocss: "#layer { polygon-fill: #000000; polygon-opacity: 0; ::case {line-color: #FFFFFF; line-width: 3; line-opacity: 1;}  ::fill {line-color: #928d8d; line-width: 2; line-opacity: 1; }}",
                       interactivity: "cartodb_id" }]
                     });
     var l_neighborhoods = new L.LayerGroup();
@@ -469,7 +469,7 @@ var nycc = cartodb.createLayer(map_object, {
                       interactivity: "cartodb_id"}]
                   });
       var l_nycc = new L.LayerGroup();
-      nycc.addTo(l_nycc);  
+      nycc.addTo(l_nycc);
 
 var nycd = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -480,7 +480,7 @@ var nycd = cartodb.createLayer(map_object, {
                       interactivity: "cartodb_id"}]
                   });
       var l_nycd = new L.LayerGroup();
-      nycd.addTo(l_nycd); 
+      nycd.addTo(l_nycd);
 
 var nyss = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -491,7 +491,7 @@ var nyss = cartodb.createLayer(map_object, {
                       interactivity: "cartodb_id"}]
                   });
       var l_nyss = new L.LayerGroup();
-      nyss.addTo(l_nyss); 
+      nyss.addTo(l_nyss);
 
 var nyad = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -502,7 +502,7 @@ var nyad = cartodb.createLayer(map_object, {
                       interactivity: "cartodb_id"}]
                   });
       var l_nyad = new L.LayerGroup();
-      nyad.addTo(l_nyad); 
+      nyad.addTo(l_nyad);
 
 var nycg = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -513,7 +513,7 @@ var nycg = cartodb.createLayer(map_object, {
                       interactivity: "cartodb_id"}]
                   });
       var l_nycg = new L.LayerGroup();
-      nycg.addTo(l_nycg); 
+      nycg.addTo(l_nycg);
 
 var nybb = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -524,8 +524,8 @@ var nybb = cartodb.createLayer(map_object, {
                         interactivity: "cartodb_id"}]
                         });
       var l_nybb = new L.LayerGroup();
-      nybb.addTo(l_nybb); 
-                          
+      nybb.addTo(l_nybb);
+
  var zipcode = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
                     type: 'cartodb',
@@ -535,11 +535,11 @@ var nybb = cartodb.createLayer(map_object, {
                         interactivity: "cartodb_id"}]
                         });
       var l_zipcode = new L.LayerGroup();
-      zipcode.addTo(l_zipcode);                            
+      zipcode.addTo(l_zipcode);
 
 var precincts = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/2fe813da-3d35-11e5-8497-0e0c41326911/viz.json');
       var l_precincts = new L.LayerGroup();
-      precincts.addTo(l_precincts); 
+      precincts.addTo(l_precincts);
 
 var uhf_health = cartodb.createLayer(map_object, {
                     user_name: 'andrewmartini',
@@ -584,7 +584,7 @@ var health = cartodb.createLayer(map_object, {  //hospitals and clinics
        alert("some error occurred: " + err);*/
          });
 
-var library = cartodb.createLayer(map_object, {  
+var library = cartodb.createLayer(map_object, {
                     user_name: 'ashron2224',
                     type: 'cartodb',
                     sublayers: [{
@@ -598,7 +598,7 @@ var library = cartodb.createLayer(map_object, {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['facname', 'facaddress', 'facility_t', 'group_type', 'subgroup_t', 'capacity', 'capacity_t', 'agency_ope', 'agency_ove'])
          });
 
-var fac = cartodb.createLayer(map_object, {  
+var fac = cartodb.createLayer(map_object, {
                     user_name: 'ashron24',
                     type: 'cartodb',
                     sublayers: [{
@@ -611,8 +611,8 @@ var fac = cartodb.createLayer(map_object, {
           .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), [ 'name', 'cartodb_id'])
          });
-    
-var christian = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/f58781ea-570a-11e5-b973-0e4fddd5de28/viz.json'); 
+
+var christian = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/f58781ea-570a-11e5-b973-0e4fddd5de28/viz.json');
     var l_christian = new L.LayerGroup();
     christian.addTo(l_christian);
 
@@ -624,7 +624,7 @@ var muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/ash
     var l_muslim = new L.LayerGroup();
     muslim.addTo(l_muslim);
 
-var buddhist = cartodb.createLayer(map_object, { 
+var buddhist = cartodb.createLayer(map_object, {
                     user_name: 'ashron24',
                     type: 'cartodb',
                     sublayers: [{
@@ -635,7 +635,7 @@ var buddhist = cartodb.createLayer(map_object, {
     var l_buddhist = new L.LayerGroup();
     buddhist.addTo(l_buddhist);
 
-var hindu = cartodb.createLayer(map_object, {  
+var hindu = cartodb.createLayer(map_object, {
                     user_name: 'ashron24',
                     type: 'cartodb',
                     sublayers: [{
@@ -646,7 +646,7 @@ var hindu = cartodb.createLayer(map_object, {
     var l_hindu = new L.LayerGroup();
     hindu.addTo(l_hindu);
 
-var sikh = cartodb.createLayer(map_object, { 
+var sikh = cartodb.createLayer(map_object, {
                     user_name: 'ashron24',
                     type: 'cartodb',
                     sublayers: [{
@@ -657,7 +657,7 @@ var sikh = cartodb.createLayer(map_object, {
     var l_sikh = new L.LayerGroup();
     sikh.addTo(l_sikh);
 
-var krishna = cartodb.createLayer(map_object, { 
+var krishna = cartodb.createLayer(map_object, {
                     user_name: 'ashron24',
                     type: 'cartodb',
                     sublayers: [{
@@ -668,7 +668,7 @@ var krishna = cartodb.createLayer(map_object, {
     var l_krishna = new L.LayerGroup();
     krishna.addTo(l_krishna);
 
-var other_religion = cartodb.createLayer(map_object, { 
+var other_religion = cartodb.createLayer(map_object, {
                     user_name: 'ashron24',
                     type: 'cartodb',
                     sublayers: [{
@@ -691,15 +691,15 @@ var nycha = cartodb.createLayer(map_object, {
          nycha.addTo(l_nycha)
            .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), [ 'developmen', 'tot_pop11', 'cartodb_id'])
-         }); 
+         });
 
-  var subways = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/77a3e3a4-2aaf-11e5-8077-0e9d821ea90d/viz.json'); 
+  var subways = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/77a3e3a4-2aaf-11e5-8077-0e9d821ea90d/viz.json');
           var l_subways = new L.LayerGroup();
           subways.addTo(l_subways);
 
-  var dpr_parks = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/14265a74-4129-11e5-a71a-0e4fddd5de28/viz.json'); 
+  var dpr_parks = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/14265a74-4129-11e5-a71a-0e4fddd5de28/viz.json');
           var l_dpr_parks = new L.LayerGroup();
-          dpr_parks.addTo(l_dpr_parks); 
+          dpr_parks.addTo(l_dpr_parks);
 
 //******************************************************
 //  CAU LAYERS
@@ -707,55 +707,55 @@ var nycha = cartodb.createLayer(map_object, {
   var cau_muslim = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/34963db0-5b0f-11e5-8fc5-0e0c41326911/viz.json');
           var l_cau_muslim = new L.LayerGroup();
           cau_muslim.addTo(l_cau_muslim);
-          
-  var rentreg = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/7d9bcc4e-573d-11e5-be93-0e9d821ea90d/viz.json'); 
+
+  var rentreg = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/7d9bcc4e-573d-11e5-be93-0e9d821ea90d/viz.json');
           var l_rentreg = new L.LayerGroup();
           rentreg.addTo(l_rentreg);
 
-  var nails = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/9cd21ef2-2bfe-11e5-9adf-0e4fddd5de28/viz.json'); 
+  var nails = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/9cd21ef2-2bfe-11e5-9adf-0e4fddd5de28/viz.json');
           var l_nails = new L.LayerGroup();
           nails.addTo(l_nails);
 
-  var vision_zero = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/5f2fe1a8-2f12-11e5-8b7e-0e0c41326911/viz.json'); 
+  var vision_zero = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/5f2fe1a8-2f12-11e5-8b7e-0e0c41326911/viz.json');
           var l_vision_zero = new L.LayerGroup();
           vision_zero.addTo(l_vision_zero);
 
-  var id_ny = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/acfe8376-573f-11e5-9d39-0e018d66dc29/viz.json'); 
+  var id_ny = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/acfe8376-573f-11e5-9d39-0e018d66dc29/viz.json');
           var l_id_ny = new L.LayerGroup();
           id_ny.addTo(l_id_ny);
 
-  var rezoning = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/6812b31e-60a3-11e5-b0e0-0ec6f7c8b2b9/viz.json'); 
+  var rezoning = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/6812b31e-60a3-11e5-b0e0-0ec6f7c8b2b9/viz.json');
           var l_rezoning = new L.LayerGroup();
           rezoning.addTo(l_rezoning);
-          
-  var scrie = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5270fe74-5cb3-11e5-badb-0e4fddd5de28/viz.json'); 
+
+  var scrie = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5270fe74-5cb3-11e5-badb-0e4fddd5de28/viz.json');
           var l_scrie = new L.LayerGroup();
           scrie.addTo(l_scrie);
 
-  var cau_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/4606c3b8-6202-11e5-ba89-0e853d047bba/viz.json'); 
+  var cau_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/4606c3b8-6202-11e5-ba89-0e853d047bba/viz.json');
           var l_cau_events = new L.LayerGroup();
           cau_events.addTo(l_cau_events);
 
-  var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/b985e2b8-1911-11e5-bd0e-0e853d047bba/viz.json'); 
+  var paid_sick = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/b985e2b8-1911-11e5-bd0e-0e853d047bba/viz.json');
           var l_paid_sick = new L.LayerGroup();
           paid_sick.addTo(l_paid_sick);
 
-  var mayoral_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/d579ebf0-6217-11e5-bbba-0e9d821ea90d/viz.json'); 
+  var mayoral_events = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/d579ebf0-6217-11e5-bbba-0e9d821ea90d/viz.json');
           var l_mayoral_events = new L.LayerGroup();
           mayoral_events.addTo(l_mayoral_events);
-     
-  var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/48b460c6-5b12-11e5-b6ba-0e8dde98a187/viz.json'); 
+
+  var cau_vols_by_zip = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/48b460c6-5b12-11e5-b6ba-0e8dde98a187/viz.json');
           var l_cau_vols_by_zip = new L.LayerGroup();
           cau_vols_by_zip.addTo(l_cau_vols_by_zip);
 
-  var voters_by_ed = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5f73b708-608f-11e5-b0e0-0ec6f7c8b2b9/viz.json'); 
+  var voters_by_ed = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/5f73b708-608f-11e5-b0e0-0ec6f7c8b2b9/viz.json');
           var l_voters_by_ed = new L.LayerGroup();
           voters_by_ed.addTo(l_voters_by_ed);
-        
-  var wildlife_complaints = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/4da60e72-3164-11e5-9c90-0e018d66dc29/viz.json'); 
+
+  var wildlife_complaints = cartodb.createLayer(map_object, 'https://ashron2224.cartodb.com/api/v2/viz/4da60e72-3164-11e5-9c90-0e018d66dc29/viz.json');
           var l_wildlife_complaints = new L.LayerGroup();
           wildlife_complaints.addTo(l_wildlife_complaints);
-          
+
 
 //******************************************************
 //  DEMOGRAPHICS & OTHER
@@ -772,7 +772,7 @@ var lang_plurality = cartodb.createLayer(map_object, {
          lang_plurality.addTo(l_lang_plurality)
           .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), [ 'cartodb_id'])
-         }); 
+         });
 
  var plur_non_eng = cartodb.createLayer(map_object, {
             user_name: 'andrewmartini',
@@ -786,7 +786,7 @@ var lang_plurality = cartodb.createLayer(map_object, {
          plur_non_eng.addTo(l_plur_non_eng)
            .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), [ 'cartodb_id'])
-         });        
+         });
 
   var nonengspan = cartodb.createLayer(map_object, {
             user_name: 'andrewmartini',
@@ -800,7 +800,7 @@ var lang_plurality = cartodb.createLayer(map_object, {
          nonengspan.addTo(l_nonengspan)
                    .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), [ 'cartodb_id'])
-         }); 
+         });
 
 /* var none = cartodb.createLayer(map_object, {    // dummy placeholder for "none" value for exclusive groups to 'deselect'
                       user_name: 'andrewmartini',
@@ -813,7 +813,7 @@ var lang_plurality = cartodb.createLayer(map_object, {
     var l_none = new L.LayerGroup();
     none.addTo(l_none); */
 
-var percent_nhblack_choro = cartodb.createLayer(map_object, {   
+var percent_nhblack_choro = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -825,10 +825,10 @@ var percent_nhblack_choro = cartodb.createLayer(map_object, {
     percent_nhblack_choro.addTo(l_percent_nhblack_choro_12)
         .on('done', function(layer) {
         cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['percent_black_12', 'nhblack', 'totalpop', 'cartodb_id'])
-        });  
+        });
 
 
-var percent_nhwhite_choro = cartodb.createLayer(map_object, {   
+var percent_nhwhite_choro = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -840,9 +840,9 @@ var percent_nhwhite_choro = cartodb.createLayer(map_object, {
     percent_nhwhite_choro.addTo(l_percent_nhwhite_choro_12)
           .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['percent_white_12', 'nhwhite', 'totalpop','cartodb_id'])
-         }); 
+         });
 
-var percent_foreignborn_choro = cartodb.createLayer(map_object, {   
+var percent_foreignborn_choro = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -854,9 +854,9 @@ var percent_foreignborn_choro = cartodb.createLayer(map_object, {
     percent_foreignborn_choro.addTo(l_percent_foreignborn_choro_12)
           .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['percent_fb_12', 'foreignbor', 'totalpop', 'cartodb_id'])
-         }); 
+         });
 
-var percent_nhasian_choro = cartodb.createLayer(map_object, {   
+var percent_nhasian_choro = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -868,9 +868,9 @@ var percent_nhasian_choro = cartodb.createLayer(map_object, {
     percent_nhasian_choro.addTo(l_percent_nhasian_choro_12)
           .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['percent_asian_12', 'nhasian' ,'totalpop', 'cartodb_id'])
-         }); 
+         });
 
-var percent_hispanic_12_choro = cartodb.createLayer(map_object, {   
+var percent_hispanic_12_choro = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -881,24 +881,24 @@ var percent_hispanic_12_choro = cartodb.createLayer(map_object, {
     var l_percent_hispanic_12_choro_12 = new L.LayerGroup();
     percent_hispanic_12_choro.addTo(l_percent_hispanic_12_choro_12)
           .on('done', function(layer) {
-           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['percent_hispanic_12','hispanic', 'totalpop', 'cartodb_id'])  
+           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['percent_hispanic_12','hispanic', 'totalpop', 'cartodb_id'])
         });
 
-var median_inc_to_rent = cartodb.createLayer(map_object, {   
+var median_inc_to_rent = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT cartodb_id, medrenttoh, medianhhin, the_geom_webmercator FROM tract12 WHERE Totalpop > 250",
-                        cartocss: "#layer{polygon-fill: #0080ff;polygon-opacity: 0.8;line-color: #FFF;line-width: 0.5;line-opacity: 1;}#layer [ medrenttoh <= 50] {polygon-fill: #ff4d4d;}#layer [ medrenttoh <= 44.6] {polygon-fill: #ff7a7a;}#layer [ medrenttoh <= 40.1] {polygon-fill: #ffa6a6;}#layer [ medrenttoh <= 35.6] {polygon-fill: #fff2cc;}#layer [ medrenttoh <= 31.1] {polygon-fill: #7fbfff;}#layer [ medrenttoh <= 26.6] {polygon-fill: #40a0ff;}#layer [ medrenttoh <= 22.1] {polygon-fill: #0080ff;}",                      
+                        cartocss: "#layer{polygon-fill: #0080ff;polygon-opacity: 0.8;line-color: #FFF;line-width: 0.5;line-opacity: 1;}#layer [ medrenttoh <= 50] {polygon-fill: #ff4d4d;}#layer [ medrenttoh <= 44.6] {polygon-fill: #ff7a7a;}#layer [ medrenttoh <= 40.1] {polygon-fill: #ffa6a6;}#layer [ medrenttoh <= 35.6] {polygon-fill: #fff2cc;}#layer [ medrenttoh <= 31.1] {polygon-fill: #7fbfff;}#layer [ medrenttoh <= 26.6] {polygon-fill: #40a0ff;}#layer [ medrenttoh <= 22.1] {polygon-fill: #0080ff;}",
                         interactivity: "cartodb_id"}]
                     });
     var l_median_inc_to_rent_12 = new L.LayerGroup();
     median_inc_to_rent.addTo(l_median_inc_to_rent_12)
           .on('done', function(layer) {
-           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['medrenttoh','medianhhin', 'cartodb_id'])  
+           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['medrenttoh','medianhhin', 'cartodb_id'])
         });
 
-var median_inc_choro = cartodb.createLayer(map_object, {   
+var median_inc_choro = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -909,7 +909,7 @@ var median_inc_choro = cartodb.createLayer(map_object, {
     var l_median_inc_choro_12  = new L.LayerGroup();
     median_inc_choro.addTo(l_median_inc_choro_12)
            .on('done', function(layer) {
-           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['medianhhin', 'cartodb_id'])  
+           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['medianhhin', 'cartodb_id'])
         });
 
 // testing graduated cylinder size w/redundant code reduction using variables //
@@ -922,7 +922,7 @@ var text_props = "text-face-name: 'Lato Bold'; text-size: 11; text-fill: #FFF; t
   var size3css =  "marker-width: 11.0; "+redundantcode;   // 51 < n <=200
   var size2css =  "marker-width: 7.5;  "+redundantcode;   // 21 < n <=50
   var size1css =  "marker-width: 4.0;  "+redundantcode;   // 6 < n <=20
-  var size0css =  "marker-width: 0; marker-fill-opacity: 0; marker-line-width: 0; marker-line-opacity: 0;"; // n <=5 
+  var size0css =  "marker-width: 0; marker-fill-opacity: 0; marker-line-width: 0; marker-line-opacity: 0;"; // n <=5
 
 // color choices for individual groups
 var bangladesh_color = "marker-fill: #5CA2D1; marker-line-color: #5CA2D1; ";
@@ -933,7 +933,7 @@ var turkish_color = "marker-fill: #e0a8bf; marker-line-color: #e0a8bf; ";
 var senegalese_color = "marker-fill: #0d697f; marker-line-color: #0d697f; ";
 
 // ethnicity layers go below this line
-var bangladesh_gradu_12 = cartodb.createLayer(map_object, {   
+var bangladesh_gradu_12 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -944,24 +944,24 @@ var bangladesh_gradu_12 = cartodb.createLayer(map_object, {
     var l_bangladesh_gradu_12  = new L.LayerGroup();
     bangladesh_gradu_12.addTo(l_bangladesh_gradu_12)
           .on('done', function(layer) {
-          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['bangladesh', 'fbbanglade', 'cartodb_id'])  
+          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['bangladesh', 'fbbanglade', 'cartodb_id'])
         });
 
-var pakistani_gradu_12 = cartodb.createLayer(map_object, { 
+var pakistani_gradu_12 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, fbpakistan, pakistani FROM tract12 WHERE pakistani > 5",
-                        cartocss:  "#layer{ "+pakistani_color+ethnicity_props+"} #layer [ pakistani >= 1001] { "+size6css+" } #layer [pakistani <= 1000] { "+size5css+" } #layer [pakistani <= 400] { "+size4css+" } #layer [ pakistani  <= 200] { "+size3css+" } #layer [pakistani <= 50] { "+size2css+"  } #layer [pakistani <= 20] { "+size1css+" } #layer [pakistani <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [pakistani>= 400] {text-name: [pakistani]; "+text_props+"}", 
+                        cartocss:  "#layer{ "+pakistani_color+ethnicity_props+"} #layer [ pakistani >= 1001] { "+size6css+" } #layer [pakistani <= 1000] { "+size5css+" } #layer [pakistani <= 400] { "+size4css+" } #layer [ pakistani  <= 200] { "+size3css+" } #layer [pakistani <= 50] { "+size2css+"  } #layer [pakistani <= 20] { "+size1css+" } #layer [pakistani <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [pakistani>= 400] {text-name: [pakistani]; "+text_props+"}",
                         interactivity: "cartodb_id"}]
                     });
     var l_pakistani_gradu_12  = new L.LayerGroup();
     pakistani_gradu_12.addTo(l_pakistani_gradu_12)
            .on('done', function(layer) {
-           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['pakistani', 'fbpakistan', 'cartodb_id'])  
+           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['pakistani', 'fbpakistan', 'cartodb_id'])
         });
 
-var asianindia_gradu_12 = cartodb.createLayer(map_object, {   
+var asianindia_gradu_12 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -973,7 +973,7 @@ var asianindia_gradu_12 = cartodb.createLayer(map_object, {
     asianindia_gradu_12.addTo(l_asianindia_gradu_12)
           .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['asianindia', 'fbindia' , 'cartodb_id'])
-         }); 
+         });
 
 var arab_gradu_12 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
@@ -987,7 +987,7 @@ var arab_gradu_12 = cartodb.createLayer(map_object, {
     arab_gradu_12.addTo(l_arab_gradu_12)
           .on('done', function(layer) {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['arab', 'fbarab', 'cartodb_id'])
-         }); 
+         });
 
 var turkish_gradu_12 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
@@ -1001,14 +1001,14 @@ var turkish_gradu_12 = cartodb.createLayer(map_object, {
     turkish_gradu_12.addTo(l_turkish_gradu_12)
          .on('done', function(layer) {
          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['turkish',  'cartodb_id'])
-         }); 
+         });
 
 var senegalese_gradu_12 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
                         sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, senegalese, fbwafrica FROM tract12 WHERE senegalese > 5",
-                        cartocss:  "#layer{  "+senegalese_color+ethnicity_props+"} #layer [ senegalese >= 1001] { "+size6css+" } #layer [ senegalese <= 1000] { "+size5css+" } #layer [ senegalese <= 400] { "+size4css+" } #layer [ senegalese  <= 200] { "+size3css+" } #layer [ senegalese <= 50] { "+size2css+"  } #layer [ senegalese <= 20] { "+size1css+" } #layer [ senegalese  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [senegalese>= 400] { text-name: [senegalese]; "+text_props+"}",  
+                        cartocss:  "#layer{  "+senegalese_color+ethnicity_props+"} #layer [ senegalese >= 1001] { "+size6css+" } #layer [ senegalese <= 1000] { "+size5css+" } #layer [ senegalese <= 400] { "+size4css+" } #layer [ senegalese  <= 200] { "+size3css+" } #layer [ senegalese <= 50] { "+size2css+"  } #layer [ senegalese <= 20] { "+size1css+" } #layer [ senegalese  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [senegalese>= 400] { text-name: [senegalese]; "+text_props+"}",
                         interactivity: "cartodb_id"}]
                     });
     var l_senegalese_gradu_12  = new L.LayerGroup();
@@ -1019,7 +1019,7 @@ var senegalese_gradu_12 = cartodb.createLayer(map_object, {
 
 // </> end ethnicity layers
 
-var dot_bike_2015 = cartodb.createLayer(map_object, { 
+var dot_bike_2015 = cartodb.createLayer(map_object, {
                       user_name: 'andrewmartini',
                       type: 'cartodb',
                       sublayers: [{
@@ -1033,12 +1033,12 @@ var dot_bike_2015 = cartodb.createLayer(map_object, {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['street', 'fromstreet', 'tostreet', 'tf_facilit', 'facilitycl', 'allclasses'])
          });
 
-// initial layers    
+// initial layers
 map_object.addLayer(l_nybb);
-map_object.addLayer(l_neigh_labels);  
+map_object.addLayer(l_neigh_labels);
 
     var baseMaps = [
-                      { 
+                      {
                 groupName : "Basemaps",
                 expanded : false,
                 layers    : {
@@ -1050,14 +1050,14 @@ map_object.addLayer(l_neigh_labels);
                   "Acetate terrain" : Acetate_terrain,
                   "Black": black_wallpaper
                 }
-                      }  
+                      }
     ];
 
-    var overlays = [ 
+    var overlays = [
                 {
                 groupName : "Districts",
                 expanded : false,
-                layers    : { 
+                layers    : {
                             "Boroughs": l_nybb,
                             "Neighborhoods": l_neighborhoods,
                             "<span class='my-layer-item-steelblue'>Community Districts</span>": l_nycd,
@@ -1073,7 +1073,7 @@ map_object.addLayer(l_neigh_labels);
                 {
                 groupName : "Outreach Locations",
                 expanded : true,
-                layers    : {                   
+                layers    : {
                             "<img src='css/images/protest.svg'  height='14px' width='14px'/> Community Based Orgs": l_cbo,
                             "<img src='css/images/school.png'  height='14px' width='14px'/> Schools": l_schools,
                             "<img src='css/images/Hospital_Sign_32.png'  height='14px' width='14px'/> Hospitals & Clinics": l_health,
@@ -1082,27 +1082,27 @@ map_object.addLayer(l_neigh_labels);
                             "NYCHA developments": l_nycha,
                             "Subways": l_subways,
                             "Bike Lanes": l_dot_bike_2015,
-                            "Parks": l_dpr_parks 
+                            "Parks": l_dpr_parks
                             }
                 },
                 /*{
                 groupName : "Religious Groups",
                 expanded : true,
-                layers    : {  
+                layers    : {
                       "<img src='css/images/red_cross-50px.png'  height='14px' width='14px'/> <span class='my-layer-item-red'>Christian Orgs</span>": l_christian,
                       "<img src='css/images/Star_of_David-50-px.png'  height='14px' width='14px'/><span class='my-layer-item-blue'> Jewish Orgs</span>": l_jewish,
                       "<img src='css/images/muslim_crescent-50px.png'  height='14px' width='14px'/><span class='my-layer-item-green'> Muslim Orgs</span>": l_muslim,
                       "<img src='css/images/Om-50px.png'  height='14px' width='14px'/><span class='my-layer-item-salmon'> Hindu Orgs</span>": l_hindu,
                       "<img src='css/images/dharma_wheel_2-50px.png'  height='14px' width='14px'/><span class='my-layer-item-orange'> Buddhist Orgs</span>": l_buddhist,
                       "<img src='css/images/Khanda-50px.png'  height='14px' width='14px'/><span class='my-layer-item-yellow'> Sikh Orgs</span>": l_sikh,
-                      "<img src='css/images/lotus-50px.png'  height='14px' width='14px'/><span class='my-layer-item-purple'> Hare Krishna Orgs</span>": l_krishna, 
+                      "<img src='css/images/lotus-50px.png'  height='14px' width='14px'/><span class='my-layer-item-purple'> Hare Krishna Orgs</span>": l_krishna,
                       "<img src='css/images/domed_building-50px.png'  height='14px' width='14px'/> Other Religious Orgs": l_other_religion
                       }
                 },*/
                 {
                 groupName : "Outreach Work",
                 expanded : true,
-                layers    : {  
+                layers    : {
                             "Mayoral Events" : l_mayoral_events,
                             "CAU Events by Neighborhood": l_cau_events,
                             "CAU Volunteers by Zip": l_cau_vols_by_zip,
@@ -1120,18 +1120,18 @@ map_object.addLayer(l_neigh_labels);
       {
                 groupName : "Demographics",
                 expanded : true,
-                layers    : {  
+                layers    : {
                            // "None": l_none,
                             "% Hispanic": l_percent_hispanic_12_choro_12,
                             "% White": l_percent_nhwhite_choro_12,
-                            "% Black": l_percent_nhblack_choro_12,       
+                            "% Black": l_percent_nhblack_choro_12,
                             "% Asian": l_percent_nhasian_choro_12,
                          //   }
-     // },                     
+     // },
      // {
        //         groupName : "Income",
          //       expanded : true,
-           //     layers    : {                              
+           //     layers    : {
                             "Median HH Income": l_median_inc_choro_12,
                             "Median Inc to Rent": l_median_inc_to_rent_12,
                         //  }
@@ -1139,7 +1139,7 @@ map_object.addLayer(l_neigh_labels);
      // {
        //         groupName : "Foreign Born",
          //       expanded : true,
-           //     layers    : {     
+           //     layers    : {
                             "% Foreign Born": l_percent_foreignborn_choro_12,
                             "Bangladeshi": l_bangladesh_gradu_12,
                             "Pakistani": l_pakistani_gradu_12,
@@ -1147,12 +1147,12 @@ map_object.addLayer(l_neigh_labels);
                             "Arab": l_arab_gradu_12,
                             "Turkish": l_turkish_gradu_12,
                             "Senegalese": l_senegalese_gradu_12
-                              }      
+                              }
       },
       /*{
                 groupName : "DOE Language Data",
                 expanded : false,
-                layers    : {  
+                layers    : {
                           "Plurality Language": l_lang_plurality,
                           "Non-English Plurality": l_plur_non_eng,
                           "Non-English/Spanish Plurality": l_nonengspan,
@@ -1180,8 +1180,8 @@ map_object.addLayer(l_neigh_labels);
       var options = {
        // container_width   : "",
        // group_maxHeight     : "",
-       // container_maxHeight : "", 
-        exclusive : false,  // true makes only one group able to be opened at a time! 
+       // container_maxHeight : "",
+        exclusive : false,  // true makes only one group able to be opened at a time!
         collapsed: false,
         autoZIndex: false
         //exclusive: ["Demographics"],   want to have radio check boxes here - may need to steal 'exclusive' code or make a basemap type
