@@ -755,6 +755,14 @@ var nycha = cartodb.createLayer(map_object, {
           var l_wildlife_complaints = new L.LayerGroup();
           wildlife_complaints.addTo(l_wildlife_complaints);
 
+  var arches = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/20f20aac-6c38-11e5-8201-0e31c9be1b51/viz.json');
+          var l_arches = new L.LayerGroup();
+          arches.addTo(l_arches);
+          
+   var cv_catchment = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/de545b74-6c36-11e5-add3-0e5db1731f59/viz.json');
+          var l_cv_catchment = new L.LayerGroup();
+          cv_catchment.addTo(l_cv_catchment);
+          
 
 //******************************************************
 //  DEMOGRAPHICS & OTHER
@@ -1105,6 +1113,8 @@ map_object.addLayer(l_neigh_labels);
                             "Mayoral Events" : l_mayoral_events,
                             "CAU Events by Neighborhood": l_cau_events,
                             "CAU Volunteers by Zip": l_cau_vols_by_zip,
+                            "Arches Sites": l_arches,
+                            "CV Catchment Areas": l_cv_catchment,
                             "Wildlife Sightings": l_wildlife_complaints,
                             "SCRIE Targets": l_scrie,
                             "Rent Regulated Targets": l_rentreg,
