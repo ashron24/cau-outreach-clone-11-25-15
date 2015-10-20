@@ -1040,6 +1040,25 @@ var dot_bike_2015 = cartodb.createLayer(map_object, {
           cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['street', 'fromstreet', 'tostreet', 'tf_facilit', 'facilitycl', 'allclasses'])
          });
 
+
+var rent_stabl = cartodb.createLayer(map_object, {
+                      user_name: 'chenrick',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT * FROM  public.all_nyc_likely_rent_stabl_merged",
+                        cartocss: "#layer {polygon-fill: #BB75DC; polygon-opacity: 0.8; line-color: #FFF;line-width: 0.1;line-opacity: 0.7;}",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_rent_stabl = new L.LayerGroup();
+    rent_stabl.addTo(l_rent_stabl)
+          .on('done', function(layer) {
+          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['address', 'builtfar', 'landuse', 'numfloors'])
+         });
+
+ var num_floors = cartodb.createLayer(map_object, 'http://pluto.cartodb.com/api/v2/viz/0cd08e80-fee5-11e2-8888-ddc4604a078e/viz.json');
+          var l_num_floors = new L.LayerGroup();
+          num_floors.addTo(l_num_floors);
+
 // initial layers
 map_object.addLayer(l_nybb);
 map_object.addLayer(l_neigh_labels);
@@ -1175,6 +1194,14 @@ map_object.addLayer(l_neigh_labels);
                             "Neighborhoods"       : l_neigh_labels,
                             "Gray Basemap Labels" : labels_overlay,
                             "Stamen Toner Labels" : Stamen_TonerLabels
+                            }
+      },
+      {
+                groupName : "Other",
+                expanded : true,
+                layers    : {
+                            "Likely Rent Stabilized"       : l_rent_stabl,
+                            "Building Heights"             : l_num_floors
                             }
       }
     ];
