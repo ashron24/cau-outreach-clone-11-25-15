@@ -258,7 +258,7 @@
 
 <hr style="background:#c0c0c0; border:0; height:2px" />
 
-    <div class='layer-title'>DOE Language Groups </div>
+ <!--   <div class='layer-title'>DOE Language Groups </div>
         <div class='legend-scale-2'>
           <ul class='legend-labels-2'>
             <li><span style='background:#ff0000;'></span>Sino-Tibetan: Chinese</li>
@@ -274,7 +274,7 @@
             <li><span style='background:#DDDDDD;'></span>English & other</li>
           </ul>
         </div>
-        <div class='legend-source'>Source: NYC Dept of Ed.</div>
+        <div class='legend-source'>Source: NYC Dept of Ed.</div>>!--
   </div>
 <!-- load infowindow template -->
 <script type="infowindow/html" id="infowindow_template">
@@ -751,7 +751,7 @@ var nycha = cartodb.createLayer(map_object, {
           var l_subways = new L.LayerGroup();
           subways.addTo(l_subways);
 
-  var dpr_parks = cartodb.createLayer(map_object, 'https://andrewmartini.cartodb.com/api/v2/viz/14265a74-4129-11e5-a71a-0e4fddd5de28/viz.json');
+  var dpr_parks = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/fe0f37c0-8e2a-11e5-94eb-0e8c56e2ffdb/viz.json');
           var l_dpr_parks = new L.LayerGroup();
           dpr_parks.addTo(l_dpr_parks);
 
@@ -826,10 +826,39 @@ var nycha = cartodb.createLayer(map_object, {
           var l_neon = new L.LayerGroup();
           neon.addTo(l_neon);        
           
-   var cv_catchment = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/de545b74-6c36-11e5-add3-0e5db1731f59/viz.json');
+  var cv_catchment = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/de545b74-6c36-11e5-add3-0e5db1731f59/viz.json');
           var l_cv_catchment = new L.LayerGroup();
           cv_catchment.addTo(l_cv_catchment);
-          
+  
+  var renewal_school = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/a6d96c04-8d77-11e5-9dac-0e31c9be1b51/viz.json');
+          var l_renewal_school = new L.LayerGroup();
+          renewal_school.addTo(l_renewal_school);        
+
+  var community_park = cartodb.createLayer(map_object, 'https://ashron24.cartodb.com/api/v2/viz/a9c151e8-8e2b-11e5-b81e-0e787de82d45/viz.json');
+          var l_community_park = new L.LayerGroup();
+          community_park.addTo(l_community_park);
+
+  var acs_detention = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/dadfe6c4-8e33-11e5-805e-0ea31932ec1d/viz.json');
+          var l_acs_detention = new L.LayerGroup();
+          acs_detention.addTo(l_acs_detention);
+
+  var compass = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/8dfab890-8e3b-11e5-9477-0e3a376473ab/viz.json');
+          var l_compass = new L.LayerGroup();
+          compass.addTo(l_compass);
+
+  var ocdv = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/f357c4f6-8e33-11e5-8134-0e674067d321/viz.json');
+          var l_ocdv = new L.LayerGroup();
+          ocdv.addTo(l_ocdv);
+
+  var ocdv_outreach = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/8f7ef386-8ed9-11e5-9cdb-0e5db1731f59/viz.json');
+          var l_ocdv_outreach = new L.LayerGroup();
+          ocdv_outreach.addTo(l_ocdv_outreach);
+
+  var map_nycha = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/6f2d5df0-8ed6-11e5-b65e-0e674067d321/viz.json');
+          var l_map_nycha = new L.LayerGroup();
+          map_nycha.addTo(l_map_nycha);
+
+
 
 //******************************************************
 //  DEMOGRAPHICS & OTHER
@@ -1199,17 +1228,24 @@ map_object.addLayer(l_neigh_labels);
                             "<img src='css/images/star-8-16.png'  height='14px' width='14px'/> Mayoral Events</span>": l_mayoral_events,
                             "<img src='css/images/Marker-24_green.png'  height='14px' width='14px'/> DOP Arches Sites</span>": l_arches,
                             "<img src='css/images/Marker-24_purple.png'  height='14px' width='14px'/> DOP NeON Sites</span>": l_neon,
+                            "<img src='css/images/Marker-24_mustard.png'  height='14px' width='14px'/> DYCD Compass Sites</span>": l_compass,
+                            "<img src='css/images/Marker-24_magenta.png'  height='14px' width='14px'/> ACS Detention Sites</span>": l_acs_detention,
+                            "<img src='css/images/Marker-24_blue.png'  height='14px' width='14px'/> OCDV Sites</span>": l_ocdv,
+                            "<img src='css/images/purplecircle.png'  height='11px' width='11px'/> OCDV Outreach Events</span>": l_ocdv_outreach,
+                            "<img src='css/images/2015010716231550px_fatplus_yellow.png'  height='14px' width='14px'/> IDNYC Enrollment Centers</span>": l_id_ny,
                             "<img src='css/images/Polygon-26-dark-red.png'  height='14px' width='14px'/> MOCJ Cure Violence Areas": l_cv_catchment,
-                            "<img src='css/images/Marker-24_orange.png'  height='14px' width='14px'/> Recent Hate Crimes</span>": l_hate_crime,
+                            "<img src='css/images/schoolorange.png'  height='14px' width='14px'/> DOE Renewal Schools": l_renewal_school,
+                            "<img src='css/images/CommunityPark.png'  height='12px' width='12px'/> Community Parks</span>": l_community_park,
                             "<img src='css/images/maroongiraffe2.png'  height='14px' width='14px'/> Wildlife Sightings</span>": l_wildlife_complaints,
+                            "MAP NYCHA Developments": l_map_nycha,
+                            //"<img src='css/images/Marker-24_orange.png'  height='14px' width='14px'/> Recent Hate Crimes</span>": l_hate_crime,                            
                             "CAU Events by Neighborhood": l_cau_events,
-                            "CAU Volunteers by Zip": l_cau_vols_by_zip,
-                            "SCRIE Targets": l_scrie,
-                            "Rent Regulated Targets": l_rentreg,
-                            "IDNYC Target Turf": l_id_ny,
-                            "Rezoning Areas": l_rezoning,
-                            "Paid Sick Leave Business Walks": l_paid_sick,
+                            //"CAU Volunteers by Zip": l_cau_vols_by_zip,
+                            "SCRIE Outreach Targets": l_scrie,
+                            //"Rent Regulated Targets": l_rentreg,
+                            //"Paid Sick Leave Business Walks": l_paid_sick,
                             "Nail Salon Day of Action Targets": l_nails,
+                            "Rezoning Areas": l_rezoning,
                             "FEMA Flood Zones": l_fema,
                             "Vision Zero Borough Plans": l_vision_zero
                             //"Voters by Election District": l_voters_by_ed
