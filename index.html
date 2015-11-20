@@ -858,7 +858,13 @@ var nycha = cartodb.createLayer(map_object, {
           var l_map_nycha = new L.LayerGroup();
           map_nycha.addTo(l_map_nycha);
 
+  var dca_outreach = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/f65e0122-8fc5-11e5-b793-0e674067d321/viz.json');
+          var l_dca_outreach = new L.LayerGroup();
+          dca_outreach.addTo(l_dca_outreach);
 
+  var idnyc_outreach = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/9505a410-8fc6-11e5-bda4-0ecfd53eb7d3/viz.json');
+          var l_idnyc_outreach = new L.LayerGroup();
+          idnyc_outreach.addTo(l_map_nycha);        
 
 //******************************************************
 //  DEMOGRAPHICS & OTHER
@@ -1231,7 +1237,9 @@ map_object.addLayer(l_neigh_labels);
                             "<img src='css/images/Marker-24_mustard.png'  height='14px' width='14px'/> DYCD Compass Sites</span>": l_compass,
                             "<img src='css/images/Marker-24_magenta.png'  height='14px' width='14px'/> ACS Detention Sites</span>": l_acs_detention,
                             "<img src='css/images/Marker-24_blue.png'  height='14px' width='14px'/> OCDV Sites</span>": l_ocdv,
-                            "<img src='css/images/purplecircle.png'  height='11px' width='11px'/> OCDV Outreach Events</span>": l_ocdv_outreach,
+                            "<img src='css/images/circle_purple.png'  height='10px' width='10px'/>  OCDV Outreach Events</span>": l_ocdv_outreach,
+                            "<img src='css/images/circle_orange.png'  height='10px' width='10px'/>  DCA Outreach Events</span>": l_dca_outreach,
+                            "<img src='css/images/circle_red.png'  height='10px' width='10px'/>  IDNYC Outreach Events</span>": l_idnyc_outreach,
                             "<img src='css/images/2015010716231550px_fatplus_yellow.png'  height='14px' width='14px'/> IDNYC Enrollment Centers</span>": l_id_ny,
                             "<img src='css/images/Polygon-26-dark-red.png'  height='14px' width='14px'/> MOCJ Cure Violence Areas": l_cv_catchment,
                             "<img src='css/images/schoolorange.png'  height='14px' width='14px'/> DOE Renewal Schools": l_renewal_school,
