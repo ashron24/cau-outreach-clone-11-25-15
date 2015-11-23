@@ -864,7 +864,7 @@ var nycha = cartodb.createLayer(map_object, {
 
   var idnyc_outreach = cartodb.createLayer(map_object, 'https://nycdoitt.cartodb.com/u/asherross/api/v2/viz/9505a410-8fc6-11e5-bda4-0ecfd53eb7d3/viz.json');
           var l_idnyc_outreach = new L.LayerGroup();
-          idnyc_outreach.addTo(l_map_nycha);        
+          idnyc_outreach.addTo(l_idnyc_outreach);        
 
 //******************************************************
 //  DEMOGRAPHICS & OTHER
@@ -1025,15 +1025,17 @@ var median_inc_choro = cartodb.createLayer(map_object, {
 var ethnicity_props= "marker-fill-opacity: 0; marker-line-width: 0; marker-line-opacity: 0; marker-placement: point; marker-multi-policy: largest; marker-type: ellipse;  marker-allow-overlap: true; marker-clip: false; marker-comp-op: darken; ";
 var redundantcode = "marker-fill-opacity: 0.7; marker-line-width: 2; marker-line-opacity: 1;";
 var text_props = "text-face-name: 'Lato Bold'; text-size: 11; text-fill: #FFF; text-halo-radius: 1; text-halo-fill: #000; text-allow-overlap: true; text-placement: point; text-placement-type: simple; text-character-spacing: 1.1; text-label-position-tolerance: 20;";
-  var size6css =  "marker-width: 27.0; "+redundantcode+" marker-fill-opacity: 0.9; ";   // n >=1001
-  var size5css =  "marker-width: 20.0; "+redundantcode;   // 401 < n <=1000
-  var size4css =  "marker-width: 14.0; "+redundantcode;   // 201 < n <=400
-  var size3css =  "marker-width: 11.0; "+redundantcode;   // 51 < n <=200
-  var size2css =  "marker-width: 7.5;  "+redundantcode;   // 21 < n <=50
+  var size6css =  "marker-width: 20.0; "+redundantcode+" marker-fill-opacity: 0.9; ";   // n >=1001
+  var size5css =  "marker-width: 16.0; "+redundantcode;   // 401 < n <=1000
+  var size4css =  "marker-width: 13.0; "+redundantcode;   // 201 < n <=400
+  var size3css =  "marker-width: 10.0; "+redundantcode;   // 51 < n <=200
+  var size2css =  "marker-width: 7;  "+redundantcode;   // 21 < n <=50
   var size1css =  "marker-width: 4.0;  "+redundantcode;   // 6 < n <=20
   var size0css =  "marker-width: 0; marker-fill-opacity: 0; marker-line-width: 0; marker-line-opacity: 0;"; // n <=5
 
 // color choices for individual groups
+var dominican_color = "marker-fill: #177A10; marker-line-color: #13660D; ";
+var puertorican_color = "marker-fill: #FFA41C; marker-line-color: #E69419; ";
 var bangladesh_color = "marker-fill: #5CA2D1; marker-line-color: #5CA2D1; ";
 var pakistani_color = "marker-fill: #966B6B; marker-line-color: #966B6B; ";
 var asianindia_color = "marker-fill: #e25043; marker-line-color: #e25043; ";
@@ -1042,11 +1044,40 @@ var turkish_color = "marker-fill: #e0a8bf; marker-line-color: #e0a8bf; ";
 var senegalese_color = "marker-fill: #0d697f; marker-line-color: #0d697f; ";
 
 // ethnicity layers go below this line
-var bangladesh_gradu_12 = cartodb.createLayer(map_object, {
-                      user_name: 'andrewmartini',
+
+var dominican_gradu_12 = cartodb.createLayer(map_object, {
+                      user_name: 'ashron24',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, fbbanglade, bangladesh FROM tract12 WHERE bangladesh > 5",
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, fbdominica, dominican FROM tract13 WHERE dominican > 5",
+                        cartocss:  "#layer{ "+dominican_color+ethnicity_props+"} #layer [ dominican >= 1001] { "+size6css+" } #layer [ dominican <= 1000] { "+size5css+" } #layer [ dominican <= 400] { "+size4css+" } #layer [ dominican  <= 200] { "+size3css+" } #layer [ dominican <= 50] { "+size2css+"  } #layer [ dominican <= 20] { "+size1css+" } #layer [ dominican  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [dominican>= 400] { text-name: [dominican]; "+text_props+"}",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_dominican_gradu_12  = new L.LayerGroup();
+    dominican_gradu_12.addTo(l_dominican_gradu_12)
+          .on('done', function(layer) {
+          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['dominican', 'fbdominica', 'cartodb_id'])
+        });
+          
+var puertorican_gradu_12 = cartodb.createLayer(map_object, {
+                      user_name: 'ashron24',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, puertorica FROM tract13 WHERE puertorica > 5",
+                        cartocss:  "#layer{ "+puertorican_color+ethnicity_props+"} #layer [ puertorica >= 1001] { "+size6css+" } #layer [ puertorica <= 1000] { "+size5css+" } #layer [ puertorica <= 400] { "+size4css+" } #layer [ puertorica  <= 200] { "+size3css+" } #layer [ puertorica <= 50] { "+size2css+"  } #layer [ puertorica <= 20] { "+size1css+" } #layer [ puertorica  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [puertorica>= 400] { text-name: [puertorica]; "+text_props+"}",
+                      interactivity: "cartodb_id"}]
+                    });
+    var l_puertorican_gradu_12  = new L.LayerGroup();
+    puertorican_gradu_12.addTo(l_puertorican_gradu_12)
+          .on('done', function(layer) {
+          cdb.vis.Vis.addInfowindow(map_object, layer.getSubLayer(0), ['puertorica', 'cartodb_id'])
+        });
+
+var bangladesh_gradu_12 = cartodb.createLayer(map_object, {
+                      user_name: 'ashron24',
+                      type: 'cartodb',
+                      sublayers: [{
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, fbbanglade, bangladesh FROM tract13 WHERE bangladesh > 5",
                         cartocss:  "#layer{ "+bangladesh_color+ethnicity_props+"} #layer [ bangladesh >= 1001] { "+size6css+" } #layer [ bangladesh <= 1000] { "+size5css+" } #layer [ bangladesh <= 400] { "+size4css+" } #layer [ bangladesh  <= 200] { "+size3css+" } #layer [ bangladesh <= 50] { "+size2css+"  } #layer [ bangladesh <= 20] { "+size1css+" } #layer [ bangladesh  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [bangladesh>= 400] { text-name: [bangladesh]; "+text_props+"}",
                       interactivity: "cartodb_id"}]
                     });
@@ -1057,10 +1088,10 @@ var bangladesh_gradu_12 = cartodb.createLayer(map_object, {
         });
 
 var pakistani_gradu_12 = cartodb.createLayer(map_object, {
-                      user_name: 'andrewmartini',
+                      user_name: 'ashron24',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, fbpakistan, pakistani FROM tract12 WHERE pakistani > 5",
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, fbpakistan, pakistani FROM tract13 WHERE pakistani > 5",
                         cartocss:  "#layer{ "+pakistani_color+ethnicity_props+"} #layer [ pakistani >= 1001] { "+size6css+" } #layer [pakistani <= 1000] { "+size5css+" } #layer [pakistani <= 400] { "+size4css+" } #layer [ pakistani  <= 200] { "+size3css+" } #layer [pakistani <= 50] { "+size2css+"  } #layer [pakistani <= 20] { "+size1css+" } #layer [pakistani <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [pakistani>= 400] {text-name: [pakistani]; "+text_props+"}",
                         interactivity: "cartodb_id"}]
                     });
@@ -1071,10 +1102,10 @@ var pakistani_gradu_12 = cartodb.createLayer(map_object, {
         });
 
 var asianindia_gradu_12 = cartodb.createLayer(map_object, {
-                      user_name: 'andrewmartini',
+                      user_name: 'ashron24',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, asianindia, fbindia FROM tract12 WHERE asianindia > 5",
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, asianindia, fbindia FROM tract13 WHERE asianindia > 5",
                         cartocss: "#layer{ "+asianindia_color+ethnicity_props+"} #layer [ asianindia >= 1001] { "+size6css+" }  #layer [ asianindia <= 1000] { "+size5css+" } #layer [ asianindia <= 400] { "+size4css+" } #layer [ asianindia  <= 200] { "+size3css+" } #layer [ asianindia <= 50] { "+size2css+"  } #layer [ asianindia <= 20] { "+size1css+" } #layer [ asianindia  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [asianindia>= 400] { text-name: [asianindia]; "+text_props+"}",
                        interactivity: "cartodb_id"}]
                     });
@@ -1085,10 +1116,10 @@ var asianindia_gradu_12 = cartodb.createLayer(map_object, {
          });
 
 var arab_gradu_12 = cartodb.createLayer(map_object, {
-                      user_name: 'andrewmartini',
+                      user_name: 'ashron24',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, arab, fbarab FROM tract12 WHERE arab > 5",
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, arab, fbarab FROM tract13 WHERE arab > 5",
                         cartocss:  "#layer{  "+arab_color+ethnicity_props+"} #layer [ arab >= 1001] { "+size6css+" } #layer [ arab <= 1000] { "+size5css+" } #layer [ arab <= 400] { "+size4css+" } #layer [ arab  <= 200] { "+size3css+" } #layer [ arab <= 50] { "+size2css+"  } #layer [ arab <= 20] { "+size1css+" } #layer [ arab  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [arab>= 400] { text-name: [arab]; "+text_props+"}",
                         interactivity: "cartodb_id"}]
                     });
@@ -1099,10 +1130,10 @@ var arab_gradu_12 = cartodb.createLayer(map_object, {
          });
 
 var turkish_gradu_12 = cartodb.createLayer(map_object, {
-                      user_name: 'andrewmartini',
+                      user_name: 'ashron24',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, turkish  FROM tract12 WHERE turkish > 5",
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, turkish  FROM tract13 WHERE turkish > 5",
                         cartocss:  "#layer{  "+turkish_color+ethnicity_props+"} #layer [ turkish >= 1001] { "+size6css+" } #layer [ turkish <= 1000] { "+size5css+" } #layer [ turkish <= 400] { "+size4css+" } #layer [ turkish  <= 200] { "+size3css+" } #layer [ turkish <= 50] { "+size2css+"  } #layer [ turkish <= 20] { "+size1css+" } #layer [ turkish  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [turkish>= 400] { text-name: [turkish]; "+text_props+"}",
                         interactivity: "cartodb_id"}]
                     });
@@ -1113,10 +1144,10 @@ var turkish_gradu_12 = cartodb.createLayer(map_object, {
          });
 
 var senegalese_gradu_12 = cartodb.createLayer(map_object, {
-                      user_name: 'andrewmartini',
+                      user_name: 'ashron24',
                       type: 'cartodb',
                       sublayers: [{
-                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, senegalese, fbwafrica FROM tract12 WHERE senegalese > 5",
+                        sql: "SELECT the_geom, the_geom_webmercator, cartodb_id, senegalese, fbwafrica FROM tract13 WHERE senegalese > 5",
                         cartocss:  "#layer{  "+senegalese_color+ethnicity_props+"} #layer [ senegalese >= 1001] { "+size6css+" } #layer [ senegalese <= 1000] { "+size5css+" } #layer [ senegalese <= 400] { "+size4css+" } #layer [ senegalese  <= 200] { "+size3css+" } #layer [ senegalese <= 50] { "+size2css+"  } #layer [ senegalese <= 20] { "+size1css+" } #layer [ senegalese  <= 5] { "+size0css+"} #layer::labels [zoom >= 13] [senegalese>= 400] { text-name: [senegalese]; "+text_props+"}",
                         interactivity: "cartodb_id"}]
                     });
@@ -1237,16 +1268,16 @@ map_object.addLayer(l_neigh_labels);
                             "<img src='css/images/Marker-24_mustard.png'  height='14px' width='14px'/> DYCD Compass Sites</span>": l_compass,
                             "<img src='css/images/Marker-24_magenta.png'  height='14px' width='14px'/> ACS Detention Sites</span>": l_acs_detention,
                             "<img src='css/images/Marker-24_blue.png'  height='14px' width='14px'/> OCDV Sites</span>": l_ocdv,
-                            "<img src='css/images/circle_purple.png'  height='10px' width='10px'/>  OCDV Outreach Events</span>": l_ocdv_outreach,
-                            "<img src='css/images/circle_orange.png'  height='10px' width='10px'/>  DCA Outreach Events</span>": l_dca_outreach,
-                            "<img src='css/images/circle_red.png'  height='10px' width='10px'/>  IDNYC Outreach Events</span>": l_idnyc_outreach,
+                            "<img src='css/images/circle_purple.png'  height='14px' width='14px'/> OCDV Outreach Events</span>": l_ocdv_outreach,
+                            "<img src='css/images/circle_orange.png'  height='14px' width='14px'/> DCA Outreach Events</span>": l_dca_outreach,
+                            "<img src='css/images/circle_red.png' height='14px' width='14px'/> IDNYC Outreach Events</span>": l_idnyc_outreach,
                             "<img src='css/images/2015010716231550px_fatplus_yellow.png'  height='14px' width='14px'/> IDNYC Enrollment Centers</span>": l_id_ny,
                             "<img src='css/images/Polygon-26-dark-red.png'  height='14px' width='14px'/> MOCJ Cure Violence Areas": l_cv_catchment,
                             "<img src='css/images/schoolorange.png'  height='14px' width='14px'/> DOE Renewal Schools": l_renewal_school,
                             "<img src='css/images/CommunityPark.png'  height='12px' width='12px'/> Community Parks</span>": l_community_park,
                             "<img src='css/images/maroongiraffe2.png'  height='14px' width='14px'/> Wildlife Sightings</span>": l_wildlife_complaints,
                             "MAP NYCHA Developments": l_map_nycha,
-                            //"<img src='css/images/Marker-24_orange.png'  height='14px' width='14px'/> Recent Hate Crimes</span>": l_hate_crime,                            
+                            //"<img src='css/images/Swearing Filled-25.png'  height='14px' width='14px'/> Recent Hate Crimes</span>": l_hate_crime,                            
                             "CAU Events by Neighborhood": l_cau_events,
                             //"CAU Volunteers by Zip": l_cau_vols_by_zip,
                             "SCRIE Outreach Targets": l_scrie,
@@ -1283,6 +1314,8 @@ map_object.addLayer(l_neigh_labels);
          //       expanded : true,
            //     layers    : {
                             "% Foreign Born": l_percent_foreignborn_choro_12,
+                            "<img src='css/images/circle_dark_green.png' height='10px' width='10px'/> Dominican": l_dominican_gradu_12,
+                            "<img src='css/images/circle_orange_2.png' height='10px' width='10px'/> Puerto Rican": l_puertorican_gradu_12,
                             "<img src='css/images/circle-16-bangladesh.png' height='10px' width='10px'/> Bangladeshi": l_bangladesh_gradu_12,
                             "<img src='css/images/circle-16-pakistani.png' height='10px' width='10px'/> Pakistani": l_pakistani_gradu_12,
                             "<img src='css/images/circle-16-asianindia.png' height='10px' width='10px'/> Indian": l_asianindia_gradu_12,
